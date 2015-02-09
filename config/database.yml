@@ -16,3 +16,4 @@ test:
 production:
   <<: *default
   database: better-cherkasy-production
+  password: thunder
