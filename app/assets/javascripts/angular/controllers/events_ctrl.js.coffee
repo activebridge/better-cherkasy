@@ -1,6 +1,4 @@
-@EventsCtrl = ['$scope', '$q', 'Event', '$modal', '$rootScope', ($scope, $q, Event, $modal, $rootScope) ->
-  $rootScope.eventsController = $scope
-
+@EventsCtrl = ['$scope', 'Event', '$modal', ($scope, Event, $modal) ->
   init = ->
     $scope.events = Event.query ->
 
@@ -14,9 +12,11 @@
   $scope.openModal = ->
     modalInstance = $modal.open(
       templateUrl: "assets/angular/events/new.html",
-      controller: 'NewEventCtrl'
+      controller: 'NewEventCtrl',
+      resolve:
+        events: ->
+          $scope.events
     )
-
 
   init()
 ]

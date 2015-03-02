@@ -1,10 +1,10 @@
-@NewEventCtrl = ['$scope', 'Event', '$rootScope', '$modalInstance', ($scope, Event, $rootScope, $modalInstance) ->
+@NewEventCtrl = ['$scope', 'Event', '$modalInstance', 'events', ($scope, Event, $modalInstance, events) ->
   $scope.newEvent = {}
 
   $scope.add = ->
     Event.save($scope.newEvent,
       (response) ->
-        $rootScope.eventsController.events.push(response.event)
+        events.push(response.event)
         $scope.newEvent = {}
         $modalInstance.dismiss('cancel')
     )
