@@ -1,0 +1,16 @@
+'use strict';
+
+angular.module('BetterCherkasy').config([
+  '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: '<%= asset_path('angular/events/index.html') %>',
+        controller: 'EventsCtrl'
+      })
+      .otherwise({ redirectTo: '/' });
+  }
+]).config(["$httpProvider", function($httpProvider) {
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+  }
+])
+
