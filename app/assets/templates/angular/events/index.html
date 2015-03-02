@@ -6,9 +6,7 @@
   <li ng-repeat='event in events' class='jumbotron'>
     <div> {{event.headline}} </div>
     <div> {{event.description}} </div>
-    <button type="button hidde" class='icon-button' ng-click='delete(event.id, $index)'>
-      <span class='glyphicon glyphicon-trash'></span>
-    </button>
+    <span class='glyphicon glyphicon-trash' ng-click='delete(event.id, $index)'></span>
   </li>
 </ul>
 

@@ -3,11 +3,11 @@
     $scope.events = Event.query ->
 
   $scope.delete = (event_id, index) ->
-    Event.delete
-      id: event_id
-    , (success) ->
-        $scope.events.splice(index, 1)
-      return
+    if confirm 'Ви впевнені?'
+      Event.delete
+        id: event_id
+      , (success) ->
+          $scope.events.splice(index, 1)
 
   $scope.openModal = ->
     modalInstance = $modal.open(

@@ -5,6 +5,13 @@
   li.jumbotron {
     border-radius: 7px;
     padding: 15px;
+    position: relative;
+    .glyphicon-trash {
+      cursor: pointer;
+      position: absolute;
+      right: 16px;
+      top: 16px;
+    }
   }
 }
 
