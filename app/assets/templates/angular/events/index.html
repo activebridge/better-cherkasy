@@ -1,13 +1,11 @@
-<div class='form'>
-  <form ng-submit='add()'>
-    <input ng-model='newEvent.headline'/>
-    <p><button class='btn' type='submit'>Додати</button></p>
-  </form>
+<div class='new-event-link' ng-click='openModal()'>
+  <h3>Запропонуйте</h3>
 </div>
 
-<ul>
-  <li ng-repeat='event in events'>
-    {{event.headline}}
+<ul class='events'>
+  <li ng-repeat='event in events' class='jumbotron'>
+    <div> {{event.headline}} </div>
+    <div> {{event.description}} </div>
     <button type="button hidde" class='icon-button' ng-click='delete(event.id, $index)'>
       <span class='glyphicon glyphicon-trash'></span>
     </button>

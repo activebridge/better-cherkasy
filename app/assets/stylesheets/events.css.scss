@@ -1,3 +1,25 @@
-// Place all the styles related to the events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.events {
+  list-style: none;
+  padding: 0;
+  margin: 5px 40px;
+  li.jumbotron {
+    border-radius: 7px;
+    padding: 15px;
+  }
+}
+
+.new-event-link {
+  text-align: right;
+  cursor: pointer;
+  padding-right: 35px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.modal-body {
+  .title {
+    width: 100px;
+    display: inline-block;
+  }
+}

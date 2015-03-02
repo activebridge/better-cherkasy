@@ -1,13 +1,8 @@
-@EventsCtrl = ['$scope', '$q', 'Event', ($scope, $q, Event) ->
-  $scope.newEvent = {}
-  $scope.events = Event.query ->
+@EventsCtrl = ['$scope', '$q', 'Event', '$modal', '$rootScope', ($scope, $q, Event, $modal, $rootScope) ->
+  $rootScope.eventsController = $scope
 
-  $scope.add = ->
-    Event.save($scope.newEvent,
-      (response) ->
-        $scope.events.push(response.event)
-        $scope.newEvent = {}
-    )
+  init = ->
+    $scope.events = Event.query ->
 
   $scope.delete = (event_id, index) ->
     Event.delete
@@ -16,5 +11,13 @@
         $scope.events.splice(index, 1)
       return
 
+  $scope.openModal = ->
+    modalInstance = $modal.open(
+      templateUrl: "assets/angular/events/new.html",
+      controller: 'NewEventCtrl'
+    )
+
+
+  init()
 ]
 
