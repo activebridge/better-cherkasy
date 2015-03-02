@@ -11,7 +11,7 @@
 
   $scope.openModal = ->
     modalInstance = $modal.open(
-      templateUrl: "assets/angular/events/new.html",
+      template: $('#new-event-modal').html(),
       controller: 'NewEventCtrl',
       resolve:
         events: ->
