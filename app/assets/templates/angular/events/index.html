@@ -8,12 +8,12 @@
     <div class='desc'> {{event.description}} </div>
     <div class='actions btn-group btn-group-xs'>
       <div class='rating'>
-        [14]
+        [{{event.rating || 0}}]
       </div>
-      <button type='button' class='btn btn-default' ng-click='down(event.id, $index)'>
+      <button type='button' class='btn btn-default' ng-click='down(event, $index)'>
         <span class='glyphicon glyphicon-thumbs-down'></span>
       </button>
-      <button type='button' class='btn btn-default' ng-click='up(event.id, $index)'>
+      <button type='button' class='btn btn-default' ng-click='up(event, $index)'>
         <span class='glyphicon glyphicon-thumbs-up'></span>
       </button>
       <button type='button' class='btn btn-default' ng-click='delete(event.id, $index)'>

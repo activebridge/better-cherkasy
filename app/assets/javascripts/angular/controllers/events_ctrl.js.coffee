@@ -18,6 +18,12 @@
           $scope.events
     )
 
+  $scope.up = (event) ->
+    event.rating += 1
+
+  $scope.down = (event) ->
+    event.rating -= 1
+
   init()
 ]
 
