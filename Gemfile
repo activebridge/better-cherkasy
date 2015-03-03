@@ -24,3 +24,15 @@ end
 
 gem 'active_model_serializers'
 gem 'bootstrap-sass'
+
+group :development, :test do
+  gem 'pry'
+  gem 'minitest'
+
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
+  gem 'faker'
+  gem 'factory_girl_rails'
+  gem 'shoulda'
+end
