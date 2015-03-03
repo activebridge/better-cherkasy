@@ -6,7 +6,20 @@
   <li ng-repeat='event in events' class='jumbotron'>
     <div class='headline'> {{event.headline}} </div>
     <div class='desc'> {{event.description}} </div>
-    <span class='glyphicon glyphicon-trash' ng-click='delete(event.id, $index)'></span>
+    <div class='actions btn-group btn-group-xs'>
+      <div class='rating'>
+        [14]
+      </div>
+      <button type='button' class='btn btn-default' ng-click='down(event.id, $index)'>
+        <span class='glyphicon glyphicon-thumbs-down'></span>
+      </button>
+      <button type='button' class='btn btn-default' ng-click='up(event.id, $index)'>
+        <span class='glyphicon glyphicon-thumbs-up'></span>
+      </button>
+      <button type='button' class='btn btn-default' ng-click='delete(event.id, $index)'>
+        <span class='glyphicon glyphicon-trash'></span>
+      </button>
+    </div>
   </li>
 </ul>
 

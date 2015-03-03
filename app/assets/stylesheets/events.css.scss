@@ -6,11 +6,11 @@
     border-radius: 7px;
     padding: 15px;
     position: relative;
-    .glyphicon-trash {
+    .actions {
       cursor: pointer;
       position: absolute;
       right: 16px;
-      top: 16px;
+      top: 7px;
     }
     .headline {
       font-weight: bold;
@@ -42,3 +42,11 @@
 }
 
 .hidden { display: none; }
+
+.rating {
+  color: green;
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  font-weight: bold;
+}
