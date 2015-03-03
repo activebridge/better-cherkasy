@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :find_event, only: [:destroy, :update]
 
   def index
-    json = ActiveModel::ArraySerializer.new(Event.all,
+    json = ActiveModel::ArraySerializer.new(Event.order('rating desc'),
                                            each_serializer: EventSerializer,
                                            root: nil)
     render json: json, status: 200
