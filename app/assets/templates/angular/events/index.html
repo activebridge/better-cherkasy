@@ -1,0 +1,46 @@
+<div class='new-event-link' ng-click='openModal()'>
+  <h3>Запропонуйте</h3>
+</div>
+
+<ul class='events'>
+  <li ng-repeat='event in events' class='jumbotron'>
+    <div class='headline'> {{event.headline}} </div>
+    <div class='desc'> {{event.description}} </div>
+    <div class='actions btn-group btn-group-xs'>
+      <div class='rating' ng-class="event.rating > 0 ? 'green' : 'red' ">
+        {{event.rating}}
+      </div>
+      <button type='button' class='btn btn-default' ng-click='down(event, $index)'>
+        <span class='glyphicon glyphicon-thumbs-down'></span>
+      </button>
+      <button type='button' class='btn btn-default' ng-click='up(event, $index)'>
+        <span class='glyphicon glyphicon-thumbs-up'></span>
+      </button>
+      <button type='button' class='btn btn-default' ng-click='delete(event.id, $index)'>
+        <span class='glyphicon glyphicon-trash'></span>
+      </button>
+    </div>
+  </li>
+</ul>
+
+<div id='new-event-modal' class='hidden'>
+  <div class='modal-header'>
+    <h3> Запропонуйте як покращити Черкаси </h3>
+  </div>
+  <div class='modal-body'>
+    <form ng-submit='add()'>
+      <div>
+        <div class='title'>Заголовок:</div>
+        <input ng-model='newEvent.headline'/>
+      </div>
+      <div>
+        <div class='title'>Опис:</div>
+        <textarea ng-model='newEvent.description'></textarea>
+      </div>
+      <div>
+        <div class='title'>&nbsp;</div>
+        <button class='btn btn-primary' type='submit'>Додати</button>
+      </div>
+    </form>
+  </div>
+</div>

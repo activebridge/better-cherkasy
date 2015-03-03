@@ -1,0 +1,57 @@
+.events {
+  list-style: none;
+  padding: 0;
+  margin: 5px 40px;
+  li.jumbotron {
+    border-radius: 7px;
+    padding: 15px;
+    position: relative;
+    .actions {
+      cursor: pointer;
+      position: absolute;
+      right: 16px;
+      top: 7px;
+    }
+    .headline {
+      font-weight: bold;
+    }
+  }
+}
+
+.new-event-link {
+  text-align: right;
+  cursor: pointer;
+  padding-right: 35px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.modal-body {
+  form > div {
+    margin-top: 10px;
+  }
+  .title {
+    width: 100px;
+    float: left;
+  }
+  .btn { width: 400px; }
+  input, textarea {
+    width: 400px;
+  }
+}
+
+.hidden { display: none; }
+
+.rating {
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  font-weight: bold;
+  &.green {
+    color: green;
+  }
+  &.red {
+    color: red;
+  }
+}
