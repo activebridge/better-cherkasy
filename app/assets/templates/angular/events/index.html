@@ -4,8 +4,8 @@
 
 <ul class='events'>
   <li ng-repeat='event in events' class='jumbotron'>
-    <div> {{event.headline}} </div>
-    <div> {{event.description}} </div>
+    <div class='headline'> {{event.headline}} </div>
+    <div class='desc'> {{event.description}} </div>
     <span class='glyphicon glyphicon-trash' ng-click='delete(event.id, $index)'></span>
   </li>
 </ul>
@@ -16,13 +16,18 @@
   </div>
   <div class='modal-body'>
     <form ng-submit='add()'>
-      <span class='title'>Заголовок:</span>
-      <input ng-model='newEvent.headline'/>
-      </br>
-      <span class='title'>Опис:</span>
-      <textarea ng-model='newEvent.description'></textarea>
-      </br>
-      <button class='btn btn-default' type='submit'>Додати</button>
+      <div>
+        <div class='title'>Заголовок:</div>
+        <input ng-model='newEvent.headline'/>
+      </div>
+      <div>
+        <div class='title'>Опис:</div>
+        <textarea ng-model='newEvent.description'></textarea>
+      </div>
+      <div>
+        <div class='title'>&nbsp;</div>
+        <button class='btn btn-primary' type='submit'>Додати</button>
+      </div>
     </form>
   </div>
 </div>

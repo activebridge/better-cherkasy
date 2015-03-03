@@ -12,6 +12,9 @@
       right: 16px;
       top: 16px;
     }
+    .headline {
+      font-weight: bold;
+    }
   }
 }
 
@@ -25,9 +28,16 @@
 }
 
 .modal-body {
+  form > div {
+    margin-top: 10px;
+  }
   .title {
     width: 100px;
-    display: inline-block;
+    float: left;
+  }
+  .btn { width: 400px; }
+  input, textarea {
+    width: 400px;
   }
 }
 

@@ -1,0 +1,15 @@
+.header {
+  position: relative;
+  .logo {
+    padding: 20px;
+  }
+  .nav-bar {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    .item {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}

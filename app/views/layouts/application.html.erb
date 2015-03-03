@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html ng-app='BetterCherkasy'>
-<head>
-  <title>BetterCherkasy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div ng-view></div>
-</body>
+  <head>
+    <title>BetterCherkasy</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class='header'>
+      <div class='logo'>
+        <%= image_tag 'logo.png' %>
+      </div>
+      <div class='nav-bar'>
+        <div class='item'>[ Вітаю <b>Антон Зимін</b> ]</div>
+        <div class='item'>[ Вийти ]</div>
+      </div>
+    </div>
+    <div ng-view></div>
+  </body>
 </html>
