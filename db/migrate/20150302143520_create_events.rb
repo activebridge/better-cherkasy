@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.string :headline
       t.text :description
-      t.integer :rating
+      t.integer :rating, default: 0
 
       t.timestamps
     end

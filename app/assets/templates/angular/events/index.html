@@ -7,8 +7,8 @@
     <div class='headline'> {{event.headline}} </div>
     <div class='desc'> {{event.description}} </div>
     <div class='actions btn-group btn-group-xs'>
-      <div class='rating'>
-        [{{event.rating || 0}}]
+      <div class='rating' ng-class="event.rating > 0 ? 'green' : 'red' ">
+        {{event.rating}}
       </div>
       <button type='button' class='btn btn-default' ng-click='down(event, $index)'>
         <span class='glyphicon glyphicon-thumbs-down'></span>

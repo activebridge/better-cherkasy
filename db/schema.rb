@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150302143520) do
   create_table "events", force: true do |t|
     t.string   "headline"
     t.text     "description"
-    t.integer  "rating"
+    t.integer  "rating",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

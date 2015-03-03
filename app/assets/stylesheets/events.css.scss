@@ -44,9 +44,14 @@
 .hidden { display: none; }
 
 .rating {
-  color: green;
   display: inline-block;
   float: left;
   margin-right: 10px;
   font-weight: bold;
+  &.green {
+    color: green;
+  }
+  &.red {
+    color: red;
+  }
 }

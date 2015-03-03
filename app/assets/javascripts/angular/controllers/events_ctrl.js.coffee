@@ -20,9 +20,11 @@
 
   $scope.up = (event) ->
     event.rating += 1
+    Event.update({ id: event.id}, event)
 
   $scope.down = (event) ->
     event.rating -= 1
+    Event.update({ id: event.id}, event)
 
   init()
 ]
