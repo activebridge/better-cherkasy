@@ -1,0 +1,31 @@
+.new-event-link{"ng-click" => "openModal()"}
+  %h3 Запропонуйте
+%ul.events
+  %li.jumbotron{"ng-repeat" => "event in events"}
+    .headline
+      {{event.headline}}
+    .desc
+      {{event.description}}
+    .actions.btn-group.btn-group-xs
+      .rating{"ng-class" => "event.rating > 0 ? 'green' : 'red' "}
+        {{event.rating}}
+      %button.btn.btn-default{"ng-click" => "down(event, $index)", :type => "button"}
+        %span.glyphicon.glyphicon-thumbs-down
+      %button.btn.btn-default{"ng-click" => "up(event, $index)", :type => "button"}
+        %span.glyphicon.glyphicon-thumbs-up
+      %button.btn.btn-default{"ng-click" => "delete(event.id, $index)", :type => "button"}
+        %span.glyphicon.glyphicon-trash
+#new-event-modal.hidden
+  .modal-header
+    %h3 Запропонуйте як покращити Черкаси
+  .modal-body
+    %form{"ng-submit" => "add()"}
+      %div
+        .title Заголовок:
+        %input{"ng-model" => "newEvent.headline"}/
+      %div
+        .title Опис:
+        %textarea{"ng-model" => "newEvent.description"}
+      %div
+        .title  
+        %button.btn.btn-primary{:type => "submit"} Додати

@@ -4,7 +4,7 @@ angular.module('BetterCherkasy').config([
   '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '<%= asset_path('angular/events/index.html') %>',
+        templateUrl: '<%= asset_path('events/index.html') %>',
         controller: 'EventsCtrl'
       })
       .otherwise({ redirectTo: '/' });

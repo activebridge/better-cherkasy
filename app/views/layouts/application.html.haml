@@ -1,0 +1,19 @@
+!!!
+%html{"ng-app" => "BetterCherkasy"}
+  %head
+    %title BetterCherkasy
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .header
+      .logo
+        = image_tag 'logo.png'
+      .nav-bar{"ng-controller" => "NavBarCtrl"}
+        .item
+        .item
+          [ Вітаю
+          %b Антон Зимін
+          ]
+        .item [ Вийти ]
+    %div{"ng-view" => ""}

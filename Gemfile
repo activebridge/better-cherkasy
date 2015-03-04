@@ -24,6 +24,7 @@ end
 
 gem 'active_model_serializers'
 gem 'bootstrap-sass'
+gem 'haml'
 
 group :development, :test do
   gem 'pry'
