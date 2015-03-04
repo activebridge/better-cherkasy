@@ -1,4 +1,9 @@
-.item
-  .btn.btn-primary.btn-lg.btn-block{"ng-click" => "loginWithFacebook()"}
+.item{'ng-click' => 'loginWithFacebook()', 'ng-show' => 'navBar.showSignInButton'}
+  .btn.btn-primary.btn-lg.btn-block
     .fa.fa-facebook-square.fa-larger
     Ввійти через Facebook
+.item{'ng-show' => '!navBar.showSignInButton'}
+  {{navBar.userName}}
+  <img src="{{navBar.avatarUrl}}"/>
+.item{'ng-show' => '!navBar.showSignInButton'}
+  [Вийти]

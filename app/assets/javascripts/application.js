@@ -19,10 +19,13 @@
 //= require angular-resource.min
 //= require angular-route.min
 //= require ngFacebook
+//= require angular-flash
 //
-//= require angular/directives
+//= require angular_app
 //= require_tree ./angular/config
 //= require angular/routes
 //= require angular/factories
+//= require angular/main
 //= require_tree ./angular/controllers
+//= require_tree ./angular/services
 
