@@ -1,4 +1,6 @@
-app = angular.module('BetterCherkasy', [
-  'betterCherkasy.services'
+@betterCherkasy = angular.module('betterCherkasy', [
   'ui.bootstrap'
+  'ngRoute'
+  'ngResource'
+  'ngFacebook'
 ])

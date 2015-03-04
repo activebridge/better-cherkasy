@@ -1,11 +1,13 @@
-@NewEventCtrl = ['$scope', 'Event', '$modalInstance', 'events', ($scope, Event, $modalInstance, events) ->
-  $scope.newEvent = {}
+betterCherkasy.controller 'NewEventCtrl', [
+  '$scope', 'Event', '$modalInstance', 'events',
+  ($scope, Event, $modalInstance, events) ->
+    $scope.newEvent = {}
 
-  $scope.add = ->
-    Event.save($scope.newEvent,
-      (response) ->
-        events.push(response.event)
-        $scope.newEvent = {}
-        $modalInstance.dismiss('cancel')
-    )
+    $scope.add = ->
+      Event.save($scope.newEvent,
+        (response) ->
+          events.push(response.event)
+          $scope.newEvent = {}
+          $modalInstance.dismiss('cancel')
+      )
 ]

@@ -1,31 +1,34 @@
-@EventsCtrl = ['$scope', 'Event', '$modal', ($scope, Event, $modal) ->
-  init = ->
-    $scope.events = Event.query ->
+betterCherkasy.controller 'EventsCtrl', [
+  '$scope', 'Event', '$modal'
+  ($scope, Event, $modal) ->
 
-  $scope.delete = (event_id, index) ->
-    if confirm 'Ви впевнені?'
-      Event.delete
-        id: event_id
-      , (success) ->
-          $scope.events.splice(index, 1)
+    init = ->
+      $scope.events = Event.query ->
 
-  $scope.openModal = ->
-    modalInstance = $modal.open(
-      template: $('#new-event-modal').html(),
-      controller: 'NewEventCtrl',
-      resolve:
-        events: ->
-          $scope.events
-    )
+    $scope.delete = (event_id, index) ->
+      if confirm 'Ви впевнені?'
+        Event.delete
+          id: event_id
+        , (success) ->
+            $scope.events.splice(index, 1)
 
-  $scope.up = (event) ->
-    event.rating += 1
-    Event.update({ id: event.id}, event)
+    $scope.openModal = ->
+      modalInstance = $modal.open(
+        template: $('#new-event-modal').html(),
+        controller: 'NewEventCtrl',
+        resolve:
+          events: ->
+            $scope.events
+      )
 
-  $scope.down = (event) ->
-    event.rating -= 1
-    Event.update({ id: event.id}, event)
+    $scope.up = (event) ->
+      event.rating += 1
+      Event.update({ id: event.id}, event)
 
-  init()
+    $scope.down = (event) ->
+      event.rating -= 1
+      Event.update({ id: event.id}, event)
+
+    init()
 ]
 
