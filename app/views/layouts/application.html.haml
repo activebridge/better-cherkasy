@@ -10,10 +10,5 @@
       .logo
         = image_tag 'logo.png'
       .nav-bar{"ng-controller" => "NavBarCtrl"}
-        .item
-        .item
-          [ Вітаю
-          %b Антон Зимін
-          ]
-        .item [ Вийти ]
+        %ng-include(src="'#{asset_path('nav_bar.html')}'")
     %div{"ng-view" => ""}
