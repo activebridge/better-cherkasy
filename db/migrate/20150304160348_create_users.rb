@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :avatar_url
       t.string :provider
       t.string :providerid
-      t.string :token
 
       t.timestamps
     end

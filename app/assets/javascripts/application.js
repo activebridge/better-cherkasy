@@ -20,6 +20,7 @@
 //= require angular-route.min
 //= require ngFacebook
 //= require angular-flash
+//= require angular-cookies.min
 //
 //= require angular_app
 //= require_tree ./angular/config

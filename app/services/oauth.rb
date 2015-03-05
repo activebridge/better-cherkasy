@@ -4,13 +4,11 @@ OAuth = Struct.new(:params, :status, :result, :user) do
   def call
     self.user = User.find_by_provider_and_providerid(params[:provider], params[:providerid])
     if user
-      self.status = :success
-      self.result = api_data
+      on_success
     else
       self.user = User.create(params)
       if user.valid?
-        self.status = :success
-        self.result = api_data
+        on_success
       else
         self.status = :failuer
         self.result = user.errors.messages
@@ -21,9 +19,11 @@ OAuth = Struct.new(:params, :status, :result, :user) do
 
   private
 
-  def api_data
-    {
-      token: user.token, user_id: user.providerid,
+  def on_success
+    access_token = user.authenticate!
+    self.status = :success
+    self.result = {
+      token: access_token.token, user_id: user.id,
       name: user.name, avatar_url: user.avatar_url
     }
   end

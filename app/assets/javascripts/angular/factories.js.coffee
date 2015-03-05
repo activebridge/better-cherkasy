@@ -5,3 +5,7 @@ betterCherkasy.factory 'Event', ['$resource', ($resource) ->
 betterCherkasy.factory 'User', ['$resource', ($resource) ->
   $resource('/users/:id', {id: '@id'}, {update: {method: 'PUT'}})
 ]
+
+betterCherkasy.factory 'Session', ['$resource', ($resource) ->
+  $resource('/sessions/:id', {id: '@id'}, {update: {method: 'PUT'}})
+]
