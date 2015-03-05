@@ -22,9 +22,6 @@ OAuth = Struct.new(:params, :status, :result, :user) do
   def on_success
     access_token = user.authenticate!
     self.status = :success
-    self.result = {
-      token: access_token.token, user_id: user.id,
-      name: user.name, avatar_url: user.avatar_url
-    }
+    self.result = {token: access_token.token}
   end
 end

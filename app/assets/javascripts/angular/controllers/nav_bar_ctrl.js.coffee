@@ -3,8 +3,7 @@ betterCherkasy.controller 'NavBarCtrl', [
   ($scope, $facebook, AuthService, flash, Session, $cookies, $cookieStore) ->
 
     init = ->
-      session = Session.get(id: $cookieStore.get('token'))
-      checkCurrentUser(session).then ->
+      checkCurrentUser().then ->
         $scope.navBar = {}
         if userSignedIn()
           showUserInfo()
@@ -21,12 +20,8 @@ betterCherkasy.controller 'NavBarCtrl', [
       $scope.navBar.userName = ''
       $scope.navBar.avatarUrl = ''
 
-    $scope.afterLogIn = ->
-      showUserInfo()
-
     $scope.logOut = ->
       logOut()
-      $cookieStore.remove('token')
       hideUserInfo()
 
     $scope.loginWithFacebook = ->
@@ -45,14 +40,10 @@ betterCherkasy.controller 'NavBarCtrl', [
             fn = AuthService.loginWithFacebook(userData)
             fn.$promise.then (success = (response) ->
               if response.status is 'OK'
-                setCurrentUser(
-                  user_id: response.user_id
-                  name: response.name
-                  avatar_url: response.avatar_url
-                )
                 $cookieStore.put('token', response.token)
-                flash.success = 'Ви залогінились успішно'
-                $scope.afterLogIn()
+                checkCurrentUser().then ->
+                  flash.success = 'Ви залогінились успішно'
+                  showUserInfo()
               else
                 flash.error = response.message
             ), error = (rs) ->
