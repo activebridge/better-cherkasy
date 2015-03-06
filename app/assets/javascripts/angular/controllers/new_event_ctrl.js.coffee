@@ -8,7 +8,7 @@ betterCherkasy.controller 'NewEventCtrl', [
       $scope.newEvent['auth_token'] = getAuthToken()
       Event.save($scope.newEvent,
         (response) ->
-          events.push(response.event)
+          events.push(response)
           $scope.newEvent = {}
           $modalInstance.dismiss('cancel')
       )

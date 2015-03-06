@@ -45,7 +45,11 @@ RSpec.describe EventsController, type: :controller do
       end
 
       it { expect(response).to be_success }
-      it { expect(json['event']).to be }
+      it { expect(json['headline']).to eq('super duper event') }
+      it { expect(json['description']).to be }
+      it { expect(json['id']).to be }
+      it { expect(json['rating']).to eq(0) }
+      it { expect(json['creator']).to be }
     end
   end
 end

@@ -31,7 +31,7 @@ root.logOut = ->
 root.checkCurrentUser = ->
   session = injector().get('Session').get(id: root.getAuthToken())
   session.$promise.then (success = (data) ->
-    root.currentUser = data.user
+    root.currentUser = data
   ), error = (msg) ->
     if root.userSignedIn()
       window.location.href = '/'
