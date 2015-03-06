@@ -22,23 +22,20 @@ betterCherkasy.controller 'EventsCtrl', [
             $scope.events
       )
 
-    $scope.up = (event) ->
+    markEventAsRated = (event, rating) ->
       EventUser.update(
         id: event.id
         auth_token: getAuthToken()
-        like: true
+        like: rating
         , (response) ->
           event.rating = response.rating
       )
 
+    $scope.up = (event) ->
+      markEventAsRated(event, true)
+
     $scope.down = (event) ->
-      EventUser.update(
-        id: event.id
-        auth_token: getAuthToken()
-        like: false
-        , (response) ->
-          event.rating = response.rating
-      )
+      markEventAsRated(event, false)
 
     init()
 
