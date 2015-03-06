@@ -10,7 +10,7 @@ OAuth = Struct.new(:params, :status, :result, :user) do
       if user.valid?
         on_success
       else
-        self.status = :failuer
+        self.status = :fail
         self.result = user.errors.messages
       end
     end
@@ -20,8 +20,6 @@ OAuth = Struct.new(:params, :status, :result, :user) do
   private
 
   def on_success
-    access_token = user.authenticate!
-    self.status = :success
-    self.result = {token: access_token.token}
+    self.result = {auth_token: user.authenticate!, status: :ok}
   end
 end

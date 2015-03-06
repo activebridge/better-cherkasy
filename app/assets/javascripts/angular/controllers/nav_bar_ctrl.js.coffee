@@ -39,15 +39,14 @@ betterCherkasy.controller 'NavBarCtrl', [
 
             fn = AuthService.loginWithFacebook(userData)
             fn.$promise.then (success = (response) ->
-              if response.status is 'OK'
-                $cookieStore.put('token', response.token)
+              if response.status is 'ok'
+                $cookieStore.put('auth_token', response.auth_token)
                 checkCurrentUser().then ->
                   flash.success = 'Ви залогінились успішно'
                   showUserInfo()
               else
                 flash.error = response.message
             ), error = (rs) ->
-              console.log rs
               flash.error = 'Чомусь не вдалося залогінитись через facebook'
 
           ), error = (msg) ->

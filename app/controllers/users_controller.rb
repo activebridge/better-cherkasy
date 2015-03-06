@@ -3,10 +3,10 @@ require 'oauth'
 class UsersController < ApplicationController
   def create
     oauth = OAuth.call(user_params)
-    if oauth.status == :success
-      render json: {status: 'OK'}.merge(oauth.result), status: :ok
+    if oauth.result[:status] == :ok
+      render json: oauth.result, status: :ok
     else
-      render json: {status: 'FAIL', message: 'Щось не гаразд. Система не змогла залогінити юзера'},
+      render json: {status: 'fail', message: 'Щось не гаразд. Система не змогла залогінити юзера'},
         status: :unprocessable_entity
     end
   end
@@ -14,6 +14,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :avatar_url, :provider, :providerid, :token)
+    params.permit(:name, :avatar_url, :provider, :providerid)
   end
 end
