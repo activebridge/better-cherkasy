@@ -30,5 +30,8 @@ betterCherkasy.controller 'EventsCtrl', [
       Event.update({ id: event.id}, event)
 
     init()
+
+    $scope.userSignedIn = ->
+      userSignedIn()
 ]
 
