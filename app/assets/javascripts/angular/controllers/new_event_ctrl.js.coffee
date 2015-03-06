@@ -4,6 +4,8 @@ betterCherkasy.controller 'NewEventCtrl', [
     $scope.newEvent = {}
 
     $scope.add = ->
+      $scope.newEvent['user_id'] = getCurrentUser().id
+      $scope.newEvent['auth_token'] = getAuthToken()
       Event.save($scope.newEvent,
         (response) ->
           events.push(response.event)

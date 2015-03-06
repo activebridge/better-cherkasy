@@ -9,6 +9,7 @@ betterCherkasy.controller 'EventsCtrl', [
       if confirm 'Ви впевнені?'
         Event.delete
           id: event_id
+          auth_token: getAuthToken()
         , (success) ->
             $scope.events.splice(index, 1)
 
@@ -23,11 +24,11 @@ betterCherkasy.controller 'EventsCtrl', [
 
     $scope.up = (event) ->
       event.rating += 1
-      Event.update({ id: event.id}, event)
+      Event.update({ id: event.id, auth_token: getAuthToken() }, event)
 
     $scope.down = (event) ->
       event.rating -= 1
-      Event.update({ id: event.id}, event)
+      Event.update({ id: event.id, auth_token: getAuthToken() }, event)
 
     init()
 

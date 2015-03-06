@@ -17,4 +17,35 @@ RSpec.describe EventsController, type: :controller do
       it { expect(json[2]['id']).to eq(very_bad_event.id) }
     end
   end
+
+  describe '#create' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:event_params) {
+      {
+        event: {
+          user_id: user.id,
+          headline: 'super duper event',
+          description: 'super duper duper event'
+        }
+      }
+    }
+
+    context 'unauthorised' do
+      before do
+        post :create, event_params
+      end
+
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
+
+    context 'success' do
+
+      before do
+        post :create, event_params.merge(auth_token: user.auth_token)
+      end
+
+      it { expect(response).to be_success }
+      it { expect(json['event']).to be }
+    end
+  end
 end
