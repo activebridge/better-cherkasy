@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     if oauth.status == :success
       render json: {status: 'OK'}.merge(oauth.result), status: :ok
     else
-      render json: {status: 'FAIL', message: 'Щось не гаразд. Система не змогла залогінити юзераю'}, status: :unprocessable_entity
+      render json: {status: 'FAIL', message: 'Щось не гаразд. Система не змогла залогінити юзера'},
+        status: :unprocessable_entity
     end
   end
 
