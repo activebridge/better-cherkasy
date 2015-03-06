@@ -1,6 +1,6 @@
 betterCherkasy.controller 'EventsCtrl', [
-  '$scope', 'Event', '$modal'
-  ($scope, Event, $modal) ->
+  '$scope', 'Event', '$modal', 'EventUser'
+  ($scope, Event, $modal, EventUser) ->
 
     init = ->
       $scope.events = Event.query ->
@@ -23,12 +23,22 @@ betterCherkasy.controller 'EventsCtrl', [
       )
 
     $scope.up = (event) ->
-      event.rating += 1
-      Event.update({ id: event.id, auth_token: getAuthToken() }, event)
+      EventUser.update(
+        id: event.id
+        auth_token: getAuthToken()
+        like: true
+        , (response) ->
+          event.rating = response.rating
+      )
 
     $scope.down = (event) ->
-      event.rating -= 1
-      Event.update({ id: event.id, auth_token: getAuthToken() }, event)
+      EventUser.update(
+        id: event.id
+        auth_token: getAuthToken()
+        like: false
+        , (response) ->
+          event.rating = response.rating
+      )
 
     init()
 

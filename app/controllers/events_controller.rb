@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authorize_user!, except: :index
-  before_action :find_event, only: [:destroy, :update]
+  before_action :find_event, only: :destroy
 
   def index
     json = ActiveModel::ArraySerializer.new(Event.order('rating desc'),
@@ -23,14 +23,6 @@ class EventsController < ApplicationController
     head(:ok)
   end
 
-  def update
-    if @event.update_attributes(event_params)
-      render json: @event, status: :accepted
-    else
-      render json: { status: :error, error: @event.errors.messages }, status: :unprocessable_entity
-    end
-  end
-
   private
 
   def event_params
@@ -38,7 +30,7 @@ class EventsController < ApplicationController
   end
 
   def find_event
-    @event = Event.find(params[:id])
+    @event = current_user.events.find(params[:id])
   end
 end
 

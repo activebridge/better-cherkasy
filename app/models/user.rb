@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :event_users
+  has_many :events
+
   validates :name, :avatar_url, :provider, :providerid, presence: true
 
   def authenticate!
