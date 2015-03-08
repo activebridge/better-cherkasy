@@ -10,7 +10,9 @@ RSpec.describe SessionsController, :type => :controller do
         get :show, id: user.auth_token
       end
 
-      it { expect(json['user']).to be }
+      it { expect(json['id']).to be }
+      it { expect(json['name']).to be }
+      it { expect(json['avatar_url']).to be }
       it { expect(response).to be_success }
     end
 

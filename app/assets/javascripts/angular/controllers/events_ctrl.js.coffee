@@ -1,6 +1,6 @@
 betterCherkasy.controller 'EventsCtrl', [
-  '$scope', 'Event', '$modal'
-  ($scope, Event, $modal) ->
+  '$scope', 'Event', '$modal', 'EventUser'
+  ($scope, Event, $modal, EventUser) ->
 
     init = ->
       $scope.events = Event.query ->
@@ -9,6 +9,7 @@ betterCherkasy.controller 'EventsCtrl', [
       if confirm 'Ви впевнені?'
         Event.delete
           id: event_id
+          auth_token: getAuthToken()
         , (success) ->
             $scope.events.splice(index, 1)
 
@@ -21,14 +22,24 @@ betterCherkasy.controller 'EventsCtrl', [
             $scope.events
       )
 
+    markEventAsRated = (event, rating) ->
+      EventUser.update(
+        id: event.id
+        auth_token: getAuthToken()
+        like: rating
+        , (response) ->
+          event.rating = response.rating
+      )
+
     $scope.up = (event) ->
-      event.rating += 1
-      Event.update({ id: event.id}, event)
+      markEventAsRated(event, true)
 
     $scope.down = (event) ->
-      event.rating -= 1
-      Event.update({ id: event.id}, event)
+      markEventAsRated(event, false)
 
     init()
+
+    $scope.userSignedIn = ->
+      userSignedIn()
 ]
 

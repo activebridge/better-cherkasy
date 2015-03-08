@@ -3,6 +3,16 @@
   padding: 0;
   margin: 5px 40px;
   li.jumbotron {
+    .event {
+      float: left;
+    }
+    .creator {
+      float: left;
+      width: 85px;
+      .name {
+        font-weight: bold;
+      }
+    }
     border-radius: 7px;
     padding: 15px;
     position: relative;
