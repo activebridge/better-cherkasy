@@ -10,7 +10,7 @@
       .logo
         = image_tag 'logo.png'
       .nav-bar{"ng-controller" => "NavBarCtrl"}
-        %ng-include(src="'#{asset_path('nav_bar.html')}'")
+        %ng-include(src="'#{asset_path('shared/nav_bar.html')}'")
 
       .alert.fade{"active-class" => "in alert", :duration => "0", "flash-alert" => "", class: "display-none"}
         %button.close{"ng-click" => "hide();", :type => "button"} &times;
