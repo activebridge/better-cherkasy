@@ -18,6 +18,15 @@
 //= require ui-bootstrap-tpls-0.12.0
 //= require angular-resource.min
 //= require angular-route.min
-//= require_tree ./angular/
-//= require_tree .
+//= require ngFacebook
+//= require angular-flash
+//= require angular-cookies.min
+//
+//= require angular_app
+//= require_tree ./angular/config
+//= require angular/routes
+//= require angular/factories
+//= require angular/main
+//= require_tree ./angular/controllers
+//= require_tree ./angular/services
 
