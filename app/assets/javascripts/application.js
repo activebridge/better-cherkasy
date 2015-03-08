@@ -21,6 +21,8 @@
 //= require ngFacebook
 //= require angular-flash
 //= require angular-cookies.min
+//= require bootstrap-datepicker
+//= require bootstrap-timepicker
 //
 //= require angular_app
 //= require_tree ./angular/config

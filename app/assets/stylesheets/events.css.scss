@@ -42,12 +42,17 @@
     margin-top: 10px;
   }
   .title {
-    width: 100px;
+    width: 15%;
     float: left;
   }
-  .btn { width: 400px; }
+  .input-group {
+    width: 85%;
+  }
   input, textarea {
-    width: 400px;
+    width: 100%;
+  }
+  span.input-group-addon {
+    cursor: pointer;
   }
 }
 
@@ -64,4 +69,8 @@
   &.red {
     color: red;
   }
+}
+
+.blue {
+  color: #428bca;
 }

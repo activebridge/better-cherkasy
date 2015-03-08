@@ -10,8 +10,12 @@
     .event
       .headline
         {{event.headline}}
-      .desc
+      .row
         {{event.description}}
+      .row
+        {{event.date}}
+      .row
+        {{event.time}}
       .actions.btn-group.btn-group-xs
         .rating{'ng-class' => "event.rating > 0 ? 'green' : 'red' "}
           {{event.rating}}
@@ -30,10 +34,26 @@
     %form{'ng-submit' => 'add()'}
       %div
         .title Заголовок:
-        %input{'ng-model' => 'newEvent.headline'}/
+        .input-group
+          %input.form-control{'ng-model' => 'newEvent.headline'}/
       %div
         .title Опис:
-        %textarea{'ng-model' => 'newEvent.description'}
+        .input-group
+          %textarea{'ng-model' => 'newEvent.description'}
+      %div
+        .title Дата:
+        .input-group
+          %input.form-control{:type => "text", "ng-model" => "newEvent.date", "datepicker-popup" => "dd-MMMM-yyyy"}
+            %span.input-group-addon{'ng-click' => 'open($event)'}
+              %i.glyphicon.glyphicon-calendar.blue
+
+      %div
+        .title Час:
+        .input-group.bootstrap-timepicker
+          %input.timepicker.form-control{:type => "text", "ng-model" => "newEvent.time"}
+            %span.input-group-addon
+              .glyphicon.glyphicon-time.blue
+
       %div
         .title  
         %button.btn.btn-primary{:type => 'submit'} Додати
