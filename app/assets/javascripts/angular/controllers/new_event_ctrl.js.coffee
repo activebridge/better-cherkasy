@@ -12,4 +12,17 @@ betterCherkasy.controller 'NewEventCtrl', [
           $scope.newEvent = {}
           $modalInstance.dismiss('cancel')
       )
+
+
+    setTimeout ( ->
+      $('.timepicker').timepicker
+        minuteStep: 5
+
+      $('.datepicker').datepicker
+        autoclose: true
+        todayHighlight: true
+        startDate: new Date()
+        format: 'dd-mm-yyyy'
+    ), 300
+
 ]

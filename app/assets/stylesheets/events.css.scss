@@ -5,6 +5,10 @@
   li.jumbotron {
     .event {
       float: left;
+      .date {
+        font-size: 11px;
+        margin-bottom: 5px;
+      }
     }
     .creator {
       float: left;
@@ -73,4 +77,8 @@
 
 .blue {
   color: #428bca;
+}
+
+.bootstrap-timepicker-widget {
+  width: 200px;
 }

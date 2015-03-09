@@ -8,14 +8,12 @@
       .name
         {{event.creator.name}}
     .event
-      .headline
+      .row.headline
         {{event.headline}}
+      .row.date
+        {{event.date}} {{event.time}}
       .row
         {{event.description}}
-      .row
-        {{event.date}}
-      .row
-        {{event.time}}
       .actions.btn-group.btn-group-xs
         .rating{'ng-class' => "event.rating > 0 ? 'green' : 'red' "}
           {{event.rating}}
@@ -43,14 +41,14 @@
       %div
         .title Дата:
         .input-group
-          %input.form-control{:type => "text", "ng-model" => "newEvent.date", "datepicker-popup" => "dd-MMMM-yyyy"}
-            %span.input-group-addon{'ng-click' => 'open($event)'}
+          %input.datepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.date'}
+            %span.input-group-addon
               %i.glyphicon.glyphicon-calendar.blue
 
       %div
         .title Час:
         .input-group.bootstrap-timepicker
-          %input.timepicker.form-control{:type => "text", "ng-model" => "newEvent.time"}
+          %input.timepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.time'}
             %span.input-group-addon
               .glyphicon.glyphicon-time.blue
 
