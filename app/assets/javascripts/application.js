@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require angular.min
+//= require ng-tags-input
 //= require ui-bootstrap-tpls-0.12.0
 //= require angular-resource.min
 //= require angular-route.min

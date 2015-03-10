@@ -1,7 +1,10 @@
 betterCherkasy.controller 'NewEventCtrl', [
-  '$scope', 'Event', '$modalInstance', 'events',
-  ($scope, Event, $modalInstance, events) ->
+  '$scope', 'Event', '$modalInstance', 'events', '$http',
+  ($scope, Event, $modalInstance, events, $http) ->
     $scope.newEvent = {}
+
+    $scope.loadTags = (query) ->
+      $http.get('/tags?query=' + query)
 
     $scope.add = ->
       $scope.newEvent['auth_token'] = getAuthToken()
@@ -11,7 +14,6 @@ betterCherkasy.controller 'NewEventCtrl', [
           $scope.newEvent = {}
           $modalInstance.dismiss('cancel')
       )
-
 
     setTimeout ( ->
       $('.timepicker').timepicker

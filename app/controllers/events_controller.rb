@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :find_event, only: :destroy
 
   wrap_parameters :event, include: [:headline, :description,
-                                    :date, :time, :tag_list]
+                                    :date, :time, :tags]
 
   def index
     json = ActiveModel::ArraySerializer.new(Event.order('rating desc'),

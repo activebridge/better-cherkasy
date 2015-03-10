@@ -25,7 +25,10 @@ RSpec.describe EventsController, type: :controller do
         event: {
           headline: 'super duper event',
           description: 'super duper duper event',
-          tag_list: 'active, bridge'
+          tags: [
+            {name: 'active'},
+            {name: 'bridge'}
+          ]
         }
       }
     }

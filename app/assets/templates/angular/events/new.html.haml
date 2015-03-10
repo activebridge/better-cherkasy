@@ -1,4 +1,4 @@
-#new-event-modal.hidden
+#new-event-modal
   .modal-header
     %h3 Запропонувати
   .modal-body
@@ -26,7 +26,8 @@
       %div
         .title Теги:
         .input-group
-          %input.form-control{:type => 'text', 'ng-model' => 'newEvent.tag_list'}
+          %tags-input{'ng-model' => 'newEvent.tags', 'display-property' => 'name'}
+            %auto-complete{'source' => 'loadTags($query)'}
 
       %div
         .title  

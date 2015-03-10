@@ -15,4 +15,8 @@ class Event < ActiveRecord::Base
   def dislikes
     event_users.disliked.count
   end
+
+  def tags=(data)
+    super data.map{ |item| ActsAsTaggableOn::Tag.find_or_create_by(item) }
+  end
 end
