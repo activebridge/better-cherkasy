@@ -5,6 +5,5 @@
 .item{'ng-show' => '!navBar.showSignInButton'}
   {{navBar.userName}}
   %img{src: "{{navBar.avatarUrl}}"}
-.item{'ng-show' => '!navBar.showSignInButton'}
-  %a{'href' => '', 'ng-click' => 'logOut()'}
+  %a{'href' => '', 'ng-click' => 'logOut()', 'ng-show' => '!navBar.showSignInButton'}
     Вийти
