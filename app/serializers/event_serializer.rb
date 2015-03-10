@@ -1,5 +1,9 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :headline, :description, :rating, :creator, :date, :time
+  attributes :id, :headline, :description, :rating,
+    :creator, :date, :time
+
+  has_many :subscriptions
+  has_many :tags
 
   def creator
     UserSerializer.new(object.user)

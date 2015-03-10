@@ -1,16 +1,22 @@
 class Event < ActiveRecord::Base
+  acts_as_taggable
+  acts_as_taggable_on :tags
+
   belongs_to :user
   has_many :event_users
+  has_many :subscriptions
+
+  validates :headline, :description, presence: true
 
   def likes
-    @likes_count ||= event_users.liked.count
+    event_users.liked.count
   end
 
   def dislikes
-    @dislikes_count ||= event_users.disliked.count
+    event_users.disliked.count
   end
 
-  def rating
-    likes - dislikes
+  def tags=(data)
+    super data.map{ |item| ActsAsTaggableOn::Tag.find_or_create_by(item) }
   end
 end
