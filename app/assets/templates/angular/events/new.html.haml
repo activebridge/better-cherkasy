@@ -1,0 +1,32 @@
+#new-event-modal.hidden
+  .modal-header
+    %h3 Запропонувати
+  .modal-body
+    %form{'ng-submit' => 'add()'}
+      %div
+        .title Заголовок:
+        .input-group
+          %input.form-control{'ng-model' => 'newEvent.headline'}/
+      %div
+        .title Опис:
+        .input-group
+          %textarea{'ng-model' => 'newEvent.description'}
+      %div
+        .title Дата:
+        .input-group
+          %input.datepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.date'}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-calendar.blue
+
+      %div
+        .title Час:
+        .input-group.bootstrap-timepicker
+          %input.timepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.time'}
+            %span.input-group-addon
+              .glyphicon.glyphicon-time.blue
+
+      %div
+        .title  
+        %button.btn.btn-primary{:type => 'submit'}
+          %span.glyphicon.glyphicon-plus
+          Додати

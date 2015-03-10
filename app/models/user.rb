@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :event_users
   has_many :events
+  has_many :subscriptions
 
   validates :name, :avatar_url, :provider, :providerid, presence: true
 

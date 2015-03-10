@@ -13,3 +13,7 @@ betterCherkasy.factory 'Session', ['$resource', ($resource) ->
 betterCherkasy.factory 'EventUser', ['$resource', ($resource) ->
   $resource('/event_users/:id', {id: '@id'}, {update: {method: 'PUT'}})
 ]
+
+betterCherkasy.factory 'Subscription', ['$resource', ($resource) ->
+  $resource('/subscriptions/:id', {id: '@id'})
+]

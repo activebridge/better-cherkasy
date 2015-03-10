@@ -23,6 +23,7 @@ betterCherkasy.controller 'NavBarCtrl', [
     $scope.logOut = ->
       logOut()
       hideUserInfo()
+      $facebook.logout()
 
     $scope.loginWithFacebook = ->
       $facebook.login().then (response) ->

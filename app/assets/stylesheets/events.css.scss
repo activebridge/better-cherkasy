@@ -9,6 +9,13 @@
         font-size: 11px;
         margin-bottom: 5px;
       }
+      .subscribers, ul {
+        list-style: none;
+        li { float: right; }
+        img {
+          width: 20px;
+        }
+      }
     }
     .creator {
       float: left;
@@ -21,9 +28,12 @@
     padding: 15px;
     position: relative;
     .actions {
+      .like-buttons, .subscribers {
+        margin-bottom: 10px;
+      }
       cursor: pointer;
       position: absolute;
-      right: 16px;
+      right: 30px;
       top: 7px;
     }
     .headline {

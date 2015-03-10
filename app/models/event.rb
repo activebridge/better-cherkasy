@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :user
   has_many :event_users
+  has_many :subscriptions
 
   validates :headline, :description, presence: true
 

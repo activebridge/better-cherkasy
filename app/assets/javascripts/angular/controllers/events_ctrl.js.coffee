@@ -1,6 +1,6 @@
 betterCherkasy.controller 'EventsCtrl', [
-  '$scope', 'Event', '$modal', 'EventUser'
-  ($scope, Event, $modal, EventUser) ->
+  '$scope', 'Event', '$modal', 'EventUser', 'Subscription'
+  ($scope, Event, $modal, EventUser, Subscription) ->
 
     init = ->
       $scope.events = Event.query ->
@@ -37,9 +37,34 @@ betterCherkasy.controller 'EventsCtrl', [
     $scope.down = (event) ->
       markEventAsRated(event, false)
 
-    init()
-
     $scope.userSignedIn = ->
       userSignedIn()
+
+    $scope.subscribe = (event) ->
+      Subscription.save
+        event_id: event.id
+        auth_token: getAuthToken()
+      , (response) ->
+        event.subscriptions.push response
+
+    $scope.unsubscribe = (event) ->
+      userId = getCurrentUser().id
+      event.subscriptions.forEach((subscription, index) ->
+        if subscription.user.id == userId
+          Subscription.delete
+            id: subscription.id
+            auth_token: getAuthToken()
+          , (success) ->
+            event.subscriptions.splice index, 1
+      )
+
+    $scope.subscribed = (event) ->
+      userId = getCurrentUser().id
+      for subscription in event.subscriptions
+        if subscription.user.id == userId
+          return true
+      return false
+
+    init()
 ]
 
