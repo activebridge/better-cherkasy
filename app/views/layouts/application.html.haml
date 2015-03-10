@@ -1,5 +1,5 @@
 !!!
-%html{"ng-app" => "betterCherkasy"}
+%html{'ng-app' => 'betterCherkasy'}
   %head
     %title BetterCherkasy
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
@@ -9,10 +9,10 @@
     .header
       .logo
         = image_tag 'logo.png'
-      .nav-bar{"ng-controller" => "NavBarCtrl"}
+      .nav-bar{'ng-controller' => 'NavBarCtrl'}
         %ng-include(src="'#{asset_path('angular/shared/nav_bar.html')}'")
 
-      .alert.fade{"active-class" => "in alert", :duration => "0", "flash-alert" => "", class: "display-none"}
-        %button.close{"ng-click" => "hide();", :type => "button"} &times;
+      .alert.fade{'active-class' => 'in alert', :duration => '0', 'flash-alert' => '', class: 'display-none'}
+        %button.close{'ng-click' => 'hide();', :type => 'button'} &times;
         %span.alert-message {{flash.message}}
-    %div{"ng-view" => ""}
+    %div{'ng-view' => ''}

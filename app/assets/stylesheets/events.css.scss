@@ -5,6 +5,10 @@
   li.jumbotron {
     .event {
       float: left;
+      .date {
+        font-size: 11px;
+        margin-bottom: 5px;
+      }
     }
     .creator {
       float: left;
@@ -42,12 +46,17 @@
     margin-top: 10px;
   }
   .title {
-    width: 100px;
+    width: 15%;
     float: left;
   }
-  .btn { width: 400px; }
+  .input-group {
+    width: 85%;
+  }
   input, textarea {
-    width: 400px;
+    width: 100%;
+  }
+  span.input-group-addon {
+    cursor: pointer;
   }
 }
 
@@ -64,4 +73,12 @@
   &.red {
     color: red;
   }
+}
+
+.blue {
+  color: #428bca;
+}
+
+.bootstrap-timepicker-widget {
+  width: 200px;
 }
