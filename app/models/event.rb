@@ -6,14 +6,10 @@ class Event < ActiveRecord::Base
   validates :headline, :description, presence: true
 
   def likes
-    @likes_count ||= event_users.liked.count
+    event_users.liked.count
   end
 
   def dislikes
-    @dislikes_count ||= event_users.disliked.count
-  end
-
-  def rating
-    likes - dislikes
+    event_users.disliked.count
   end
 end
