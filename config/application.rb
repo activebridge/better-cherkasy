@@ -20,6 +20,7 @@ module BetterCherkasy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.paths << Rails.root.join('app', 'assets', 'templates', 'angular')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.autoload_paths += [
       "#{config.root}/lib",
       "#{config.root}/app/services/**/*"

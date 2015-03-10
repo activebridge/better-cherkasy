@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :event_users
 
+  validates :headline, :description, presence: true
+
   def likes
     @likes_count ||= event_users.liked.count
   end
