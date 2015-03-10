@@ -17,13 +17,16 @@
           %input.datepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.date'}
             %span.input-group-addon
               %i.glyphicon.glyphicon-calendar.blue
-
       %div
         .title Час:
         .input-group.bootstrap-timepicker
           %input.timepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.time'}
             %span.input-group-addon
               .glyphicon.glyphicon-time.blue
+      %div
+        .title Теги:
+        .input-group
+          %input.form-control{:type => 'text', 'ng-model' => 'newEvent.tag_list'}
 
       %div
         .title  

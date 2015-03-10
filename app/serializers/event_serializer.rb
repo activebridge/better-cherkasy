@@ -3,6 +3,7 @@ class EventSerializer < ActiveModel::Serializer
     :creator, :date, :time
 
   has_many :subscriptions
+  has_many :tags
 
   def creator
     UserSerializer.new(object.user)

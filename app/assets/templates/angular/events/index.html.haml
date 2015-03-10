@@ -10,10 +10,14 @@
     .event
       .row.headline
         {{event.headline}}
-      .row.date
+      .row.small
         {{event.date}} {{event.time}}
       .row
         {{event.description}}
+      .row.small.italic
+        %span{'ng-repeat' => 'tag in event.tags'}
+          %a{'href' => '#'}
+            {{tag.name}} &nbsp;
       .actions
         .row.btn-group.btn-group-xs.pull-right.like-buttons
           .rating{'ng-class' => "event.rating > 0 ? 'green' : 'red' "}
