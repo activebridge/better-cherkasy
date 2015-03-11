@@ -12,8 +12,7 @@
         {{event.headline}}
       .row.small
         {{event.date}} {{event.time}}
-      .row
-        {{event.description}}
+      .row{'ng-bind-html' => 'descriptionHtml(event)' }
       .row.small.italic
         %span{'ng-repeat' => 'tag in event.tags'}
           %a{'href' => '#'}

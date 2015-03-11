@@ -22,8 +22,11 @@
 //= require ngFacebook
 //= require angular-flash
 //= require angular-cookies.min
+//= require angular-sanitize.min
 //
 //= require angular_app
+//= require ckeditor-jquery
+//= require angular-ckeditor.min
 //= require_tree ./angular/config
 //= require angular/routes
 //= require angular/factories

@@ -10,7 +10,7 @@
       %div
         .title Опис:
         .input-group
-          %textarea{'ng-model' => 'newEvent.description'}
+          %div{'ckeditor' => 'options', 'ng-model' => 'newEvent.description'}
       %div
         .title Дата:
         .input-group

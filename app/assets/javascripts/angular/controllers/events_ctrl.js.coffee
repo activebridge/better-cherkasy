@@ -1,6 +1,6 @@
 betterCherkasy.controller 'EventsCtrl', [
-  '$scope', 'Event', '$modal', 'EventUser', 'Subscription'
-  ($scope, Event, $modal, EventUser, Subscription) ->
+  '$scope', 'Event', '$modal', 'EventUser', 'Subscription', '$sce'
+  ($scope, Event, $modal, EventUser, Subscription, $sce) ->
 
     init = ->
       $scope.events = Event.query ->
@@ -14,13 +14,13 @@ betterCherkasy.controller 'EventsCtrl', [
             $scope.events.splice(index, 1)
 
     $scope.openModal = (templateUrl)->
-      modalInstance = $modal.open(
-        templateUrl: templateUrl,
-        controller: 'NewEventCtrl',
+      modalInstance = $modal.open
+        size: 'lg'
+        templateUrl: templateUrl
+        controller: 'NewEventCtrl'
         resolve:
           events: ->
             $scope.events
-      )
 
     markEventAsRated = (event, rating) ->
       EventUser.update(
@@ -64,6 +64,9 @@ betterCherkasy.controller 'EventsCtrl', [
         if subscription.user.id == userId
           return true
       return false
+
+    $scope.descriptionHtml = (event) ->
+      $sce.trustAsHtml(event.description)
 
     init()
 ]
