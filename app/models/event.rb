@@ -17,6 +17,7 @@ class Event < ActiveRecord::Base
   end
 
   def tags=(data)
+    return unless data
     super data.map{ |item| ActsAsTaggableOn::Tag.find_or_create_by(item) }
   end
 end
