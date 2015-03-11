@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :sessions, only: :show
   resources :event_users, only: :update
   resources :subscriptions, only: [:create, :destroy]
+  resources :tags, only: :index
 
   root 'home#index'
 end

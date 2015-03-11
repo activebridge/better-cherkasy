@@ -1,4 +1,4 @@
-.new-event-link{'ng-click' => 'openModal()', 'ng-show' => 'userSignedIn()'}
+.new-event-link{'ng-click' => "openModal('#{ asset_path('events/new.html') }')", 'ng-show' => 'userSignedIn()'}
   %h3 Запропонувати
 %ul.events
   %li.jumbotron{'ng-repeat' => 'event in events'}
@@ -10,10 +10,14 @@
     .event
       .row.headline
         {{event.headline}}
-      .row.date
+      .row.small
         {{event.date}} {{event.time}}
       .row
         {{event.description}}
+      .row.small.italic
+        %span{'ng-repeat' => 'tag in event.tags'}
+          %a{'href' => '#'}
+            {{tag.name}} &nbsp;
       .actions
         .row.btn-group.btn-group-xs.pull-right.like-buttons
           .rating{'ng-class' => "event.rating > 0 ? 'green' : 'red' "}
@@ -40,4 +44,3 @@
       .clear
     .clear
 
-%ng-include(src="'#{asset_path('angular/events/new.html')}'")

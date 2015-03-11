@@ -1,4 +1,4 @@
-#new-event-modal.hidden
+#new-event-modal
   .modal-header
     %h3 Запропонувати
   .modal-body
@@ -17,13 +17,17 @@
           %input.datepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.date'}
             %span.input-group-addon
               %i.glyphicon.glyphicon-calendar.blue
-
       %div
         .title Час:
         .input-group.bootstrap-timepicker
           %input.timepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.time'}
             %span.input-group-addon
               .glyphicon.glyphicon-time.blue
+      %div
+        .title Теги:
+        .input-group
+          %tags-input{'ng-model' => 'newEvent.tags', 'display-property' => 'name'}
+            %auto-complete{'source' => 'loadTags($query)'}
 
       %div
         .title  

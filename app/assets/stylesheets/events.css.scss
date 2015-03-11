@@ -6,9 +6,10 @@
     .event {
       float: left;
       width: 80%;
-      .date {
+      .small {
         font-size: 11px;
         margin-bottom: 5px;
+        margin-top: 5px;
       }
       .subscribers, ul {
         list-style: none;
@@ -92,4 +93,8 @@
 
 .bootstrap-timepicker-widget {
   width: 200px;
+}
+
+.italic {
+  font-style: italic;
 }

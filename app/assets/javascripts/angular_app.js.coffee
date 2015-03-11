@@ -6,6 +6,7 @@
   'angular-flash.service'
   'angular-flash.flash-alert-directive'
   'ngCookies'
+  'ngTagsInput'
 ])
 
 
