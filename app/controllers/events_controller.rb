@@ -2,6 +2,9 @@ class EventsController < ApplicationController
   before_action :authorize_user!, except: :index
   before_action :find_event, only: :destroy
 
+  wrap_parameters :event, include: [:headline, :description,
+                                    :date, :time, :tags]
+
   def index
     json = ActiveModel::ArraySerializer.new(Event.order('rating desc'),
                                            each_serializer: EventSerializer,
@@ -11,6 +14,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
     if @event.save
       render json: @event, status: :ok
     else

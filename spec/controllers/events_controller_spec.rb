@@ -23,9 +23,12 @@ RSpec.describe EventsController, type: :controller do
     let(:event_params) {
       {
         event: {
-          user_id: user.id,
           headline: 'super duper event',
-          description: 'super duper duper event'
+          description: 'super duper duper event',
+          tags: [
+            {name: 'active'},
+            {name: 'bridge'}
+          ]
         }
       }
     }
@@ -39,17 +42,23 @@ RSpec.describe EventsController, type: :controller do
     end
 
     context 'success' do
-
       before do
         post :create, event_params.merge(auth_token: user.auth_token)
       end
 
-      it { expect(response).to be_success }
-      it { expect(json['headline']).to eq('super duper event') }
-      it { expect(json['description']).to be }
-      it { expect(json['id']).to be }
-      it { expect(json['rating']).to eq(0) }
-      it { expect(json['creator']).to be }
+      context 'general' do
+        it { expect(response).to be_success }
+        it { expect(json['headline']).to eq('super duper event') }
+        it { expect(json['description']).to be }
+        it { expect(json['id']).to be }
+        it { expect(json['rating']).to eq(0) }
+        it { expect(json['creator']).to be }
+      end
+
+      context 'tags' do
+        it { expect(json['tags']).to_not be_blank }
+        it { expect(json['tags']).to have(2).items }
+      end
     end
   end
 end
