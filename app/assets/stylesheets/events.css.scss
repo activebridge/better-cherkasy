@@ -1,46 +1,47 @@
 .events {
   list-style: none;
   padding: 0;
-  margin: 5px 40px;
-  li.jumbotron {
-    .event {
-      float: left;
-      width: 80%;
-      .small {
-        font-size: 11px;
-        margin-bottom: 5px;
-        margin-top: 5px;
-      }
-      .subscribers, ul {
-        list-style: none;
-        li { float: right; }
-        img {
-          width: 20px;
-        }
+}
+
+.jumbotron {
+  margin: 40px 20px;
+  .event {
+    float: left;
+    width: 80%;
+    .small {
+      font-size: 11px;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    .subscribers, ul {
+      list-style: none;
+      li { float: right; }
+      img {
+        width: 20px;
       }
     }
-    .creator {
-      float: left;
-      width: 85px;
-      .name {
-        font-weight: bold;
-      }
-    }
-    border-radius: 7px;
-    padding: 15px;
-    position: relative;
-    .actions {
-      .like-buttons, .subscribers {
-        margin-bottom: 10px;
-      }
-      cursor: pointer;
-      position: absolute;
-      right: 30px;
-      top: 7px;
-    }
-    .headline {
+  }
+  .creator {
+    float: left;
+    width: 85px;
+    .name {
       font-weight: bold;
     }
+  }
+  border-radius: 7px;
+  padding: 15px;
+  position: relative;
+  .actions {
+    .like-buttons, .subscribers {
+      margin-bottom: 10px;
+    }
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 7px;
+  }
+  .headline {
+    font-weight: bold;
   }
 }
 

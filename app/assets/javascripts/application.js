@@ -33,6 +33,7 @@
 //= require angular/main
 //= require bootstrap-timepicker
 //= require bootstrap-datepicker
+//= require_tree ./angular/decorators
 //= require_tree ./angular/controllers
 //= require_tree ./angular/services
 

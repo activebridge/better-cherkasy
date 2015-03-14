@@ -8,7 +8,8 @@
   %body
     .header
       .logo
-        = image_tag 'logo.png'
+        = link_to '#/' do
+          = image_tag 'logo.png'
       .nav-bar{'ng-controller' => 'NavBarCtrl'}
         %ng-include(src="'#{asset_path('angular/shared/nav_bar.html')}'")
 

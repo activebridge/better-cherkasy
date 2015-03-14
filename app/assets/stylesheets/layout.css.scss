@@ -21,3 +21,7 @@
 .clear {
   clear: both;
 }
+
+a, a:focus {
+  outline: none;
+}

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authorize_user!, except: :index
-  before_action :find_event, only: :destroy
+  before_action :find_own_event, only: :destroy
+  before_action :find_event, only: :show
 
   wrap_parameters :event, include: [:headline, :description,
                                     :date, :time, :tags]
@@ -10,6 +11,10 @@ class EventsController < ApplicationController
                                            each_serializer: EventSerializer,
                                            root: nil)
     render json: json, status: :ok
+  end
+
+  def show
+    render json: @event, status: :ok
   end
 
   def create
@@ -34,6 +39,10 @@ class EventsController < ApplicationController
   end
 
   def find_event
+    @event = Event.find_by_id(params[:id])
+  end
+
+  def find_own_event
     @event = current_user.events.find(params[:id])
   end
 end
