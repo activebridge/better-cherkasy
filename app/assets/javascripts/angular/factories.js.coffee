@@ -19,5 +19,5 @@ betterCherkasy.factory 'Subscription', ['$resource', ($resource) ->
 ]
 
 betterCherkasy.factory 'Comment', ['$resource', ($resource) ->
-  $resource('/events/:event_id/comments', {event_id: '@event_id'})
+  $resource('/events/:event_id/comments/:id', {event_id: '@event_id', id: '@id'})
 ]

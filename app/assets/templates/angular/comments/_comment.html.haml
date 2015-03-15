@@ -1,0 +1,15 @@
+.comment{'style' => "margin-left: {{comment.ancestors_count * 20}}px"}
+  .row.comment-header
+    .author-avatar
+      %img.comment-avatar{'src' => "{{comment.user.avatar_url}}"}
+    .author-name
+      {{comment.user.name}}
+    .date
+      {{comment.created}}
+    .action-links
+      %button.btn.btn-default.btn-xs{'ng-click' => "openReplyModal('#{ asset_path('comments/new.html') }', comment, $index)", :type => 'button', 'ng-show' => 'userSignedIn()', 'title' => 'Відповісти'}
+        %span.glyphicon.glyphicon-comment
+      %button.btn.btn-default.btn-xs{'ng-click' => 'deleteComment(comment.id, $index)', :type => 'button', 'ng-show' => 'userSignedIn()'}
+        %span.glyphicon.glyphicon-trash
+  .row.comment-body
+    {{comment.body}}

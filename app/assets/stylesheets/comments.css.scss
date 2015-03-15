@@ -1,0 +1,32 @@
+.comment-header {
+  margin: 10px 0;
+  .author-avatar {
+    margin-right: 10px;
+    .comment-avatar {
+      width: 30px;
+    }
+  }
+  > div {
+    float: left;
+  }
+  .author-name {
+    color: '#666';
+    font-size: 12px;
+    font-weight: bold;
+    width: 100px;
+  }
+  .date {
+    font-size: 11px;
+  }
+  .author-name, .date {
+    margin-top: 6px;
+    line-height: 10px;
+  }
+  .action-links {
+    float: right;
+  }
+}
+
+.comment-body {
+  margin-bottom: 30px;
+}

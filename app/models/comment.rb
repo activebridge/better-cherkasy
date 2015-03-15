@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
+  default_scope -> { order('lft asc') }
 
   validates :body, :presence => true
   validates :user, :presence => true

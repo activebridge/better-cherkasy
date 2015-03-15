@@ -1,5 +1,6 @@
 .modal-header
-  %h3 Коментувати
+  %h3{'ng-show' => '!comment'} Коментувати
+  %h3{'ng-show' => 'comment'} Відповісти
 .modal-body
   %form{'ng-submit' => 'add()'}
     %div

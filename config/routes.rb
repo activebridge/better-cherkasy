@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :events, except: [:new, :edit, :update] do
-    resources :comments, only: [:index, :create]
+    resources :comments, only: [:index, :create, :destroy]
   end
 
   resources :home, only: :index

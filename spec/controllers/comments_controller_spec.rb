@@ -26,14 +26,14 @@ RSpec.describe CommentsController, type: :controller do
     }
 
     before do
-      post :create, event_id: event.id,
-                       id: comment.id,
-                       auth_token: user.auth_token
+      post :create, params
     end
 
 
     it { should respond_with :created }
-    it { expect(json).to have_key('id') }
+    it { expect(json).to have_key('index') }
+    it { expect(json).to have_key('data') }
+    it { expect(json['data']).to have_key('id') }
   end
 
 end
