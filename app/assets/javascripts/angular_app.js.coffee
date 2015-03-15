@@ -7,6 +7,8 @@
   'angular-flash.flash-alert-directive'
   'ngCookies'
   'ngTagsInput'
+  'ckeditor'
+  'ngSanitize'
 ])
 
 
