@@ -1,10 +1,9 @@
-.events {
+.events, .comments {
   list-style: none;
   padding: 0;
 }
 
 .jumbotron {
-  margin: 40px 20px;
   .event {
     float: left;
     width: 80%;
@@ -48,7 +47,6 @@
 .new-event-link {
   text-align: right;
   cursor: pointer;
-  padding-right: 35px;
   &:hover {
     text-decoration: underline;
   }

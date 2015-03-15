@@ -1,3 +1,13 @@
 .jumbotron
   %ng-include(src="'#{asset_path('angular/events/_event.html')}'")
   .clear
+.row
+  .col-md-10
+  .col-md-2
+    .btn.btn-primary.btn-sm{'ng-click' => "openModal('#{ asset_path('comments/new.html') }')", 'ng-show' => 'userSignedIn()'}
+      %span.glyphicon.glyphicon-comment
+      Коментувати
+.row
+  %ul.comments
+    %li{'ng-repeat' => 'comment in event.comments'}
+      {{comment.body}}

@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    render json: @event, status: :ok
+    render json: FullEventSerializer.new(@event), status: :ok
   end
 
   def create

@@ -1,6 +1,6 @@
 betterCherkasy.controller 'ShowEventCtrl', [
-  '$scope', 'Event', '$routeParams', '$sce', 'eventDecorator'
-  ($scope, Event, $routeParams, $sce, eventDecorator) ->
+  '$scope', 'Event', '$routeParams', '$sce', 'eventDecorator', '$modal'
+  ($scope, Event, $routeParams, $sce, eventDecorator, $modal) ->
     eventDecorator($scope)
 
     $scope.event = {}
@@ -11,6 +11,14 @@ betterCherkasy.controller 'ShowEventCtrl', [
         auth_token: getAuthToken()
       }, (data) ->
         $scope.event = data
+
+    $scope.openModal = (templateUrl)->
+      modalInstance = $modal.open
+        templateUrl: templateUrl
+        controller: 'NewCommentCtrl'
+        resolve:
+          event: ->
+            $scope.event
 
     init()
 

@@ -21,7 +21,7 @@ RSpec.describe CommentsController, type: :controller do
       {
         event_id: event.id,
         auth_token: user.auth_token,
-        text: 'hello world'
+        body: 'hello world'
       }
     }
 

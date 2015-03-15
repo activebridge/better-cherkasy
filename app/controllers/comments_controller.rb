@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = @event.comments.create(user: current_user, body: params[:text])
+    comment = @event.comments.create(user: current_user, body: params[:body])
     render json: comment, status: :created
   end
 

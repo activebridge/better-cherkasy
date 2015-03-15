@@ -17,3 +17,7 @@ betterCherkasy.factory 'EventUser', ['$resource', ($resource) ->
 betterCherkasy.factory 'Subscription', ['$resource', ($resource) ->
   $resource('/subscriptions/:id', {id: '@id'})
 ]
+
+betterCherkasy.factory 'Comment', ['$resource', ($resource) ->
+  $resource('/events/:event_id/comments', {event_id: '@event_id'})
+]
