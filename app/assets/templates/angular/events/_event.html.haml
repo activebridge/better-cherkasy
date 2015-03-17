@@ -1,0 +1,39 @@
+.creator
+  .avatar
+    %img{src: "{{event.creator.avatar_url}}"}
+  .name
+    {{event.creator.name}}
+.event
+  .row.headline
+    %a{href: "#/events/{{event.id}}"}
+      {{event.headline}}
+  .row.small
+    {{event.date}} {{event.time}}
+  .row{'ng-bind-html' => 'descriptionHtml(event)' }
+  .row.small.italic
+    %span{'ng-repeat' => 'tag in event.tags'}
+      %a{'href' => '#'}
+        {{tag.name}} &nbsp;
+  .actions
+    .row.btn-group.btn-group-xs.pull-right.like-buttons
+      .rating{'ng-class' => "event.rating > 0 ? 'green' : 'red' "}
+        {{event.rating}}
+      %button.btn.btn-default{'ng-click' => 'down(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
+        %span.glyphicon.glyphicon-thumbs-down
+      %button.btn.btn-default{'ng-click' => 'up(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
+        %span.glyphicon.glyphicon-thumbs-up
+      %button.btn.btn-default{'ng-click' => 'delete(event.id, $index)', :type => 'button', 'ng-show' => 'userSignedIn()'}
+        %span.glyphicon.glyphicon-trash
+    .clear
+    .row.subscribers
+      %ul
+        %li{'ng-repeat' => 'subscription in event.subscriptions'}
+          %img{src: "{{subscription.user.avatar_url}}", title: '{{subscription.user.name}}'}
+    .row{'ng-show' => 'userSignedIn()'}
+      %button.btn.btn-primary.btn-sm{'ng-click' => 'subscribe(event)', 'ng-show' => '!subscribed(event)'}
+        %span.glyphicon.glyphicon-ok
+        Розраховуйте і на мене!
+      %button.btn.btn-danger.btn-sm{'ng-click' => 'unsubscribe(event)', 'ng-show' => 'subscribed(event)'}
+        %span.glyphicon.glyphicon-remove
+        У мене не виходе :(
+

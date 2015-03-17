@@ -3,6 +3,9 @@ betterCherkasy.controller 'NewEventCtrl', [
   ($scope, Event, $modalInstance, events, $http) ->
     $scope.newEvent = {}
 
+    $scope.options = ->
+      {language: 'uk'}
+
     $scope.loadTags = (query) ->
       $http.get('/tags?query=' + query)
 

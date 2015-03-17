@@ -27,6 +27,8 @@ gem 'bootstrap-sass'
 gem 'haml'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'ckeditor_rails'
+gem 'acts_as_commentable_with_threading'
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :development, :test do
   gem 'pry'

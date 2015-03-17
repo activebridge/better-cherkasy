@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_voter
+
   has_many :event_users
   has_many :events
   has_many :subscriptions

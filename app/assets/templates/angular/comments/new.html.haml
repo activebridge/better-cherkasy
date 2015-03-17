@@ -1,0 +1,15 @@
+.modal-header
+  %h3{'ng-show' => '!comment'} Коментувати
+  %h3{'ng-show' => 'comment'} Відповісти
+.modal-body
+  %form{'ng-submit' => 'add()'}
+    %div
+      .title Коментар:
+      .input-group
+        %textarea.form-control{'ng-model' => 'newComment.body'}
+
+    %div
+      .title  
+      %button.btn.btn-primary{:type => 'submit'}
+        %span.glyphicon.glyphicon-plus
+        Додати

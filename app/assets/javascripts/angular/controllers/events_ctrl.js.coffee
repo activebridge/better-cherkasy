@@ -1,6 +1,7 @@
 betterCherkasy.controller 'EventsCtrl', [
-  '$scope', 'Event', '$modal', 'EventUser', 'Subscription', '$sce'
-  ($scope, Event, $modal, EventUser, Subscription, $sce) ->
+  '$scope', 'Event', '$modal', 'eventDecorator'
+  ($scope, Event, $modal, eventDecorator) ->
+    eventDecorator($scope)
 
     init = ->
       $scope.events = Event.query ->
@@ -21,52 +22,6 @@ betterCherkasy.controller 'EventsCtrl', [
         resolve:
           events: ->
             $scope.events
-
-    markEventAsRated = (event, rating) ->
-      EventUser.update(
-        id: event.id
-        auth_token: getAuthToken()
-        like: rating
-        , (response) ->
-          event.rating = response.rating
-      )
-
-    $scope.up = (event) ->
-      markEventAsRated(event, true)
-
-    $scope.down = (event) ->
-      markEventAsRated(event, false)
-
-    $scope.userSignedIn = ->
-      userSignedIn()
-
-    $scope.subscribe = (event) ->
-      Subscription.save
-        event_id: event.id
-        auth_token: getAuthToken()
-      , (response) ->
-        event.subscriptions.push response
-
-    $scope.unsubscribe = (event) ->
-      userId = getCurrentUser().id
-      event.subscriptions.forEach((subscription, index) ->
-        if subscription.user.id == userId
-          Subscription.delete
-            id: subscription.id
-            auth_token: getAuthToken()
-          , (success) ->
-            event.subscriptions.splice index, 1
-      )
-
-    $scope.subscribed = (event) ->
-      userId = getCurrentUser().id
-      for subscription in event.subscriptions
-        if subscription.user.id == userId
-          return true
-      return false
-
-    $scope.descriptionHtml = (event) ->
-      $sce.trustAsHtml(event.description)
 
     init()
 ]

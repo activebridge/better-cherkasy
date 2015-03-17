@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events, except: [:new, :edit, :update] do
+    resources :comments, only: [:index, :create, :destroy]
+  end
 
   resources :home, only: :index
   resources :users, only: :create
