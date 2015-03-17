@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authorize_user!, except: :index
+  before_action :authorize_user!, except: [ :index, :show ]
   before_action :find_own_event, only: :destroy
   before_action :find_event, only: :show
 
