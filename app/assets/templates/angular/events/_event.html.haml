@@ -34,7 +34,7 @@
       %ul
         %li{'ng-repeat' => 'subscription in event.subscriptions'}
           %img{src: "{{subscription.user.avatar_url}}", title: '{{subscription.user.name}}'}
-    .row{'ng-show' => 'userSignedIn()'}
+    .row.pull-right{'ng-show' => 'userSignedIn()'}
       %button.btn.btn-primary.btn-sm{'ng-click' => 'subscribe(event)', 'ng-show' => '!subscribed(event)'}
         %span.glyphicon.glyphicon-ok
         Розраховуйте і на мене!
