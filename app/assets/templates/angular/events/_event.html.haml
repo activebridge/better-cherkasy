@@ -15,13 +15,18 @@
       %a{'href' => '#'}
         {{tag.name}} &nbsp;
   .actions
-    .row.btn-group.btn-group-xs.pull-right.like-buttons
-      .rating{'ng-class' => "event.rating > 0 ? 'green' : 'red' "}
-        {{event.rating}}
+    .row.btn-group-xs.pull-right.like-buttons
+      рейтинг
       %button.btn.btn-default{'ng-click' => 'down(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
         %span.glyphicon.glyphicon-thumbs-down
+      .rating{'ng-class' => "event.rating > 0 ? 'green' : 'red' "}
+        {{event.rating}}
       %button.btn.btn-default{'ng-click' => 'up(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
         %span.glyphicon.glyphicon-thumbs-up
+      &nbsp;
+      %a.btn.btn-default{'href' => "#/events/{{event.id}}"}
+        %span.glyphicon.glyphicon-comment
+        {{event.comments_count}}
       %button.btn.btn-default{'ng-click' => 'delete(event.id, $index)', :type => 'button', 'ng-show' => 'userSignedIn()'}
         %span.glyphicon.glyphicon-trash
     .clear
@@ -29,7 +34,7 @@
       %ul
         %li{'ng-repeat' => 'subscription in event.subscriptions'}
           %img{src: "{{subscription.user.avatar_url}}", title: '{{subscription.user.name}}'}
-    .row{'ng-show' => 'userSignedIn()'}
+    .row.pull-right{'ng-show' => 'userSignedIn()'}
       %button.btn.btn-primary.btn-sm{'ng-click' => 'subscribe(event)', 'ng-show' => '!subscribed(event)'}
         %span.glyphicon.glyphicon-ok
         Розраховуйте і на мене!

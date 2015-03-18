@@ -1,6 +1,6 @@
 class EventSerializer < ActiveModel::Serializer
   attributes :id, :headline, :description, :rating,
-    :creator, :date, :time
+    :creator, :date, :time, :comments_count
 
   has_many :subscriptions
   has_many :tags
@@ -15,5 +15,9 @@ class EventSerializer < ActiveModel::Serializer
 
   def time
     object.time.strftime('%I:%M %p') if object.time
+  end
+
+  def comments_count
+    object.comments.count
   end
 end

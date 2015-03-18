@@ -31,10 +31,10 @@
   padding: 15px;
   position: relative;
   .actions {
+    color: #999;
     .like-buttons, .subscribers {
       margin-bottom: 10px;
     }
-    cursor: pointer;
     position: absolute;
     right: 30px;
     top: 7px;
@@ -75,8 +75,6 @@
 
 .rating {
   display: inline-block;
-  float: left;
-  margin-right: 10px;
   font-weight: bold;
   &.green {
     color: green;
