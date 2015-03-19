@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe EventsController, type: :controller do
   describe '#index' do
     context 'default order' do
-      let!(:bad_event) { FactoryGirl.create(:event, rating: -15) }
-      let!(:good_event) { FactoryGirl.create(:event, rating: 255) }
-      let!(:very_bad_event) { FactoryGirl.create(:event, rating: -125) }
+      let!(:bad_event) { FactoryGirl.create(:event, cached_weighted_score: -15) }
+      let!(:good_event) { FactoryGirl.create(:event, cached_weighted_score: 255) }
+      let!(:very_bad_event) { FactoryGirl.create(:event, cached_weighted_score: -125) }
 
       before do
         get :index

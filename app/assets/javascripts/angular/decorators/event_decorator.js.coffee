@@ -1,6 +1,6 @@
 betterCherkasy.factory 'eventDecorator', [
-  'EventUser', '$sce', 'Subscription'
-  (EventUser, $sce, Subscription) ->
+  'EventVote', '$sce', 'Subscription'
+  (EventVote, $sce, Subscription) ->
 
     ($scope) ->
       $scope.up = (event) ->
@@ -13,12 +13,13 @@ betterCherkasy.factory 'eventDecorator', [
         userSignedIn()
 
       markEventAsRated = (event, rating) ->
-        EventUser.update(
+        EventVote.update(
           id: event.id
           auth_token: getAuthToken()
-          like: rating
+          vote: rating
           , (response) ->
-            event.rating = response.rating
+            event.likes = response.likes
+            event.dislikes = response.dislikes
         )
 
       $scope.descriptionHtml = (event) ->

@@ -10,8 +10,8 @@ betterCherkasy.factory 'Session', ['$resource', ($resource) ->
   $resource('/sessions/:id', {id: '@id'}, {update: {method: 'PUT'}})
 ]
 
-betterCherkasy.factory 'EventUser', ['$resource', ($resource) ->
-  $resource('/event_users/:id', {id: '@id'}, {update: {method: 'PUT'}})
+betterCherkasy.factory 'EventVote', ['$resource', ($resource) ->
+  $resource('/event_votes/:id', {id: '@id'}, {update: {method: 'PUT'}})
 ]
 
 betterCherkasy.factory 'Subscription', ['$resource', ($resource) ->

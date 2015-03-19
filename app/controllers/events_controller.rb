@@ -7,7 +7,7 @@ class EventsController < ApplicationController
                                     :date, :time, :tags]
 
   def index
-    json = ActiveModel::ArraySerializer.new(Event.order('rating desc'),
+    json = ActiveModel::ArraySerializer.new(Event.order('cached_weighted_score desc'),
                                            each_serializer: EventSerializer,
                                            root: nil)
     render json: json, status: :ok

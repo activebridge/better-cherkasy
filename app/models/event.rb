@@ -2,9 +2,9 @@ class Event < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :tags
   acts_as_commentable
+  acts_as_votable
 
   belongs_to :user
-  has_many :event_users
   has_many :subscriptions
   has_many :comments, as: :commentable
 
@@ -15,11 +15,15 @@ class Event < ActiveRecord::Base
   validates :headline, :description, presence: true
 
   def likes
-    event_users.liked.count
+    cached_votes_up
   end
 
   def dislikes
-    event_users.disliked.count
+    cached_votes_down
+  end
+
+  def rating
+    cached_weighted_average
   end
 
   def tags=(data)
