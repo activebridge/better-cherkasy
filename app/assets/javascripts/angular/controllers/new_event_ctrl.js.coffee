@@ -18,6 +18,9 @@ betterCherkasy.controller 'NewEventCtrl', [
           $modalInstance.dismiss('cancel')
       )
 
+    $scope.close = ->
+      $modalInstance.dismiss('cancel')
+
     setTimeout ( ->
       $('.timepicker').timepicker
         minuteStep: 5

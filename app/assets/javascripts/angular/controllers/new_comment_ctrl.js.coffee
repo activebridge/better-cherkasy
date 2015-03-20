@@ -17,4 +17,7 @@ betterCherkasy.controller 'NewCommentCtrl', [
           $modalInstance.dismiss('cancel')
       )
 
+    $scope.close = ->
+      $modalInstance.dismiss('cancel')
+
 ]

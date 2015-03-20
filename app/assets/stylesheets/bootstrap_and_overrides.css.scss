@@ -2,5 +2,23 @@
 @import "bootstrap";
 
 .row {
-  margin: 0;
+  margin: 8px 0;
+}
+
+.container-fluid {
+  .jumbotron {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pull-right-lg {
+    float: right;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pull-left-sm {
+    float: left;
+  }
 }

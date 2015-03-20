@@ -3,41 +3,26 @@
   padding: 0;
 }
 
+.subscribers ul {
+  padding: 0;
+  list-style: none;
+  img {
+    width: 20px;
+  }
+}
+
 .jumbotron {
   .event {
-    float: left;
-    width: 80%;
     .small {
       font-size: 11px;
       margin-bottom: 5px;
       margin-top: 5px;
     }
-    .subscribers, ul {
-      list-style: none;
-      li { float: right; }
-      img {
-        width: 20px;
-      }
-    }
   }
   .creator {
-    float: left;
-    width: 85px;
     .name {
       font-weight: bold;
     }
-  }
-  border-radius: 7px;
-  padding: 15px;
-  position: relative;
-  .actions {
-    color: #999;
-    .like-buttons, .subscribers {
-      margin-bottom: 10px;
-    }
-    position: absolute;
-    right: 30px;
-    top: 7px;
   }
   .headline {
     font-weight: bold;
@@ -45,23 +30,17 @@
 }
 
 .new-event-link {
-  text-align: right;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
+  h3 {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 .modal-body {
   form > div {
     margin-top: 10px;
-  }
-  .title {
-    width: 15%;
-    float: left;
-  }
-  .input-group {
-    width: 85%;
   }
   input, textarea {
     width: 100%;

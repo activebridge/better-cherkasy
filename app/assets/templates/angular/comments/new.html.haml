@@ -3,13 +3,17 @@
   %h3{'ng-show' => 'comment'} Відповісти
 .modal-body
   %form{'ng-submit' => 'add()'}
-    %div
-      .title Коментар:
-      .input-group
+    .row
+      .col-md-2.col-xs-12.title Коментар:
+      .col-md-10.col-xs-12
         %textarea.form-control{'ng-model' => 'newComment.body'}
 
-    %div
-      .title  
-      %button.btn.btn-primary{:type => 'submit'}
-        %span.glyphicon.glyphicon-plus
-        Додати
+    .row
+      .col-md-2
+      .col-md-10
+        %button.btn.btn-primary{:type => 'submit'}
+          %span.glyphicon.glyphicon-plus
+          Додати
+        %div.btn.btn-default{'ng-click' => 'close()'}
+          %span.glyphicon.glyphicon-cancel
+          Відміна
