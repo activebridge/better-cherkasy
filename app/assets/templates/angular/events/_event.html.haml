@@ -16,13 +16,14 @@
         {{tag.name}} &nbsp;
   .actions
     .row.btn-group-xs.pull-right.like-buttons
-      рейтинг
-      %button.btn.btn-default{'ng-click' => 'down(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
-        %span.glyphicon.glyphicon-thumbs-down
-      .rating{'ng-class' => "event.rating > 0 ? 'green' : 'red' "}
-        {{event.rating}}
       %button.btn.btn-default{'ng-click' => 'up(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
         %span.glyphicon.glyphicon-thumbs-up
+        .rating.green
+          {{event.likes}}
+      %button.btn.btn-default{'ng-click' => 'down(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
+        %span.glyphicon.glyphicon-thumbs-down
+        .rating.red
+          {{event.dislikes}}
       &nbsp;
       %a.btn.btn-default{'href' => "#/events/{{event.id}}"}
         %span.glyphicon.glyphicon-comment

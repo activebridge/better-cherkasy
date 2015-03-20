@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314224551) do
+ActiveRecord::Schema.define(version: 20150319185201) do
 
   create_table "comments", force: true do |t|
     t.integer  "commentable_id"
@@ -41,13 +41,27 @@ ActiveRecord::Schema.define(version: 20150314224551) do
   create_table "events", force: true do |t|
     t.string   "headline"
     t.text     "description"
-    t.integer  "rating",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.date     "date"
     t.time     "time"
+    t.integer  "cached_votes_total",                 default: 0
+    t.integer  "cached_votes_score",                 default: 0
+    t.integer  "cached_votes_up",                    default: 0
+    t.integer  "cached_votes_down",                  default: 0
+    t.integer  "cached_weighted_score",              default: 0
+    t.integer  "cached_weighted_total",              default: 0
+    t.float    "cached_weighted_average", limit: 24, default: 0.0
   end
+
+  add_index "events", ["cached_votes_down"], name: "index_events_on_cached_votes_down", using: :btree
+  add_index "events", ["cached_votes_score"], name: "index_events_on_cached_votes_score", using: :btree
+  add_index "events", ["cached_votes_total"], name: "index_events_on_cached_votes_total", using: :btree
+  add_index "events", ["cached_votes_up"], name: "index_events_on_cached_votes_up", using: :btree
+  add_index "events", ["cached_weighted_average"], name: "index_events_on_cached_weighted_average", using: :btree
+  add_index "events", ["cached_weighted_score"], name: "index_events_on_cached_weighted_score", using: :btree
+  add_index "events", ["cached_weighted_total"], name: "index_events_on_cached_weighted_total", using: :btree
 
   create_table "subscriptions", force: true do |t|
     t.integer  "user_id"

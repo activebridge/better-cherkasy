@@ -1,6 +1,6 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :headline, :description, :rating,
-    :creator, :date, :time, :comments_count
+  attributes :id, :headline, :description, :likes, :dislikes,
+    :creator, :date, :time, :comments_count, :rating
 
   has_many :subscriptions
   has_many :tags
