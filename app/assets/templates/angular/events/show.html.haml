@@ -4,7 +4,7 @@
 .row
   .col-md-10
   .col-md-2
-    .btn.btn-primary.btn-sm{'ng-click' => "openNewCommentModal('#{ asset_path('comments/new.html') }')", 'ng-show' => 'userSignedIn()'}
+    .btn.btn-primary.btn-sm.pull-right{'ng-click' => "openNewCommentModal('#{ asset_path('comments/new.html') }')", 'ng-show' => 'userSignedIn()'}
       %span.glyphicon.glyphicon-comment
       Коментувати
 .row

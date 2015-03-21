@@ -6,14 +6,16 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .header
-      .logo
-        = link_to '#/' do
-          = image_tag 'logo.png'
-      .nav-bar{'ng-controller' => 'NavBarCtrl'}
-        %ng-include(src="'#{asset_path('angular/shared/nav_bar.html')}'")
+    .container-fluid
+      .row
+        .col-md-9
+          = link_to '#/' do
+            = image_tag 'logo.png', style: 'width: 260px;'
+        .col-md-3{'ng-controller' => 'NavBarCtrl'}
+          %ng-include(src="'#{asset_path('angular/shared/nav_bar.html')}'")
 
-      .alert.fade{'active-class' => 'in alert', :duration => '0', 'flash-alert' => '', class: 'display-none'}
-        %button.close{'ng-click' => 'hide();', :type => 'button'} &times;
-        %span.alert-message {{flash.message}}
-    %div{'ng-view' => ''}
+      .row
+        .col-md-12.alert.fade{'active-class' => 'in alert', :duration => '0', 'flash-alert' => '', class: 'display-none'}
+          %button.close{'ng-click' => 'hide();', :type => 'button'} &times;
+          %span.alert-message {{flash.message}}
+      %div{'ng-view' => ''}
