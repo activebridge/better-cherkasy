@@ -11,6 +11,11 @@
   }
 }
 
+.jumbotron p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
 @media (min-width: 1200px) {
   .pull-right-lg {
     float: right;

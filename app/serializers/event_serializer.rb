@@ -4,6 +4,7 @@ class EventSerializer < ActiveModel::Serializer
 
   has_many :subscriptions
   has_many :tags
+  has_many :regions
 
   def creator
     UserSerializer.new(object.user)

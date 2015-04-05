@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   resources :events, except: [:new, :edit, :update] do
     resources :comments, only: [:index, :create, :destroy]
   end

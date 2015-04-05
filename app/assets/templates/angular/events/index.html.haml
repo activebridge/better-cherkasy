@@ -1,6 +1,7 @@
 .row
   .col-md-12.new-event-link{'ng-show' => 'userSignedIn()'}
-    %h3.pull-right-lg.center{'ng-click' => "openModal('#{ asset_path('events/new.html') }')"} Запропонувати
+    %h3.pull-right-lg.center
+      %a{href: '/#/events/new'} Запропонувати
 %ul.events
   %li.jumbotron{'ng-repeat' => 'event in events'}
     %ng-include(src="'#{asset_path('angular/events/_event.html')}'")
