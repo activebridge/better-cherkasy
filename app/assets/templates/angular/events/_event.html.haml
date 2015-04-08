@@ -14,11 +14,13 @@
     .row.small.italic
       %span{'ng-repeat' => 'tag in event.tags'}
         %a{'href' => '#'}
-          {{tag.name}} &nbsp;
+          {{tag.name}}
+        &nbsp;
     .row.small.italic
       %span{'ng-repeat' => 'region in event.regions'}
         %a{'href' => '#'}
-          {{region.title}} &nbsp;
+          {{region.title}}
+        &nbsp;
   .col-md-2
     .row.btn-group-xs.pull-right-lg
       %button.btn.btn-default{'ng-click' => 'up(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
