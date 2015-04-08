@@ -34,11 +34,18 @@
             %auto-complete{'source' => 'loadTags($query)'}
 
       .row
+        .col-md-2.col-xs-12.title Район:
+        .col-md-10.col-xs-12
+          %span.region{'ng-repeat' => 'region in newEvent.regions'}
+            {{region}}
+          #map-canvas
+
+      .row
         .col-md-2.col-xs-12.title
         .col-md-10.col-xs-12
           %button.btn.btn-primary{:type => 'submit'}
             %span.glyphicon.glyphicon-plus
             Додати
-          %div.btn.btn-default{'ng-click' => 'close()'}
+          %div.btn.btn-default{'ng-click' => 'cancel()'}
             %span.glyphicon.glyphicon-cancel
             Відміна

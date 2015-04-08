@@ -14,11 +14,11 @@ betterCherkasy.controller 'EventsCtrl', [
         , (success) ->
             $scope.events.splice(index, 1)
 
-    $scope.openModal = (templateUrl)->
+    $scope.openNewEventModal = (templateUrl)->
       modalInstance = $modal.open
         size: 'lg'
         templateUrl: templateUrl
-        controller: 'NewEventCtrl'
+        controller: 'NewEventModalCtrl'
         resolve:
           events: ->
             $scope.events
