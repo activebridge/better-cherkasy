@@ -5,7 +5,6 @@ class Event < ActiveRecord::Base
   acts_as_votable
 
   belongs_to :user
-  has_and_belongs_to_many :regions
   has_many :subscriptions
   has_many :comments, as: :commentable
 
@@ -30,11 +29,5 @@ class Event < ActiveRecord::Base
   def tags=(data)
     return unless data
     super data.map{ |item| ActsAsTaggableOn::Tag.find_or_create_by(item) }
-  end
-
-  def regions=(data)
-    return unless data
-    regions = data.map { |title| Region.find_or_create_by(title: title) }.compact
-    super regions if regions.present?
   end
 end

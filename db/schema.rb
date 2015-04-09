@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405084812) do
+ActiveRecord::Schema.define(version: 20150409185324) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(version: 20150405084812) do
     t.integer  "cached_weighted_score",              default: 0
     t.integer  "cached_weighted_total",              default: 0
     t.float    "cached_weighted_average", limit: 24, default: 0.0
+    t.float    "lat",                     limit: 24
+    t.float    "lng",                     limit: 24
+    t.string   "address"
   end
 
   add_index "events", ["cached_votes_down"], name: "index_events_on_cached_votes_down", using: :btree
@@ -77,14 +80,6 @@ ActiveRecord::Schema.define(version: 20150405084812) do
   add_index "events", ["cached_weighted_average"], name: "index_events_on_cached_weighted_average", using: :btree
   add_index "events", ["cached_weighted_score"], name: "index_events_on_cached_weighted_score", using: :btree
   add_index "events", ["cached_weighted_total"], name: "index_events_on_cached_weighted_total", using: :btree
-
-  create_table "events_regions", id: false, force: true do |t|
-    t.integer "event_id"
-    t.integer "region_id"
-  end
-
-  add_index "events_regions", ["event_id"], name: "index_events_regions_on_event_id", using: :btree
-  add_index "events_regions", ["region_id"], name: "index_events_regions_on_region_id", using: :btree
 
   create_table "regions", force: true do |t|
     t.string   "title"

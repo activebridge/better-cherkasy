@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   before_action :find_event, only: :show
 
   wrap_parameters :event, include: [:headline, :description,
-                                    :date, :time, :tags, :regions]
+                                    :date, :time, :tags,
+                                    :lat, :lng, :address]
 
   def index
     json = ActiveModel::ArraySerializer.new(Event.order('cached_weighted_score desc'),

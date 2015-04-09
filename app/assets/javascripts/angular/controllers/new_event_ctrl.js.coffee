@@ -2,7 +2,6 @@ betterCherkasy.controller 'NewEventCtrl', [
   '$scope', 'Event', '$http', '$location'
   ($scope, Event, $http, $location) ->
     $scope.newEvent = {}
-    $scope.newEvent.regions = []
 
     $scope.options = ->
       {language: 'uk'}
@@ -17,30 +16,44 @@ betterCherkasy.controller 'NewEventCtrl', [
           $location.path('/')
       )
 
-    $scope.updateRegions = (name) ->
-      index = $scope.newEvent.regions.indexOf(name)
-      if index > -1
-        $scope.newEvent.regions.splice(index, 1)
-      else
-        $scope.newEvent.regions.push(name)
-      $scope.$apply()
 
     $scope.cancel = ->
       $location.path('/')
 
     initializeGoogleMaps = ->
+      currentMarker = null
+      placeMarker = (location) ->
+        currentMarker.setMap(null) if currentMarker
+        marker = new (google.maps.Marker)(
+          position: location
+          map: map
+          title: 'клікніть по маркеро щоб отримати адресу'
+        )
+        currentMarker = marker
+        infowindow = new (google.maps.InfoWindow)
+        geocoder = new (google.maps.Geocoder)
+        $scope.newEvent.lat = location.lat()
+        $scope.newEvent.lng = location.lng()
+        latlng = new (google.maps.LatLng)(location.lat(), location.lng())
+        geocoder.geocode { 'latLng': latlng, 'language': 'ua' }, (results, status) ->
+          if status == google.maps.GeocoderStatus.OK
+            infowindow.setContent(results[0].formatted_address)
+            $scope.newEvent.address = results[0].formatted_address
+            infowindow.open map, marker
+            google.maps.event.addListener marker, 'click', ->
+              infowindow.open map, marker
+        google.maps.event.addListener infowindow, 'closeclick', ->
+          marker.setMap null
+        google.maps.event.addListener marker, 'dblclick', ->
+          marker.setMap null
       myLatlng = new (google.maps.LatLng)(49.4344984, 32.0618366)
       mapOptions =
         zoom: 13
         center: myLatlng
       map = new (google.maps.Map)(document.getElementById('map-canvas'), mapOptions)
-      kmlLayer = new (google.maps.KmlLayer)(
-        url: 'https://drive.google.com/uc?export=download&id=0B3l_DlumkLHhY1A2S0tRbEJpa1U'
-        suppressInfoWindows: true
-        preserveViewport: true
-        map: map)
-      google.maps.event.addListener kmlLayer, 'click', (kmlEvent) ->
-        $scope.updateRegions(kmlEvent.featureData.name)
+      google.maps.event.addListener map, 'click', (event) ->
+        placeMarker event.latLng
+        return
 
     setTimeout ( ->
       $('.timepicker').timepicker
