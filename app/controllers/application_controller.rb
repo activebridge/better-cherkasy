@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  http_basic_authenticate_with name: 'active', password: 'bridge'
 
   def current_user
     @user ||= User.find_by_auth_token(params[:auth_token])
