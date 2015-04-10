@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :events, except: [:new, :edit, :update] do
+    collection do
+      get :mine
+    end
     resources :comments, only: [:index, :create, :destroy]
   end
 

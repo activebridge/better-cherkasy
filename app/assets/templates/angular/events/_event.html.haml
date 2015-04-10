@@ -34,8 +34,10 @@
       %a.btn.btn-default{'href' => "#/events/{{event.id}}"}
         %span.glyphicon.glyphicon-comment
         {{event.comments_count}}
-      %button.btn.btn-default{'ng-click' => 'delete(event.id, $index)', :type => 'button', 'ng-show' => 'userSignedIn()'}
+      %button.btn.btn-default{'ng-click' => 'delete(event.id, $index)', :type => 'button', 'ng-show' => 'isMine()'}
         %span.glyphicon.glyphicon-trash
+      %button.btn.btn-default{'ng-click' => 'edit(event.id)', :type => 'button', 'ng-show' => 'isMine()'}
+        %span.glyphicon.glyphicon-edit
     .clear
     .row.subscribers
       %ul

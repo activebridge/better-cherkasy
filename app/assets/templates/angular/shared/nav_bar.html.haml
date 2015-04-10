@@ -4,7 +4,10 @@
       .fa.fa-facebook-square.fa-larger
       Ввійти через Facebook
   .item.center.pull-right-lg{'ng-show' => '!navBar.showSignInButton'}
+    %a{'href' => '/#/events/mine'}
+      Мої пропозиції
+    |
     {{navBar.userName}}
     %img{src: "{{navBar.avatarUrl}}"}
-    %a{'href' => '', 'ng-click' => 'logOut()', 'ng-show' => '!navBar.showSignInButton'}
+    %a{'href' => '', 'ng-click' => 'logOut()'}
       Вийти

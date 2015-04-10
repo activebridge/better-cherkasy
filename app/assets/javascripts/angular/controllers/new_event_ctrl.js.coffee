@@ -3,9 +3,6 @@ betterCherkasy.controller 'NewEventCtrl', [
   ($scope, Event, $http, $location) ->
     $scope.newEvent = {}
 
-    $scope.options = ->
-      {language: 'uk'}
-
     $scope.loadTags = (query) ->
       $http.get('/tags?query=' + query)
 
@@ -15,7 +12,6 @@ betterCherkasy.controller 'NewEventCtrl', [
         (response) ->
           $location.path('/')
       )
-
 
     $scope.cancel = ->
       $location.path('/')
@@ -68,6 +64,5 @@ betterCherkasy.controller 'NewEventCtrl', [
       initializeGoogleMaps()
 
     ), 300
-
 
 ]

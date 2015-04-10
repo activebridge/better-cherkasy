@@ -9,10 +9,10 @@
   %body
     .container-fluid
       .row
-        .col-md-9
+        .col-md-8
           = link_to '#/' do
             = image_tag 'logo.png', style: 'width: 260px;'
-        .col-md-3{'ng-controller' => 'NavBarCtrl'}
+        .col-md-4{'ng-controller' => 'NavBarCtrl'}
           %ng-include(src="'#{asset_path('angular/shared/nav_bar.html')}'")
 
       .row
