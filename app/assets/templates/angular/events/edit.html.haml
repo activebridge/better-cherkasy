@@ -1,15 +1,15 @@
-#new-event
+#edit-event
   .modal-header
-    %h3 Запропонувати
+    %h3 Пропозиція
   .modal-body
-    %form{'ng-submit' => 'add()'}
+    %form{'ng-submit' => 'save()'}
       %ng-include(src="'#{asset_path('angular/events/_event_form.html')}'")
       .row
         .col-md-2.col-xs-12.title
         .col-md-10.col-xs-12
           %button.btn.btn-primary{:type => 'submit'}
             %span.glyphicon.glyphicon-plus
-            Додати
+            Зберегти
           %div.btn.btn-default{'ng-click' => 'cancel()'}
             %span.glyphicon.glyphicon-cancel
             Відміна

@@ -19,6 +19,10 @@ betterCherkasy.config([
         templateUrl: '<%= asset_path('events/show.html') %>',
         controller: 'ShowEventCtrl'
       })
+      .when('/events/:id/edit', {
+        templateUrl: '<%= asset_path('events/edit.html') %>',
+        controller: 'EditEventCtrl'
+      })
       .otherwise({ redirectTo: '/' });
   }
 ]).config(["$httpProvider", function($httpProvider) {

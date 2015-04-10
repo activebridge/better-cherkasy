@@ -1,6 +1,6 @@
 betterCherkasy.controller 'MyEventsCtrl', [
-  '$scope', 'Event', 'eventDecorator'
-  ($scope, Event, eventDecorator) ->
+  '$scope', 'Event', 'eventDecorator', '$location'
+  ($scope, Event, eventDecorator, $location) ->
     eventDecorator($scope)
 
     init = ->
@@ -15,6 +15,9 @@ betterCherkasy.controller 'MyEventsCtrl', [
           auth_token: getAuthToken()
         , (success) ->
             $scope.events.splice(index, 1)
+
+    $scope.edit = (id) ->
+      $location.path('/events/' + id + '/edit')
 
     $scope.isMine = ->
       userSignedIn()

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authorize_user!, except: [ :index, :show ]
-  before_action :find_own_event, only: :destroy
+  before_action :find_own_event, only: [ :destroy, :update ]
   before_action :find_event, only: :show
 
   wrap_parameters :event, include: [:headline, :description,
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     if @event.save
-      render json: @event, status: :ok
+      render json: @event, status: :created
     else
       render json: { status: :error, error: @event.errors.messages }, status: :unprocessable_entity
     end
@@ -40,10 +40,22 @@ class EventsController < ApplicationController
     head(:ok)
   end
 
+  def update
+    if @event.update_attributes(event_params)
+      render json: @event, status: :accepted
+    else
+      render json: { status: :error, error: @event.errors.messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def event_params
-    params.require(:event).permit!
+    params.require(:event).permit([:headline, :description,
+                                    :date, :time,
+                                    :lat, :lng, :address,
+                                    tags: [:name]
+    ])
   end
 
   def find_event
