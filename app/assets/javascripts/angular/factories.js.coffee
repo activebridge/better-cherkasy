@@ -1,5 +1,12 @@
 betterCherkasy.factory 'Event', ['$resource', ($resource) ->
-  $resource('/events/:id', {id: '@id'}, {update: {method: 'PUT'}})
+  $resource('/events/:id/:action', {id: '@id'},
+    update:
+      method: 'PUT'
+    edit:
+      method: 'GET'
+      params:
+        action: 'edit'
+  )
 ]
 
 betterCherkasy.factory 'User', ['$resource', ($resource) ->

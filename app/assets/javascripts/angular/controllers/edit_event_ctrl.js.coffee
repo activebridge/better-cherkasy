@@ -4,9 +4,12 @@ betterCherkasy.controller 'EditEventCtrl', [
     eventFormDecorator($scope)
 
     init = ->
-      $scope.newEvent = Event.get
+      $scope.newEvent = Event.edit {
         id: $routeParams.id
         auth_token: getAuthToken()
+      }, (response) ->
+        location = new (google.maps.LatLng)(response.lat, response.lng)
+        $scope.placeMarker(location)
 
     init()
 

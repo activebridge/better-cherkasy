@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authorize_user!, except: [ :index, :show ]
-  before_action :find_own_event, only: [ :destroy, :update ]
+  before_action :find_own_event, only: [ :destroy, :update, :edit ]
   before_action :find_event, only: :show
 
   wrap_parameters :event, include: [:headline, :description,
@@ -19,6 +19,10 @@ class EventsController < ApplicationController
                                            each_serializer: EventSerializer,
                                            root: nil)
     render json: json, status: :ok
+  end
+
+  def edit
+    render json: BasicEventSerializer.new(@event), status: :ok
   end
 
   def show
