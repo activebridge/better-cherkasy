@@ -21,3 +21,11 @@ a, a:focus {
 #map-canvas {
   height: 400px;
 }
+
+span.link {
+  cursor: pointer;
+  color: #337ab7;
+  &:hover {
+    text-decoration: underline;
+  }
+}

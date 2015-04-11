@@ -1,6 +1,10 @@
 .row
   .col-md-12.new-event-link{'ng-show' => 'userSignedIn()'}
-    %h3.pull-right-lg.center
+    %h5.pull-left
+      %span.link{'onclick' => 'showFilterPanel()'} Фільтри
+      |
+      %span.link{'onclick' => 'showEvetsMap()'} Мапа подій
+    %h3.pull-right-lg
       %a{href: '/#/events/new'} Запропонувати
 %ul.events
   %li.jumbotron{'ng-repeat' => 'event in events'}

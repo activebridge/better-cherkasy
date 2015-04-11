@@ -20,3 +20,7 @@
           %button.close{'ng-click' => 'hide();', :type => 'button'} &times;
           %span.alert-message {{flash.message}}
       %div{'ng-view' => ''}
+
+    #overlay
+      &nbsp;
+    %ng-include(src="'#{asset_path('angular/events/filter_panel.html')}'" ng-controller="FiltersCtrl")

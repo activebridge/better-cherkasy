@@ -40,7 +40,7 @@ betterCherkasy.factory 'eventFormDecorator', [
           marker.setMap null
           $scope.clearLocation()
 
-      initializeGoogleMaps = ->
+      initGoogleMap = ->
         myLatlng = new (google.maps.LatLng)(49.4344984, 32.0618366)
         mapOptions =
           zoom: 13
@@ -60,7 +60,7 @@ betterCherkasy.factory 'eventFormDecorator', [
           startDate: new Date()
           format: 'dd-mm-yyyy'
 
-        initializeGoogleMaps()
+        initGoogleMap()
 
       ), 300
 ]

@@ -30,6 +30,7 @@ gem 'ckeditor_rails'
 gem 'acts_as_commentable_with_threading'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'activeadmin', github: 'activeadmin'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry'

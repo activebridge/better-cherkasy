@@ -30,7 +30,8 @@
 //= require_tree ./angular/config
 //= require angular/routes
 //= require angular/factories
-//= require angular/main
+//= require global/auth
+//= require global/action_links
 //= require bootstrap-timepicker
 //= require bootstrap-datepicker
 //= require_tree ./angular/decorators

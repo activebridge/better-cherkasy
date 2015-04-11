@@ -1,0 +1,22 @@
+#slide-down-panel
+  За місцем:
+  .row
+    %span.link{'ng-click' => 'nearMe()'}
+      Поблизу біля Мене (
+    = image_tag 'ajax-loader.gif'
+    {{currentLocation}}
+    )
+
+    %b
+      Або
+    %span.link{'ng-click' => 'showMap()'}
+      Вибрати на карті
+    %div.btn.btn-default.btn-xs{'ng-click' => ''}
+      %span.glyphicon.glyphicon-filter
+      Го
+
+    .row.map-container{'style' => 'display: none;'}
+      .col-md-12.col-xs-12
+        #map-canvas
+
+
