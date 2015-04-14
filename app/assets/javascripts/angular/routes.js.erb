@@ -7,6 +7,10 @@ betterCherkasy.config([
         templateUrl: '<%= asset_path('events/index.html') %>',
         controller: 'EventsCtrl'
       })
+      .when('/events', {
+        templateUrl: '<%= asset_path('events/index.html') %>',
+        controller: 'EventsCtrl'
+      })
       .when('/events/new', {
         templateUrl: '<%= asset_path('events/new.html') %>',
         controller: 'NewEventCtrl'

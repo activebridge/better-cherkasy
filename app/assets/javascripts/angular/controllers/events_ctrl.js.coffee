@@ -1,10 +1,16 @@
 betterCherkasy.controller 'EventsCtrl', [
-  '$scope', 'Event', 'eventDecorator'
-  ($scope, Event, eventDecorator) ->
+  '$scope', 'Event', 'eventDecorator', '$routeParams'
+  ($scope, Event, eventDecorator, $routeParams) ->
     eventDecorator($scope)
 
     init = ->
-      $scope.events = Event.query ->
+      filters = {}
+      if $routeParams.lat && $routeParams.lng
+        filters['lat'] = $routeParams.lat
+        filters['lng'] = $routeParams.lng
+
+      $scope.events = Event.query filters, ->
+
 
     init()
 ]

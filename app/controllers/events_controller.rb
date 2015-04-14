@@ -8,7 +8,11 @@ class EventsController < ApplicationController
                                     :lat, :lng, :address]
 
   def index
-    json = ActiveModel::ArraySerializer.new(Event.order('cached_weighted_score desc'),
+    @events = Event.order('cached_weighted_score desc')
+    if params[:lat] && params[:lng]
+      @events = @events.near([params[:lat], params[:lng]], 2)
+    end
+    json = ActiveModel::ArraySerializer.new(@events,
                                            each_serializer: EventSerializer,
                                            root: nil)
     render json: json, status: :ok

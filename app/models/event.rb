@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   acts_as_taggable_on :tags
   acts_as_commentable
   acts_as_votable
+  geocoded_by :address, latitude: :lat, longitude: :lng
 
   belongs_to :user
   has_many :subscriptions

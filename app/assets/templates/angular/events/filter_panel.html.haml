@@ -11,12 +11,15 @@
       Або
     %span.link{'ng-click' => 'showMap()'}
       Вибрати на карті
-    %div.btn.btn-default.btn-xs{'ng-click' => ''}
+    %div.btn.btn-default.btn-xs{'ng-click' => 'applyFilter()'}
       %span.glyphicon.glyphicon-filter
       Го
 
-    .row.map-container{'style' => 'display: none;'}
-      .col-md-12.col-xs-12
-        #map-canvas
+  .row
+    Радіус по дефолту: 2км
+
+  .row.map-container{'style' => 'display: none;'}
+    .col-md-12.col-xs-12
+      #map-canvas
 
 
