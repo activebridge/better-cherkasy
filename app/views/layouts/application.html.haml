@@ -12,8 +12,8 @@
         .col-md-8
           = link_to '#/' do
             = image_tag 'logo.png', style: 'width: 260px;'
-        .col-md-4{'ng-controller' => 'NavBarCtrl'}
-          %ng-include(src="'#{asset_path('angular/shared/nav_bar.html')}'")
+        .col-md-4
+          %ng-include(src="'#{asset_path('angular/shared/nav_bar.html')}'" ng-controller='NavBarCtrl' onload='init()')
 
       .row
         .col-md-12.alert.fade{'active-class' => 'in alert', :duration => '0', 'flash-alert' => '', class: 'display-none'}
@@ -23,4 +23,5 @@
 
     #overlay
       &nbsp;
-    %ng-include(src="'#{asset_path('angular/events/filter_panel.html')}'" ng-controller="FiltersCtrl")
+    %ng-include(src="'#{asset_path('angular/events/filter_panel.html')}'" ng-controller="FiltersCtrl" onload='init()')
+    %ng-include(src="'#{asset_path('angular/events/map_panel.html')}'" ng-controller="EventsMapCtrl" onload='init()')

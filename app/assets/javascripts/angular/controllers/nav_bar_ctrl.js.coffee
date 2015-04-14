@@ -2,7 +2,7 @@ betterCherkasy.controller 'NavBarCtrl', [
   '$scope', '$facebook', 'AuthService', 'flash', 'Session', '$cookies', '$cookieStore'
   ($scope, $facebook, AuthService, flash, Session, $cookies, $cookieStore) ->
 
-    init = ->
+    $scope.init = ->
       checkCurrentUser().then ->
         $scope.navBar = {}
         if userSignedIn()
@@ -52,5 +52,4 @@ betterCherkasy.controller 'NavBarCtrl', [
 
           ), error = (msg) ->
             flash.error = msg
-    init()
 ]

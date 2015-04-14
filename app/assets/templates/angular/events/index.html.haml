@@ -1,9 +1,9 @@
 .row
   .col-md-12.new-event-link{'ng-show' => 'userSignedIn()'}
     %h5.pull-left
-      %span.link{'onclick' => 'showFilterPanel()'} Фільтри
+      %span.link{'onclick' => "showPanel('#events-filters')"} Фільтри
       |
-      %span.link{'onclick' => 'showEvetsMap()'} Карта подій
+      %span.link{'onclick' => "showPanel('#events-map')"} Карта подій
     %h3.pull-right-lg
       %a{href: '/#/events/new'} Запропонувати
 %ul.events
