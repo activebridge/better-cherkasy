@@ -29,3 +29,18 @@ span.link {
     text-decoration: underline;
   }
 }
+
+span.option {
+  &.active {
+    font-weight: bold;
+    color: black;
+    cursor: default;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.small {
+  font-size: 10px;
+}

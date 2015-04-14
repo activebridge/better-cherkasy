@@ -15,8 +15,8 @@ betterCherkasy.controller 'FiltersCtrl', [
       $scope.currentMarker = marker
       infowindow = new (google.maps.InfoWindow)
       geocoder = new (google.maps.Geocoder)
-      $scope.filters.lat = location.lat()
-      $scope.filters.lng = location.lng()
+      $scope.filters.lat = $scope.filters.mapLat = location.lat()
+      $scope.filters.lng = $scope.filters.mapLng = location.lng()
       latlng = new (google.maps.LatLng)(location.lat(), location.lng())
       geocoder.geocode { 'latLng': latlng, 'language': 'ua' }, (results, status) ->
         if status == google.maps.GeocoderStatus.OK
@@ -51,8 +51,8 @@ betterCherkasy.controller 'FiltersCtrl', [
         navigator.geolocation.getCurrentPosition (position) ->
           lat = position.coords.latitude
           lng = position.coords.longitude
-          $scope.filters.lat = lat
-          $scope.filters.lng = lng
+          $scope.filters.lat = $scope.filters.myLat = lat
+          $scope.filters.lng = $scope.filters.myLng = lng
           latlng = new (google.maps.LatLng)(lat, lng)
           geocoder = new (google.maps.Geocoder)
           geocoder.geocode { 'latLng': latlng, 'language': 'ua' }, (results, status) ->
@@ -69,13 +69,23 @@ betterCherkasy.controller 'FiltersCtrl', [
 
     init()
 
-    $scope.showMap = ->
+    turnOnOption = (elem) ->
+      $('span.option').removeClass('active')
+      elem.addClass('active')
+
+    $scope.showMap = ($event) ->
+      turnOnOption($($event.currentTarget))
       initGoogleMap()
       $('.map-container').slideDown(1000)
+      $scope.filters.lat = $scope.filters.mapLat
+      $scope.filters.lng = $scope.filters.mapLng
       return
 
-    $scope.nearMe = ->
+    $scope.nearMe = ($event) ->
+      turnOnOption($($event.currentTarget))
       $('.map-container').slideUp(1000)
+      $scope.filters.lat = $scope.filters.myLat
+      $scope.filters.lng = $scope.filters.myLng
       return
 
     $scope.applyFilter = ->

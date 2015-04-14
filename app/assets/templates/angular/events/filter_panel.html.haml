@@ -1,16 +1,21 @@
 #slide-down-panel
   За місцем:
   .row
-    %span.link{'ng-click' => 'nearMe()'}
+    %span.link.option.active{'ng-click' => 'nearMe($event)'}
       Поблизу біля Мене (
     = image_tag 'ajax-loader.gif'
     {{currentLocation}}
     )
 
-    %b
+    &nbsp;
+    &nbsp;
+    %b.small
       Або
-    %span.link{'ng-click' => 'showMap()'}
+    &nbsp;
+    &nbsp;
+    %span.link.option{'ng-click' => 'showMap($event)'}
       Вибрати на карті
+    &nbsp;
     %div.btn.btn-default.btn-xs{'ng-click' => 'applyFilter()'}
       %span.glyphicon.glyphicon-filter
       Го
@@ -18,6 +23,8 @@
   .row
     Радіус:
     %input.slider{'data-slider-value' => 2, 'data-slider-min' => 0, 'data-slider-max' => 10}
+    %span.small
+      (км)
 
   .row.map-container{'style' => 'display: none;'}
     .col-md-12.col-xs-12
