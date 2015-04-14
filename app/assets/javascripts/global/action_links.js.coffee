@@ -13,6 +13,7 @@ root.showFilterPanel = ->
   $('#overlay').show()
   setTimeout ( ->
     root.filterPanel = true
+    $('input.slider').slider()
   ), 300
   return
 

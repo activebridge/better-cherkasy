@@ -49,7 +49,11 @@ betterCherkasy.controller 'FiltersCtrl', [
     fetchCurrentGeoLocation = ->
       if navigator.geolocation
         navigator.geolocation.getCurrentPosition (position) ->
-          latlng = new (google.maps.LatLng)(position.coords.latitude, position.coords.longitude)
+          lat = position.coords.latitude
+          lng = position.coords.longitude
+          $scope.filters.lat = lat
+          $scope.filters.lng = lng
+          latlng = new (google.maps.LatLng)(lat, lng)
           geocoder = new (google.maps.Geocoder)
           geocoder.geocode { 'latLng': latlng, 'language': 'ua' }, (results, status) ->
             if status == google.maps.GeocoderStatus.OK
@@ -75,7 +79,9 @@ betterCherkasy.controller 'FiltersCtrl', [
       return
 
     $scope.applyFilter = ->
-      $location.path('/events').search('lat', $scope.filters.lat).search('lng', $scope.filters.lng)
+      $location.path('/events').search('lat', $scope.filters.lat)
+        .search('lng', $scope.filters.lng)
+        .search('radius', $('input.slider').data('slider').getValue())
       hideFilterPanel()
       return
 

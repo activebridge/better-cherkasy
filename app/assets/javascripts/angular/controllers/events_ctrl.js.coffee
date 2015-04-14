@@ -8,6 +8,7 @@ betterCherkasy.controller 'EventsCtrl', [
       if $routeParams.lat && $routeParams.lng
         filters['lat'] = $routeParams.lat
         filters['lng'] = $routeParams.lng
+        filters['radius'] = $routeParams.radius
 
       $scope.events = Event.query filters, ->
 

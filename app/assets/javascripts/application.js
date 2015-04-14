@@ -23,6 +23,7 @@
 //= require angular-flash
 //= require angular-cookies.min
 //= require angular-sanitize.min
+//= require bootstrap-slider
 //
 //= require angular_app
 //= require ckeditor-jquery
