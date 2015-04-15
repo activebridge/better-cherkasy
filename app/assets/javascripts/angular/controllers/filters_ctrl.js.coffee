@@ -58,7 +58,7 @@ betterCherkasy.controller 'FiltersCtrl', [
           geocoder.geocode { 'latLng': latlng, 'language': 'ua' }, (results, status) ->
             if status == google.maps.GeocoderStatus.OK
               $scope.currentLocation = results[0].formatted_address
-              $('.slide-down-panel img').hide()
+              $('#events-filters.slide-down-panel img.ajax-loader').hide()
               $scope.$apply()
       else
         $scope.currentLocation = 'Geolocation is not supported by this browser.'
@@ -73,8 +73,8 @@ betterCherkasy.controller 'FiltersCtrl', [
 
     $scope.showMap = ($event) ->
       turnOnOption($($event.currentTarget))
-      initGoogleMap()
-      $('.map-container').slideDown(1000)
+      $('.map-container').slideDown 1000, ->
+        initGoogleMap()
       $scope.filters.lat = $scope.filters.mapLat
       $scope.filters.lng = $scope.filters.mapLng
       return

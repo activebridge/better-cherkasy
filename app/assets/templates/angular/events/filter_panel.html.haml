@@ -3,7 +3,7 @@
   .row
     %span.link.option.active{'ng-click' => 'nearMe($event)'}
       Поблизу біля Мене (
-    = image_tag 'ajax-loader.gif'
+    = image_tag 'ajax-loader.gif', class: 'ajax-loader'
     {{currentLocation}}
     )
 
