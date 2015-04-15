@@ -43,6 +43,11 @@ betterCherkasy.controller 'FiltersCtrl', [
       $scope.map = new (google.maps.Map)(canvas, mapOptions)
       google.maps.event.addListener $scope.map, 'click', (event) ->
         $scope.placeMarker event.latLng
+
+      if $scope.filters.myLat
+        currentLatLng = new (google.maps.LatLng)($scope.filters.myLat, $scope.filters.myLng)
+        $scope.placeMarker currentLatLng
+
       $scope.googleMapReady = true
       return
 

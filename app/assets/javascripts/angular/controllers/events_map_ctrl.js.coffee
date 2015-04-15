@@ -17,7 +17,7 @@ betterCherkasy.controller 'EventsMapCtrl', [
     placeMarker = (event) ->
       location = new (google.maps.LatLng)(event.lat, event.lng)
       infowindow = new (google.maps.InfoWindow)(
-        content: event.address
+        content: event.headline + '</br>' + "<span style='font-size: 9px;'>" + event.address + '</span>'
       )
       marker = new (google.maps.Marker)(
         position: location

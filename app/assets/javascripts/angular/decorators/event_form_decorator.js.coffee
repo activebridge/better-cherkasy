@@ -27,8 +27,10 @@ betterCherkasy.factory 'eventFormDecorator', [
         $scope.newEvent.lng = location.lng()
         geocoder.geocode { 'latLng': location, 'language': 'ua' }, (results, status) ->
           if status == google.maps.GeocoderStatus.OK
-            infowindow.setContent(results[0].formatted_address)
-            $scope.newEvent.address = results[0].formatted_address
+            addrs = results[0].address_components
+            address = addrs[1].short_name + ' ' + addrs[0].short_name + ', ' + addrs[3].short_name
+            infowindow.setContent(address)
+            $scope.newEvent.address = address
             infowindow.open $scope.map, marker
         google.maps.event.addListener infowindow, 'closeclick', ->
           marker.setMap null
