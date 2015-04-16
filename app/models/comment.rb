@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   # want user to vote on the quality of comments.
   acts_as_votable
 
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, polymorphic: true, counter_cache: :comments_count
 
   # NOTE: Comments belong to a user
   belongs_to :user

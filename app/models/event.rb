@@ -11,8 +11,8 @@ class Event < ActiveRecord::Base
 
   scope :primary, -> { order('cached_weighted_score desc') }
   scope :newest, -> { order('created_at desc') }
-  scope :most_active, -> { }
-  scope :most_popular, -> { }
+  scope :most_active, -> { order('comments_count desc').where('comments_count > 0') }
+  scope :most_popular, -> {  }
   scope :by_location, -> (params) {
     near([params[:lat], params[:lng]], params[:radius])
   }

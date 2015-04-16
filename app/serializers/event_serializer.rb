@@ -7,10 +7,6 @@ class EventSerializer < BasicEventSerializer
     UserSerializer.new(object.user)
   end
 
-  def comments_count
-    object.comments.count
-  end
-
   def created_at
     object.created_at.strftime('%H:%M %d.%m')
   end

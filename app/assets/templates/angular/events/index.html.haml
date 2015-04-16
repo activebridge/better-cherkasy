@@ -13,4 +13,10 @@
         %ng-include(src="'#{asset_path('angular/events/_event.html')}'")
   .col-md-3
     .jumbotron.timelineevents
-      %ng-include(src="'#{asset_path('angular/events/latest.html')}'" ng-controller='LatestEventsCtrl')
+      .center
+        Найсвіжіші події
+      %ng-include(src="'#{asset_path('angular/events/widget.html')}'" ng-controller='LatestEventsCtrl')
+    .jumbotron.timelineevents
+      .center
+        Найбільш обговорювані події
+      %ng-include(src="'#{asset_path('angular/events/widget.html')}'" ng-controller='MostActiveEventsCtrl')

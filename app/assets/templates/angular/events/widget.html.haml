@@ -1,0 +1,10 @@
+%ul.events
+  %li{'ng-repeat' => 'event in events'}
+    %a.headline{'href' => '/#/events/{{event.id}}' }
+      {{event.headline}}
+    .timestamp{'ng-show' => 'showTimeStamp'}
+      {{event.created_at}}
+    %a.btn.btn-default.btn-xs.pull-right{'href' => "#/events/{{event.id}}", 'ng-show' => 'showComments'}
+      %span.glyphicon.glyphicon-comment
+      {{event.comments_count}}
+    .clear
