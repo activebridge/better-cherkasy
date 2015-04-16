@@ -1,0 +1,9 @@
+.center
+  Найсвіжіші події
+%ul.events
+  %li{'ng-repeat' => 'event in events'}
+    %a.headline{'href' => '/#/events/{{event.id}}' }
+      {{event.headline}}
+    .timestamp
+      {{event.created_at}}
+    .clear

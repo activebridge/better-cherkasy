@@ -1,0 +1,19 @@
+.jumbotron {
+  &.timelineevents {
+    padding: 10px;
+    li {
+      margin: 5px 0;
+      .headline {
+        float: left;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 78%;
+      }
+      .timestamp {
+        float: right;
+        font-size: 10px;
+      }
+    }
+  }
+}
