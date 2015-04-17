@@ -6,6 +6,14 @@
     %script{:src => "https://maps.googleapis.com/maps/api/js?sensor=false&language=uk"}
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    :javascript
+      var _urq = _urq || [];
+      _urq.push(['initSite', 'cf527785-7623-41a1-9a5f-261d9542d411']);
+      (function() {
+      var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
+      ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
+      })();
   %body
     .container-fluid
       .row
