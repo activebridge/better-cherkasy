@@ -8,19 +8,19 @@
     .row.headline
       %a{href: "#/events/{{event.id}}"}
         {{event.headline}}
-    .row.small
-      {{event.date}} {{event.time}}
     .row{'ng-bind-html' => 'descriptionHtml(event)' }
+    .row.small.italic
+      Коли: {{event.date}} {{event.time}}
+    .row.small.italic
+      Де:
+      %a{'href' => '#'}
+        {{event.address}}
     .row.small.italic
       Теги:
       %span{'ng-repeat' => 'tag in event.tags'}
         %a{'href' => '/#/events?tag={{tag.name}}'}
           {{tag.name}}
         &nbsp;
-    .row.small.italic
-      Збераємось:
-      %a{'href' => '#'}
-        {{event.address}}
   .col-md-3
     .row.btn-group-xs.pull-right-lg
       %button.btn.btn-default{'ng-click' => 'up(event)', :type => 'button'}
