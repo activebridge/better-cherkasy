@@ -9,7 +9,10 @@ betterCherkasy.controller 'EventsCtrl', [
         filters['lat'] = $routeParams.lat
         filters['lng'] = $routeParams.lng
         filters['radius'] = $routeParams.radius
-        filters['service'] = 'Events::ByLocationService'
+        filters['service'] = 'Events::FiltersService'
+      if $routeParams.tag
+        filters['tag'] = $routeParams.tag
+        filters['service'] = 'Events::FiltersService'
 
       $scope.events = Event.query filters, ->
 

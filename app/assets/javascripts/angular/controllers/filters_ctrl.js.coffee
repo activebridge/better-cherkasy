@@ -1,9 +1,12 @@
 betterCherkasy.controller 'FiltersCtrl', [
-  '$scope', '$location'
-  ($scope, $location) ->
+  '$scope', '$location', '$http'
+  ($scope, $location, $http) ->
     $scope.currentLocation = null
     $scope.googleMapReady = false
     $scope.filters = {}
+
+    $http.get('/tags').success (data) ->
+      $scope.tags = data
 
     $scope.placeMarker = (location) ->
       $scope.currentMarker.setMap(null) if $scope.currentMarker
@@ -98,5 +101,9 @@ betterCherkasy.controller 'FiltersCtrl', [
       hidePanel()
       return
 
+    $scope.filterByTag = (tag) ->
+      console.log tag
+      $location.path('/events').search('tag', tag)
+      hidePanel()
 ]
 

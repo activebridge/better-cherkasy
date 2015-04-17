@@ -4,7 +4,7 @@
       %img{src: "{{event.creator.avatar_url}}"}
     .row.name
       {{event.creator.name}}
-  .col-md-9.event
+  .col-md-8.event
     .row.headline
       %a{href: "#/events/{{event.id}}"}
         {{event.headline}}
@@ -12,15 +12,16 @@
       {{event.date}} {{event.time}}
     .row{'ng-bind-html' => 'descriptionHtml(event)' }
     .row.small.italic
+      Теги:
       %span{'ng-repeat' => 'tag in event.tags'}
-        %a{'href' => '#'}
+        %a{'href' => '/#/events?tag={{tag.name}}'}
           {{tag.name}}
         &nbsp;
     .row.small.italic
       Збераємось:
       %a{'href' => '#'}
         {{event.address}}
-  .col-md-2
+  .col-md-3
     .row.btn-group-xs.pull-right-lg
       %button.btn.btn-default{'ng-click' => 'up(event)', :type => 'button'}
         %span.glyphicon.glyphicon-thumbs-up

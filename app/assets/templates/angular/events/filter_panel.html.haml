@@ -30,4 +30,12 @@
     .col-md-12.col-xs-12
       #map-canvas
 
+  <br/>
+  Теги:
+  .row
+    %span{'ng-repeat' => 'tag in tags'}
+      %span.link{'ng-click' => 'filterByTag(tag.name)'}
+        %i
+          {{tag.name}}
+      &nbsp;
 

@@ -15,7 +15,14 @@ class Event < ActiveRecord::Base
   scope :most_popular, -> { order('cached_weighted_score desc').where('cached_weighted_score > 0') }
   scope :for_last, -> (period) { where('created_at >= ?', Date.today - period) }
   scope :by_location, -> (params) {
-    near([params[:lat], params[:lng]], params[:radius])
+    if params[:lat] && params[:lng]
+      near([params[:lat], params[:lng]], params[:radius])
+    end
+  }
+  scope :by_tag, -> (tag) {
+    if tag
+      tagged_with(tag)
+    end
   }
 
   def add_comment(user, text)
