@@ -20,3 +20,7 @@
       .center
         Найбільш обговорювані події
       %ng-include(src="'#{asset_path('angular/events/widget.html')}'" ng-controller='MostActiveEventsCtrl')
+    .jumbotron.timelineevents
+      .center
+        Найбільш популярні події
+      %ng-include(src="'#{asset_path('angular/events/widget.html')}'" ng-controller='MostPopularEventsCtrl')

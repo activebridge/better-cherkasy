@@ -22,11 +22,11 @@
         {{event.address}}
   .col-md-2
     .row.btn-group-xs.pull-right-lg
-      %button.btn.btn-default{'ng-click' => 'up(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
+      %button.btn.btn-default{'ng-click' => 'up(event)', :type => 'button'}
         %span.glyphicon.glyphicon-thumbs-up
         .rating.green
           {{event.likes}}
-      %button.btn.btn-default{'ng-click' => 'down(event)', :type => 'button', 'ng-show' => 'userSignedIn()'}
+      %button.btn.btn-default{'ng-click' => 'down(event)', :type => 'button'}
         %span.glyphicon.glyphicon-thumbs-down
         .rating.red
           {{event.dislikes}}

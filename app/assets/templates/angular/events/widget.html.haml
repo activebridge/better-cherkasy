@@ -1,10 +1,20 @@
+%span.pull-right{'ng-show' => 'configs.showTabs'}
+  %span.link.option.active{'ng-click' => "changeDuration('week', $event)"}
+    За тиждень
+  |
+  %span.link.option{'ng-click' => "changeDuration('month', $event)"}
+    За місяць
 %ul.events
   %li{'ng-repeat' => 'event in events'}
     %a.headline{'href' => '/#/events/{{event.id}}' }
       {{event.headline}}
-    .timestamp{'ng-show' => 'showTimeStamp'}
+    .timestamp{'ng-show' => 'configs.showTimeStamp'}
       {{event.created_at}}
-    %a.btn.btn-default.btn-xs.pull-right{'href' => "#/events/{{event.id}}", 'ng-show' => 'showComments'}
+    %a.btn.btn-default.btn-xs.pull-right{'href' => "#/events/{{event.id}}", 'ng-show' => 'configs.showComments'}
       %span.glyphicon.glyphicon-comment
       {{event.comments_count}}
+    .pull-right{'ng-show' => 'configs.showRating'}
+      %span.glyphicon.glyphicon-thumbs-up{}
+      .rating.green
+        {{event.likes}}
     .clear
