@@ -13,7 +13,7 @@
       Коли: {{event.date}} {{event.time}}
     .row.small.italic
       Де:
-      %a{'href' => '#'}
+      %span.link{'ng-click' => 'showAddressOnMap(event)'}
         {{event.address}}
     .row.small.italic
       Теги:
