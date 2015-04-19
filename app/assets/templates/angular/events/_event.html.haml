@@ -11,11 +11,11 @@
     .row{'ng-bind-html' => 'descriptionHtml(event)' }
     .row.small.italic
       Коли: {{event.date}} {{event.time}}
-    .row.small.italic
+    .row.small.italic{'ng-show' => 'event.address'}
       Де:
       %span.link{'ng-click' => 'showAddressOnMap(event)'}
         {{event.address}}
-    .row.small.italic
+    .row.small.italic{'ng-show' => 'event.tags.length'}
       Теги:
       %span{'ng-repeat' => 'tag in event.tags'}
         %a{'href' => '/#/events?tag={{tag.name}}'}
