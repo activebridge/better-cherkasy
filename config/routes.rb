@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get :mine
     end
     resources :comments, only: [:index, :create, :destroy]
+    resources :photos, only: [:create]
   end
 
   resources :home, only: :index

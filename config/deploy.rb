@@ -5,7 +5,8 @@ user = 'deploy'
 branch = 'master'
 application = 'better-cherkasy'
 
-server '188.226.217.77', user: user, roles: [:app, :web, :db], primary: true, password: 'thunder'
+server '188.226.217.77', user: user, roles: [:app, :web, :db],
+  primary: true, password: 'thunder'
 set :user, user
 
 # Default deploy_to directory is /var/www/my_app
@@ -31,9 +32,19 @@ set :use_sudo, false
 set :scm, :git
 
 namespace :deploy do
+
+  namespace :assets do
+    task :precompile do
+      on roles(:web) do
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
+      execute :mkdir, '-p', "#{ release_path }/tmp"
       execute :touch, release_path.join('tmp/restart.txt')
     end
   end
@@ -52,4 +63,3 @@ namespace :deploy do
 
   before "deploy", "deploy:check_revision"
 end
-

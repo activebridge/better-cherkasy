@@ -2,6 +2,7 @@ class EventSerializer < BasicEventSerializer
   attributes :likes, :dislikes, :creator, :comments_count, :rating, :created_at
 
   has_many :subscriptions
+  has_many :photos
 
   def creator
     UserSerializer.new(object.user)

@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :subscriptions
   has_many :comments, as: :commentable
+  has_many :photos
 
   scope :primary, -> { order('cached_weighted_score desc') }
   scope :newest, -> { order('created_at desc') }

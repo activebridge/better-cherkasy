@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416121258) do
+ActiveRecord::Schema.define(version: 20150419184806) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -81,6 +81,16 @@ ActiveRecord::Schema.define(version: 20150416121258) do
   add_index "events", ["cached_weighted_average"], name: "index_events_on_cached_weighted_average", using: :btree
   add_index "events", ["cached_weighted_score"], name: "index_events_on_cached_weighted_score", using: :btree
   add_index "events", ["cached_weighted_total"], name: "index_events_on_cached_weighted_total", using: :btree
+
+  create_table "photos", force: true do |t|
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.string   "image_content_type"
+    t.datetime "image_updated_at"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "regions", force: true do |t|
     t.string   "title"

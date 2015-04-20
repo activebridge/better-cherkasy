@@ -9,6 +9,7 @@
   'ngTagsInput'
   'ckeditor'
   'ngSanitize'
+  'angularFileUpload'
 ])
 
 

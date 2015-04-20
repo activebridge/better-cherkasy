@@ -11,6 +11,9 @@ betterCherkasy.controller 'ShowEventCtrl', [
         auth_token: getAuthToken()
       }, (data) ->
         $scope.event = data
+        setTimeout ( ->
+          $scope.initMagnificPopup()
+        ), 300
 
     $scope.openNewCommentModal = (templateUrl)->
       $modal.open
