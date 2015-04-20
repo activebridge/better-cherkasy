@@ -13,6 +13,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development
 gem 'unicorn'
+gem 'paperclip'
+gem 'paperclip-googledrive'
 
 group :development do
   gem 'capistrano', '~> 3.2.1'

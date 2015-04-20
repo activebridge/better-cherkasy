@@ -9,6 +9,23 @@ betterCherkasy.controller 'EventsCtrl', [
       $scope.placeMarker(event, true)
       showPanel('#event-map')
 
+    $scope.onFileSelect = ($files) ->
+      console.log 'helllo'
+
+    $scope.upload = ($files) ->
+      console.log 'upload'
+      i = 0
+      while i < $files.length
+        file = $files[i]
+        $upload.upload (
+          url: 'url'
+          file: file
+        ).progress((evt) ->
+
+        ).success (data, status, headers, config) ->
+          return
+
+
     init = ->
       $scope.initGoogleMap('event-map-canvas')
       filters = {}
@@ -21,7 +38,6 @@ betterCherkasy.controller 'EventsCtrl', [
         filters['tag'] = $routeParams.tag
         filters['service'] = 'Events::FiltersService'
 
-      $scope.events = Event.query filters, ->
 
     init()
 ]

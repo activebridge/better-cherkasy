@@ -1,6 +1,6 @@
 betterCherkasy.factory 'mapDecorator', [
-  'Event', '$location'
-  (Event, $location) ->
+  '$location'
+  ($location) ->
     ($scope) ->
       $scope.googleMapReady = false
       $scope.markers = []
