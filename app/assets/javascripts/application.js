@@ -40,4 +40,5 @@
 //= require_tree ./angular/decorators
 //= require_tree ./angular/controllers
 //= require_tree ./angular/services
+//= require jquery.magnific-popup.min
 

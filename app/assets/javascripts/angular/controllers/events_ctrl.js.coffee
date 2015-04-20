@@ -21,6 +21,9 @@ betterCherkasy.controller 'EventsCtrl', [
         filters['tag'] = $routeParams.tag
         filters['service'] = 'Events::FiltersService'
       $scope.events = Event.query filters, ->
+        setTimeout ( ->
+          $scope.initMagnificPopup()
+        ), 300
 
     init()
 ]

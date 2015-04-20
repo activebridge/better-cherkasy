@@ -8,7 +8,6 @@ betterCherkasy.controller 'MyEventsCtrl', [
     $scope.upload = ($files, event) ->
       i = 0
       while i < $files.length
-        console.log i
         file = $files[i]
         $upload.upload(
           url: '/events/' + event.id + '/photos?auth_token=' + getAuthToken()
@@ -22,11 +21,14 @@ betterCherkasy.controller 'MyEventsCtrl', [
         )
         i++
 
-
     init = ->
       $scope.events = Event.query
         id: 'mine'
         auth_token: getAuthToken()
+        , (success) ->
+          setTimeout ( ->
+            $scope.initMagnificPopup()
+          ), 300
 
     $scope.delete = (event_id, index) ->
       if confirm 'Ви впевнені?'

@@ -56,7 +56,7 @@
         У мене не виходе :(
 .row
   .col-md-1
-  .col-md-8
-    %span{'ng-repeat' => 'photo in event.photos'}
+  .col-md-8.popup-gallery
+    %a{'ng-repeat' => 'photo in event.photos', 'href' => '{{photo.origin}}'}
       <img src='{{photo.thumb}}' />
 
