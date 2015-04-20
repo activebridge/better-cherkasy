@@ -4,6 +4,9 @@
       %img{src: "{{event.creator.avatar_url}}"}
     .row.name
       {{event.creator.name}}
+    .row.pull-bottom.pull-right{'ng-show' => 'myEvents'}
+      .btn.btn-default.btn-xs{'ng-file-select' => 'upload($files, event)'}
+        %span.glyphicon.glyphicon-paperclip
   .col-md-8.event
     .row.headline
       %a{href: "#/events/{{event.id}}"}
@@ -51,4 +54,9 @@
       %button.btn.btn-danger.btn-sm{'ng-click' => 'unsubscribe(event)', 'ng-show' => 'subscribed(event)'}
         %span.glyphicon.glyphicon-remove
         У мене не виходе :(
+.row
+  .col-md-1
+  .col-md-8
+    %span{'ng-repeat' => 'photo in event.photos'}
+      <img src='{{photo.thumb}}' />
 

@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require angular.min
+//= require angular-file-upload-shim.min
+//= require angular-file-upload.min
 //= require ng-tags-input
 //= require ui-bootstrap-tpls-0.12.0
 //= require angular-resource.min
