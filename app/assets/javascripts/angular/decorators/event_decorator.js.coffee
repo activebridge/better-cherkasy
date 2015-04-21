@@ -66,4 +66,21 @@ betterCherkasy.factory 'eventDecorator', [
             ]
           image:
             tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+
+
+      $scope.initPending = ->
+        $scope.scope = 'pending'
+        $scope.init()
+
+      $scope.initActive = ->
+        $scope.scope = 'in_progress'
+        $scope.init()
+
+      $scope.initCompleted = ->
+        $scope.scope = 'completed'
+        $scope.init()
+
+      $scope.show = (scope) ->
+        $scope.scope = scope
+        $scope.init()
 ]

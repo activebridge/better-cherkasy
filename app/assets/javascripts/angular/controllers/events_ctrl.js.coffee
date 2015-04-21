@@ -9,7 +9,7 @@ betterCherkasy.controller 'EventsCtrl', [
       $scope.placeMarker(event, true)
       showPanel('#event-map')
 
-    init = ->
+    $scope.init = ->
       $scope.initGoogleMap('event-map-canvas')
       filters = {}
       filters['scope'] = $scope.scope
@@ -26,16 +26,6 @@ betterCherkasy.controller 'EventsCtrl', [
           $scope.initMagnificPopup()
         ), 300
 
-    $scope.initPending = ->
-      $scope.scope = 'pending'
-      init()
-
-    $scope.initActive = ->
-      $scope.scope = 'in_progress'
-      init()
-
-    $scope.initCompleted = ->
-      $scope.scope = 'completed'
-      init()
+    $scope.initPending()
 ]
 

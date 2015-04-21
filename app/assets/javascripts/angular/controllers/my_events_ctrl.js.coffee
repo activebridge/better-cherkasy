@@ -21,10 +21,11 @@ betterCherkasy.controller 'MyEventsCtrl', [
         )
         i++
 
-    init = ->
+    $scope.init = ->
       $scope.events = Event.query
         id: 'mine'
         auth_token: getAuthToken()
+        scope: $scope.scope
         , (success) ->
           setTimeout ( ->
             $scope.initMagnificPopup()
@@ -44,6 +45,6 @@ betterCherkasy.controller 'MyEventsCtrl', [
     $scope.isMine = ->
       userSignedIn()
 
-    init()
+    $scope.initPending()
 ]
 

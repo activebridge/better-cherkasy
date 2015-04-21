@@ -4,10 +4,12 @@ betterCherkasy.config([
   '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '<%= asset_path('events/index.html') %>'
+        templateUrl: '<%= asset_path('events/index.html') %>',
+        controller: 'EventsCtrl'
       })
       .when('/events', {
-        templateUrl: '<%= asset_path('events/index.html') %>'
+        templateUrl: '<%= asset_path('events/index.html') %>',
+        controller: 'EventsCtrl'
       })
       .when('/events/new', {
         templateUrl: '<%= asset_path('events/new.html') %>',

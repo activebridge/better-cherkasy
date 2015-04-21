@@ -23,7 +23,10 @@ class EventsController < ApplicationController
   end
 
   def mine
-    json = ActiveModel::ArraySerializer.new(current_user.events.order('cached_weighted_score desc'),
+    events = current_user.events
+                         .order('cached_weighted_score desc')
+                         .send(params[:scope] || Event::STATUS[:pending])
+    json = ActiveModel::ArraySerializer.new(events,
                                            each_serializer: EventSerializer,
                                            root: nil)
     render json: json, status: :ok

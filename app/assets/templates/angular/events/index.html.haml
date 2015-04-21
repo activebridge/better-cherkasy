@@ -12,21 +12,17 @@
     %div{role: 'tabpanel'}
       %ul.nav.nav-tabs{role: 'tablist'}
         %li.active
-          %a{href: '#pending-events-list', showtab: ''}
+          %a{href: '#pending-events-list', showtab: '', 'ng-click' => "show('pending')"}
             Активні
         %li
-          %a{href: '#in-progress-events-list', showtab: ''}
+          %a{href: '#in-progress-events-list', showtab: '', 'ng-click' => "show('in_progress')"}
             Проходять прямо зараз
         %li
-          %a{href: '#completed-events-list', showtab: ''}
+          %a{href: '#completed-events-list', showtab: '', 'ng-click' => "show('completed')"}
             Завершені
     .tab-content
       .tab-pane.active{role: 'tabpanel', id: 'pending-events-list'}
-        %ng-include(src="'#{asset_path('angular/events/_events_list.html')}'" ng-controller='EventsCtrl' onload='initPending()')
-      .tab-pane{role: 'tabpanel', id: 'in-progress-events-list'}
-        %ng-include(src="'#{asset_path('angular/events/_events_list.html')}'" ng-controller='EventsCtrl' onload='initActive()')
-      .tab-pane{role: 'tabpanel', id: 'completed-events-list'}
-        %ng-include(src="'#{asset_path('angular/events/_events_list.html')}'" ng-controller='EventsCtrl' onload='initConpleted()')
+        %ng-include(src="'#{asset_path('angular/events/_events_list.html')}'")
 
 
   .col-md-3
