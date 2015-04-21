@@ -12,6 +12,7 @@ betterCherkasy.controller 'EventsCtrl', [
     init = ->
       $scope.initGoogleMap('event-map-canvas')
       filters = {}
+      filters['scope'] = $scope.scope
       if $routeParams.lat && $routeParams.lng
         filters['lat'] = $routeParams.lat
         filters['lng'] = $routeParams.lng
@@ -25,6 +26,16 @@ betterCherkasy.controller 'EventsCtrl', [
           $scope.initMagnificPopup()
         ), 300
 
-    init()
+    $scope.initPending = ->
+      $scope.scope = 'pending'
+      init()
+
+    $scope.initActive = ->
+      $scope.scope = 'in_progress'
+      init()
+
+    $scope.initCompleted = ->
+      $scope.scope = 'completed'
+      init()
 ]
 

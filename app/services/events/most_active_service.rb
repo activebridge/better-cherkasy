@@ -1,6 +1,6 @@
 class Events::MostActiveService < Events::BaseService
   def fetch
-    Event.most_active.limit(10)
+    @events.most_active.limit(10)
   end
 
   def self.serializer

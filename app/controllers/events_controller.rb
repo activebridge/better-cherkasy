@@ -13,7 +13,7 @@ class EventsController < ApplicationController
       @events = service_class.new(params).fetch
       serializer = service_class.serializer
     else
-      @events = Event.primary
+      @events = Event.primary.send(params[:scope] || Event::STATUS[:pending])
       serializer = EventSerializer
     end
     json = ActiveModel::ArraySerializer.new(@events,

@@ -49,17 +49,17 @@ betterCherkasy.factory 'eventFormDecorator', [
           $scope.placeMarker event.latLng
           return
 
-      setTimeout ( ->
-        $('.timepicker').timepicker
-          minuteStep: 5
+      if userSignedIn()
+        setTimeout ( ->
+          $('.timepicker').timepicker
+            minuteStep: 5
 
-        $('.datepicker').datepicker
-          autoclose: true
-          todayHighlight: true
-          startDate: new Date()
-          format: 'dd-mm-yyyy'
+          $('.datepicker').datepicker
+            autoclose: true
+            todayHighlight: true
+            startDate: new Date()
+            format: 'dd-mm-yyyy'
 
-        initGoogleMap()
-
-      ), 300
+          initGoogleMap()
+        ), 300
 ]

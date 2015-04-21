@@ -1,7 +1,7 @@
 class Events::MostPopularService < Events::BaseService
   def fetch
     duration = params[:duration] || 'week'
-    Event.most_popular.for_last(1.send(duration)).limit(10)
+    @events.most_popular.for_last(1.send(duration)).limit(10)
   end
 
   def self.serializer

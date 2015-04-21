@@ -1,0 +1,3 @@
+%ul.events
+  %li.jumbotron{'ng-repeat' => 'event in events'}
+    %ng-include(src="'#{asset_path('angular/events/_event.html')}'")

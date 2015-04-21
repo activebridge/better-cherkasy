@@ -26,6 +26,22 @@ class Event < ActiveRecord::Base
     end
   }
 
+  STATUS = {
+    pending: :pending,
+    in_progress: :in_progress,
+    completed: :completed
+  }
+
+  scope :pending, -> { where('date >= ?', Date.today) }
+  scope :in_progress, -> { where('date < ? AND (completed = ? OR completed IS NULL)', Date.today, false) }
+  scope :completed, -> { where('date < ? AND completed = ?', Date.today, true) }
+
+  def status
+    return STATUS[:penging] if date >= Date.today
+    return STATUS[:in_progress] if date < Date.today && !completed?
+    completed
+  end
+
   def add_comment(user, text)
     comments.create(user: user, body: text)
   end

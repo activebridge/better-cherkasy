@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419184806) do
+ActiveRecord::Schema.define(version: 20150421121958) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150419184806) do
     t.float    "lat",                     limit: 24
     t.float    "lng",                     limit: 24
     t.string   "address"
+    t.boolean  "completed"
   end
 
   add_index "events", ["cached_votes_down"], name: "index_events_on_cached_votes_down", using: :btree
