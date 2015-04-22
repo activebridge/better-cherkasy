@@ -39,6 +39,13 @@ betterCherkasy.controller 'MyEventsCtrl', [
         , (success) ->
             $scope.events.splice(index, 1)
 
+    $scope.completeEvent = (event) ->
+      Event.update(id: event.id, {event: {completed: true}, auth_token: getAuthToken() }
+        (response) ->
+          $scope.init()
+      )
+
+
     $scope.edit = (id) ->
       $location.path('/events/' + id + '/edit')
 

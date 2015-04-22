@@ -65,26 +65,48 @@ RSpec.describe EventsController, type: :controller do
   describe '#update' do
     let(:user) { FactoryGirl.create(:user) }
     let(:event) { FactoryGirl.create(:event, user: user) }
-    let(:event_params) {
-      {
-        id: event.id,
-        auth_token: user.auth_token,
-        event: {
-          headline: 'super duper event',
-          description: 'super duper duper event',
-          tags: [
-            {name: 'active'},
-            {name: 'bridge'}
-          ]
+    context 'attributes' do
+      let(:event_params) {
+        {
+          id: event.id,
+          auth_token: user.auth_token,
+          event: {
+            headline: 'super duper event',
+            description: 'super duper duper event',
+            tags: [
+              {name: 'active'},
+              {name: 'bridge'}
+            ]
+          }
         }
       }
-    }
 
-    before do
-      put :update, event_params
+      before do
+        put :update, event_params
+      end
+
+      it { should respond_with :accepted }
+      it { expect(json['headline']).to eq('super duper event') }
     end
 
-    it { should respond_with :accepted }
-    it { expect(json['headline']).to eq('super duper event') }
+    context 'completed' do
+      let(:event_params) {
+        {
+          id: event.id,
+          auth_token: user.auth_token,
+          event: {
+            completed: true
+          }
+        }
+      }
+
+      before do
+        put :update, event_params
+        event.reload
+      end
+
+      it { expect(event).to be_completed }
+    end
   end
+
 end

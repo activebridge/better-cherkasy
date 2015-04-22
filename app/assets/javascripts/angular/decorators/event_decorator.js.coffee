@@ -83,4 +83,10 @@ betterCherkasy.factory 'eventDecorator', [
       $scope.show = (scope) ->
         $scope.scope = scope
         $scope.init()
+
+      $scope.isInProgressTab = ->
+        $scope.scope == 'in_progress'
+
+      $scope.isCompletedTab = ->
+        $scope.scope == 'completed'
 ]

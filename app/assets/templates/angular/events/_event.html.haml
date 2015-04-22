@@ -4,9 +4,12 @@
       %img{src: "{{event.creator.avatar_url}}"}
     .row.name
       {{event.creator.name}}
-    .row.pull-bottom.pull-right{'ng-show' => 'myEvents'}
+    .row.pull-bottom.pull-right{'ng-show' => 'myEvents && isCompletedTab()'}
       .btn.btn-default.btn-xs{'ng-file-select' => 'upload($files, event)'}
         %span.glyphicon.glyphicon-paperclip
+    .row.pull-bottom.pull-right{'ng-show' => "myEvents && isInProgressTab()", 'title' => 'Завершити подію'}
+      .btn.btn-default.btn-xs{'ng-click' => 'completeEvent(event)'}
+        %span.glyphicon.glyphicon-ok
   .col-md-8.event
     .row.headline
       %a{href: "#/events/{{event.id}}"}
