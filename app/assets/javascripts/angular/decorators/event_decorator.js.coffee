@@ -52,6 +52,12 @@ betterCherkasy.factory 'eventDecorator', [
         return false
 
       $scope.initMagnificPopup = ->
+        $('.description img').each ->
+          $(this).magnificPopup
+            type: 'image'
+            items:
+              src: $(this).attr('src')
+
         $('.popup-gallery').each ->
           $(this).magnificPopup
             delegate: 'a'

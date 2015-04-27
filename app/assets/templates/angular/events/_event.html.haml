@@ -14,7 +14,7 @@
     .row.headline
       %a{href: "#/events/{{event.id}}"}
         {{event.headline}}
-    .row{'ng-bind-html' => 'descriptionHtml(event)' }
+    .row.description{'ng-bind-html' => 'descriptionHtml(event)' }
     .row.small.italic
       Коли: {{event.date}} {{event.time}}
     .row.small.italic{'ng-show' => 'event.address'}
