@@ -50,7 +50,7 @@
       %ul
         %li.pull-right-lg.pull-left-sm{'ng-repeat' => 'subscription in event.subscriptions'}
           %img{src: "{{subscription.user.avatar_url}}", title: '{{subscription.user.name}}'}
-    .row.pull-right-lg{'ng-show' => 'userSignedIn()'}
+    .row.pull-right-lg{'ng-show' => 'userSignedIn() && !isCompletedTab()'}
       %button.btn.btn-primary.btn-sm{'ng-click' => 'subscribe(event)', 'ng-show' => '!subscribed(event)'}
         %span.glyphicon.glyphicon-ok
         Розраховуйте і на мене!
