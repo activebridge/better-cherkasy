@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :events
   has_many :subscriptions
+  has_many :subscribed_events, through: :subscriptions, source: :event
 
   validates :name, :avatar_url, :provider, :providerid, presence: true
 

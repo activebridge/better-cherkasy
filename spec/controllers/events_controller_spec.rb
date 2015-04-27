@@ -109,4 +109,25 @@ RSpec.describe EventsController, type: :controller do
     end
   end
 
+  describe '#subscriptions' do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:event) { FactoryGirl.create(:event) }
+    let(:subscribed_event) { FactoryGirl.create(:event) }
+    let!(:subscription) { FactoryGirl.create(:subscription, event: subscribed_event, user: user) }
+
+    let(:params) {
+      {
+        auth_token: user.auth_token,
+        scope: 'pending'
+      }
+    }
+
+    before do
+      get :subscriptions, params
+    end
+
+    it { expect(json).to have(1).item }
+    it { expect(json.first['id']).to eq(subscribed_event.id) }
+  end
+
 end

@@ -32,6 +32,16 @@ class EventsController < ApplicationController
     render json: json, status: :ok
   end
 
+  def subscriptions
+    events = current_user.subscribed_events
+                         .order('cached_weighted_score desc')
+                         .send(params[:scope] || Event::STATUS[:pending])
+    json = ActiveModel::ArraySerializer.new(events,
+                                           each_serializer: EventSerializer,
+                                           root: nil)
+    render json: json, status: :ok
+  end
+
   def edit
     render json: BasicEventSerializer.new(@event), status: :ok
   end

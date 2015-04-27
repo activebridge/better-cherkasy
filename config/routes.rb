@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :events, except: :new do
     collection do
       get :mine
+      get :subscriptions
     end
     resources :comments, only: [:index, :create, :destroy]
     resources :photos, only: [:create]
