@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :authorize_user!, except: [ :index, :show ]
   before_action :find_own_event, only: [ :destroy, :update, :edit ]
   before_action :find_event, only: :show
+  after_action :track_visits, only: :show
 
   wrap_parameters :event, include: [:headline, :description,
                                     :date, :time, :tags,
@@ -89,6 +90,10 @@ class EventsController < ApplicationController
 
   def find_own_event
     @event = current_user.events.find(params[:id])
+  end
+
+  def track_visits
+    @event.add_visit!
   end
 end
 

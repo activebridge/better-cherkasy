@@ -64,4 +64,8 @@ class Event < ActiveRecord::Base
     return unless data
     super data.map{ |item| ActsAsTaggableOn::Tag.find_or_create_by(item) }
   end
+
+  def add_visit!
+    update_attribute(:visits, visits + 1)
+  end
 end

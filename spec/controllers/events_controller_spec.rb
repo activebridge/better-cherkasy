@@ -130,4 +130,18 @@ RSpec.describe EventsController, type: :controller do
     it { expect(json.first['id']).to eq(subscribed_event.id) }
   end
 
+  describe '#show' do
+    context 'visits' do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:event) { FactoryGirl.create(:event, visits: 3) }
+
+      before do
+        get :show, id: event.id, auth_token: user.auth_token
+        event.reload
+      end
+
+      it { expect(event.visits).to eq 4 }
+    end
+  end
+
 end

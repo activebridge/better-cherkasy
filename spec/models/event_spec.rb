@@ -26,4 +26,14 @@ RSpec.describe Event, type: :model do
       it { should have(1).item }
     end
   end
+
+  context '#add_visit' do
+    let(:event) { FactoryGirl.create(:event, visits: 0) }
+
+    before do
+      event.add_visit!
+    end
+
+    it { expect(event.visits).to eq 1 }
+  end
 end
