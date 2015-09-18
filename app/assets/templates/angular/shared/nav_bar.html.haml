@@ -1,8 +1,12 @@
 .row
-  .item.center.pull-right-lg{'ng-click' => 'loginWithFacebook()', 'ng-show' => 'navBar.showSignInButton'}
-    .btn.btn-primary.btn-block
-      .fa.fa-facebook-square.fa-larger
-      Ввійти через Facebook
+  .pull-right-lg{ 'ng-show' => 'navBar.showSignInButton' }
+    %a{'href' => 'javascript:void(false);', 'ng-click' => 'loginWithFacebook()', 'ng-show' => 'navBar.showSignInButton', 'class'=>'btn btn-social-icon btn-facebook' }
+      %i{ 'class'=>'fa fa-facebook' }
+    %a{'href' => 'javascript:void(false);', 'ng-click' => 'loginWithVkontakte()', 'ng-show' => 'navBar.showSignInButton', 'class'=>'btn btn-social-icon btn-vk' }
+      %i{ 'class'=>'fa fa-vk' }
+    %a{'href' => 'javascript:void(false);', 'ng-click' => 'loginWithOk()', 'ng-show' => 'navBar.showSignInButton', 'class'=>'btn btn-social-icon btn-odnoklassniki' }
+      %i{ 'class'=>'fa fa-odnoklassniki' }
+      %input{ 'type'=>'hidden', 'ng-model'=>'okAuthToken', 'id'=>'auth_token'}
   .item.center.pull-right-lg{'ng-show' => '!navBar.showSignInButton'}
     %a{'href' => '/#/events/subscriptions'}
       Мої підписки
