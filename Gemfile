@@ -15,6 +15,7 @@ gem 'spring',        group: :development
 gem 'unicorn'
 gem 'paperclip'
 gem 'paperclip-googledrive'
+gem 'omniauth-odnoklassniki'
 
 group :development do
   gem 'capistrano', '~> 3.2.1'
@@ -33,6 +34,9 @@ gem 'acts_as_commentable_with_threading'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'activeadmin', github: 'activeadmin'
 gem 'geocoder'
+gem 'bootstrap-social-rails'
+gem 'gon'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'pry'
