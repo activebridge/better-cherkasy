@@ -11,7 +11,7 @@
  * file per style scope.
  *
  *= require_self
- *= require css/font-awesome
+ *= require font-awesome
  *= require css/bootstrap-timepicker.min
  *= require css/bootstrap-datepicker
  *= require css/ng-tags-input
@@ -25,4 +25,5 @@
  *= require layout
  *= require slider
  *= require timelineevents
+ *= require bootstrap-social
  */

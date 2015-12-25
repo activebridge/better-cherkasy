@@ -1,0 +1,7 @@
+<script type="text/javascript">
+  window.close();
+  var $scope = window.opener.angular.element(window.opener.document.getElementById('auth_token')).scope();
+  $scope.$apply(function() {
+    $scope.setOkToken('<%= @oauth.result[:auth_token] %>');
+  });
+</script>>

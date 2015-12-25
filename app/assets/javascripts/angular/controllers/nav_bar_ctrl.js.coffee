@@ -1,6 +1,6 @@
 betterCherkasy.controller 'NavBarCtrl', [
-  '$scope', '$facebook', 'AuthService', 'flash', 'Session', '$cookies', '$cookieStore'
-  ($scope, $facebook, AuthService, flash, Session, $cookies, $cookieStore) ->
+  '$scope', '$facebook', 'AuthService', 'flash', 'Session', '$cookies', '$cookieStore', '$window'
+  ($scope, $facebook, AuthService, flash, Session, $cookies, $cookieStore, $window) ->
 
     $scope.init = ->
       checkCurrentUser().then ->
@@ -19,11 +19,15 @@ betterCherkasy.controller 'NavBarCtrl', [
       $scope.navBar.showSignInButton = true
       $scope.navBar.userName = ''
       $scope.navBar.avatarUrl = ''
+      $scope.loadVkSdk()
 
     $scope.logOut = ->
       logOut()
       hideUserInfo()
-      $facebook.logout()
+      if $scope.oauthProvider is 'facebook'
+        $facebook.logout()
+      else if $scope.oauthProvider is 'vkontakte'
+        VK.Auth.logout()
 
     $scope.loginWithFacebook = ->
       $facebook.login().then (response) ->
@@ -37,19 +41,58 @@ betterCherkasy.controller 'NavBarCtrl', [
 
             userData['name'] = data['name']
             userData['avatar_url'] = data['picture']['data']['url']
-
-            fn = AuthService.loginWithFacebook(userData)
-            fn.$promise.then (success = (response) ->
-              if response.status is 'ok'
-                $cookieStore.put('auth_token', response.auth_token)
-                checkCurrentUser().then ->
-                  flash.success = 'Ви залогінились успішно'
-                  showUserInfo()
-              else
-                flash.error = response.message
-            ), error = (rs) ->
-              flash.error = 'Чомусь не вдалося залогінитись через facebook'
-
+            $scope.oauthCallback(userData, 'facebook')
           ), error = (msg) ->
             flash.error = msg
+
+    $scope.loadVkSdk = ->
+      $.getScript '//vk.com/js/api/openapi.js', ->
+        VK.init
+          apiId: gon.vk_client_id
+
+    $scope.loginWithVkontakte = ->
+      authInfo = (response) ->
+        if response.session
+          userData = {}
+          userInfo = response.session.user
+
+          VK.Api.call 'users.get',
+            uids: userInfo.id
+            fields: 'sex, photo_50'
+          , (data) ->
+            if data.response
+              userData['avatar_url'] = data.response[0].photo_50
+              userData['name'] = userInfo.first_name + ' '+ userInfo.last_name
+              userData['providerid'] = userInfo.id
+              $scope.oauthCallback(userData, 'vkontakte')
+      VK.Auth.login(authInfo)
+
+    $scope.loginWithOk = ->
+      $window.$scope = $scope
+
+      left = screen.width / 2 - 250
+      top = screen.height / 2 - 250
+      $window.open('/auth/odnoklassniki', '', 'top=' + top + ',left=' + left + ', width=700, height=500')
+      return
+
+    $scope.setOkToken = (token)->
+      $cookieStore.put('auth_token', token)
+      checkCurrentUser().then ->
+        flash.success = 'Ви залогінились успішно'
+        showUserInfo()
+        $scope.oauthProvider = 'odnoklassniki'
+
+    $scope.oauthCallback = (data, provider) ->
+      fn = AuthService.doLoginWithSocialNetwork(data, provider)
+      fn.$promise.then (success = (response) ->
+        if response.status is 'ok'
+          $cookieStore.put('auth_token', response.auth_token)
+          checkCurrentUser().then ->
+            flash.success = 'Ви залогінились успішно'
+            showUserInfo()
+            $scope.oauthProvider = provider
+        else
+          flash.error = response.message
+      ), error = (rs) ->
+        flash.error = 'Чомусь не вдалося залогінитись через ' + provider
 ]

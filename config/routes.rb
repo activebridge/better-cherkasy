@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :event_votes, only: :update
   resources :subscriptions, only: [:create, :destroy]
   resources :tags, only: :index
+  resources :omniauth_callbacks do
+    get :odnoklassniki
+  end
 
+  get '/auth/odnoklassniki/callback'=>'omniauth_callbacks#odnoklassniki'
   root 'home#index'
 end
