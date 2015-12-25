@@ -39,4 +39,9 @@ betterCherkasy.factory 'mapDecorator', [
       $scope.clearMarkers = ->
         for marker in $scope.markers
           marker.setMap null
+
+      $scope.showAddressOnMap = (event) ->
+        $scope.clearMarkers()
+        $scope.placeMarker(event, true)
+        showPanel('#event-map')
 ]

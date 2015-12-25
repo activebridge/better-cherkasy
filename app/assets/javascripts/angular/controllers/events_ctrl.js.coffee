@@ -4,11 +4,6 @@ betterCherkasy.controller 'EventsCtrl', [
     eventDecorator($scope)
     mapDecorator($scope)
 
-    $scope.showAddressOnMap = (event) ->
-      $scope.clearMarkers()
-      $scope.placeMarker(event, true)
-      showPanel('#event-map')
-
     $scope.init = ->
       $scope.initGoogleMap('event-map-canvas')
       filters = {}

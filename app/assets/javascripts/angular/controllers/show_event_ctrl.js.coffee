@@ -1,11 +1,13 @@
 betterCherkasy.controller 'ShowEventCtrl', [
-  '$scope', 'Event', '$routeParams', '$sce', 'eventDecorator', '$modal', 'Comment'
-  ($scope, Event, $routeParams, $sce, eventDecorator, $modal, Comment) ->
+  '$scope', 'Event', '$routeParams', '$sce', 'eventDecorator', '$modal', 'Comment', 'mapDecorator'
+  ($scope, Event, $routeParams, $sce, eventDecorator, $modal, Comment, mapDecorator) ->
     eventDecorator($scope)
+    mapDecorator($scope)
 
     $scope.event = {}
 
     init = ->
+      $scope.initGoogleMap('event-map-canvas')
       Event.get {
         id: $routeParams.id
         auth_token: getAuthToken()
@@ -42,7 +44,6 @@ betterCherkasy.controller 'ShowEventCtrl', [
             $scope.event
           comment: ->
             comment
-
 
     init()
 
