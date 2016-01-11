@@ -26,7 +26,6 @@ group :development do
 end
 
 gem 'active_model_serializers'
-gem 'bootstrap-sass'
 gem 'haml'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'ckeditor_rails'
