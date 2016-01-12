@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require_self
+ *= require normalize
+ *= require skeleton
  *= require font-awesome
  *= require css/bootstrap-timepicker.min
  *= require css/bootstrap-datepicker
@@ -19,12 +21,8 @@
  *= require css/jquery.magnific-popup
  *= require comments
  *= require events
- *= require slide-down-panel
- *= require filters-panel
- *= require layout
+ *= require base
  *= require slider
  *= require timelineevents
  *= require bootstrap-social
- *= require skeleton
- *= require navbar
  */

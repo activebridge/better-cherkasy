@@ -120,13 +120,14 @@ html is set to 62.5% so that all the REM measurements throughout Skeleton
 are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
   font-size: 62.5%;
-  height: 100%;
-}
-body {
-  background-image: url('body-image.jpg');
-  background-repeat: no-repeat;
+  background: url('body-image.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-position: 0 25%;
+}
+
+body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
@@ -181,7 +182,7 @@ input[type="reset"],
 input[type="button"] {
   display: inline-block;
   height: 38px;
-  padding: 0 30px;
+  padding: 0 20px;
   color: #555;
   text-align: center;
   font-size: 11px;
@@ -410,15 +411,38 @@ on small devices, paste the mobile query code up in the buttons section and styl
 there.
 */
 
+/* For devices larger than 300px */
+@media (min-width: 300px){
+  .container {width: 85%; padding: 0;}
+  .navbar .brand {width: 100%;}
+  .navbar .actions {text-align: center;}
+}
 
 /* Larger than mobile */
 @media (min-width: 400px) {}
 
 /* Larger than phablet (also point when grid becomes active) */
-@media (min-width: 550px) {}
+@media (min-width: 550px){
+  .navbar .five.columns {text-align: center; width: 100%;}
+  .navbar .seven.columns {width: 100%; margin-left: 0;}
+
+  .navbar .brand {width: 260px;}
+  .navbar .actions {text-align: unset;}
+
+  .navbar .actions .five.columns {width: 33.3333333333%; text-align: left;}
+  .navbar .actions .four.columns {width: 33.3333333333%; margin-left: 0; text-align: center;}
+  .navbar .actions .three.columns {width: 33.3333333333%; margin-left: 0; text-align: right;}
+}
 
 /* Larger than tablet */
-@media (min-width: 750px) {}
+@media (min-width: 750px){
+  .navbar .five.columns {width: 39.3333333333%; text-align: unset;}
+  .navbar .seven.columns {margin-left: 4%; width: 56.6666666667%;}
+
+  .navbar .actions .three.columns {margin-left: 4%; width: 22%; text-align: right;}
+  .navbar .actions .four.columns {margin-left: 4%; width: 30.6666666667%; text-align: right;}
+  .navbar .actions .five.columns {width: 39.3333333333%; text-align: right;}
+}
 
 /* Larger than desktop */
 @media (min-width: 1000px) {}
