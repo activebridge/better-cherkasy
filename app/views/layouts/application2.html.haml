@@ -16,11 +16,26 @@
       })();
     = include_gon
   %body
-    .container
-      .row.navbar
-        .five.columns
-          = link_to '' do
-            = image_tag 'logo.png', class: 'brand'
-        .seven.columns.actions
+    .container-fluid
+      .row
+        .col-md-8
+          = link_to '#/' do
+            = image_tag 'logo.png', style: 'width: 260px;'
+        .col-md-4
           %ng-include(src="'#{asset_path('angular/shared/nav_bar.html')}'" ng-controller='NavBarCtrl' onload='init()')
-      .cooker(ng-view='')
+
+      .row
+        .col-md-12.alert.fade{'active-class' => 'in alert', :duration => '0', 'flash-alert' => '', class: 'display-none'}
+          %button.close{'ng-click' => 'hide();', :type => 'button'} &times;
+          %span.alert-message {{flash.message}}
+      %div{'ng-view' => ''}
+
+    #overlay
+      &nbsp;
+    %ng-include(src="'#{asset_path('angular/events/filter_panel.html')}'" ng-controller="FiltersCtrl" onload='init()')
+    %ng-include(src="'#{asset_path('angular/events/map_panel.html')}'" ng-controller="EventsMapCtrl" onload='init()')
+
+    #event-map.slide-down-panel{'style' => 'margin-top: -700px;'}
+      .row.map-container
+        .col-md-12.col-xs-12
+          #event-map-canvas{'style' => 'height: 500px;'}
