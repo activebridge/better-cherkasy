@@ -22,6 +22,7 @@
           = image_tag 'logo1.png', class: 'brand'
       .seven.columns.actions
         %ng-include(src="'#{asset_path('angular/shared/nav_bar.html')}'" ng-controller='NavBarCtrl' onload='init()')
+    %div(flash-message='5000')
     .cooker(ng-view='')
     %footer
       Розміщення певної інформації

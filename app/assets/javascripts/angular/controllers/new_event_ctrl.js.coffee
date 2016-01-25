@@ -1,12 +1,12 @@
 betterCherkasy.controller 'NewEventCtrl', [
-  '$scope', 'Event', '$location', 'eventFormDecorator', 'flash'
-  ($scope, Event, $location, eventFormDecorator, flash) ->
+  '$scope', 'Event', '$location', 'eventFormDecorator', 'Flash'
+  ($scope, Event, $location, eventFormDecorator, Flash) ->
     eventFormDecorator($scope)
 
     $scope.newEvent = {}
 
     unless userSignedIn()
-      flash.error = 'Для того щоб щось пропонувати ми маєте залогінитись'
+      Flash.create('warning', 'Для того щоб щось пропонувати ви маєте залогінитись', 'custom-class')
       $location.path('/')
 
     $scope.add = ->

@@ -1,6 +1,6 @@
 betterCherkasy.controller 'NavBarCtrl', [
-  '$scope', '$facebook', 'AuthService', 'flash', 'Session', '$cookies', '$cookieStore', '$window'
-  ($scope, $facebook, AuthService, flash, Session, $cookies, $cookieStore, $window) ->
+  '$scope', '$facebook', 'AuthService', 'Flash', 'Session', '$cookies', '$cookieStore', '$window'
+  ($scope, $facebook, AuthService, Flash, Session, $cookies, $cookieStore, $window) ->
 
     $scope.init = ->
       checkCurrentUser().then ->
@@ -43,7 +43,7 @@ betterCherkasy.controller 'NavBarCtrl', [
             userData['avatar_url'] = data['picture']['data']['url']
             $scope.oauthCallback(userData, 'facebook')
           ), error = (msg) ->
-            flash.error = msg
+            Flash.create('danger', msg, 'custom-class')
 
     $scope.loadVkSdk = ->
       $.getScript '//vk.com/js/api/openapi.js', ->
