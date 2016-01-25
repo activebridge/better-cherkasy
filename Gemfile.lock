@@ -62,6 +62,9 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    autoprefixer-rails (6.0.1)
+      execjs
+      json
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
     bootstrap-social-rails (4.8.0)
@@ -322,6 +325,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   acts_as_commentable_with_threading
   acts_as_votable (~> 0.10.0)
+  autoprefixer-rails
   bootstrap-social-rails
   capistrano (~> 3.2.1)
   capistrano-bundler

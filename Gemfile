@@ -36,6 +36,7 @@ gem 'geocoder'
 gem 'bootstrap-social-rails'
 gem 'gon'
 gem 'font-awesome-rails'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'pry'
