@@ -1,20 +1,16 @@
 .row
-  .pull-right-lg{ 'ng-show' => 'navBar.showSignInButton' }
-    %a{'href' => 'javascript:void(false);', 'ng-click' => 'loginWithFacebook()', 'ng-show' => 'navBar.showSignInButton', 'class'=>'btn btn-social-icon btn-facebook' }
-      %i{ 'class'=>'fa fa-facebook' }
-    %a{'href' => 'javascript:void(false);', 'ng-click' => 'loginWithVkontakte()', 'ng-show' => 'navBar.showSignInButton', 'class'=>'btn btn-social-icon btn-vk' }
-      %i{ 'class'=>'fa fa-vk' }
-    %a{'href' => 'javascript:void(false);', 'ng-click' => 'loginWithOk()', 'ng-show' => 'navBar.showSignInButton', 'class'=>'btn btn-social-icon btn-odnoklassniki' }
-      %i{ 'class'=>'fa fa-odnoklassniki' }
-      %input{ 'type'=>'hidden', 'ng-model'=>'okAuthToken', 'id'=>'auth_token'}
-  .item.center.pull-right-lg{'ng-show' => '!navBar.showSignInButton'}
-    %a{'href' => '/#/events/subscriptions'}
-      Мої підписки
-    |
-    %a{'href' => '/#/events/mine'}
-      Мої пропозиції
-    |
-    {{navBar.userName}}
-    %img{src: "{{navBar.avatarUrl}}"}
-    %a{'href' => '', 'ng-click' => 'logOut()'}
-      Вийти
+  .five.columns
+    = link_to 'Нова Пропозиція', '/#/events/new', class: 'button button-primary'
+  .four.columns
+    = link_to 'Активні', '#pending-events-list', showtab: '', 'ng-click' => "show('pending')", class: 'button button-primary'
+  .three.columns.socials(ng-show='navBar.showSignInButton')
+    = link_to '', 'ng-click' => 'loginWithFacebook()' do
+      = fa_icon 'facebook 2x'
+    = link_to '', 'ng-click' => 'loginWithVkontakte()' do
+      = fa_icon 'vk 2x'
+    = link_to '', 'ng-click' => 'loginWithOk()' do
+      = fa_icon 'odnoklassniki 2x'
+    %input{'type'=>'hidden', 'ng-model'=>'okAuthToken', 'id'=>'auth_token'}
+  .three.columns.socials(ng-show='!navBar.showSignInButton')
+    = link_to '', 'ng-click' => 'logOut()' do
+      = fa_icon 'sign-out 2x'

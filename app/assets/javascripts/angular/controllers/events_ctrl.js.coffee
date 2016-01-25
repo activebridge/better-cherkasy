@@ -5,7 +5,7 @@ betterCherkasy.controller 'EventsCtrl', [
     mapDecorator($scope)
 
     $scope.init = ->
-      $scope.initGoogleMap('event-map-canvas')
+      $scope.initGoogleMap('events-map-canvas')
       filters = {}
       filters['scope'] = $scope.scope
       if $routeParams.lat && $routeParams.lng
@@ -23,4 +23,3 @@ betterCherkasy.controller 'EventsCtrl', [
 
     $scope.initPending()
 ]
-
