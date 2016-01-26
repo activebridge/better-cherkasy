@@ -3,13 +3,13 @@
   'ngRoute'
   'ngResource'
   'ngFacebook'
-  'angular-flash.service'
-  'angular-flash.flash-alert-directive'
+  'flash'
   'ngCookies'
   'ngTagsInput'
   'ckeditor'
   'ngSanitize'
   'angularFileUpload'
+  '720kb.datepicker'
 ])
 
 

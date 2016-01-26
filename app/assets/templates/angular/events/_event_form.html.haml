@@ -1,18 +1,17 @@
 .row
-  .col-md-2.col-xs-12.title Заголовок:
-  .col-md-10.col-xs-12
-    %input.form-control{'ng-model' => 'newEvent.headline'}/
+  %input(ng-model='newEvent.headline' placeholder='Заголовок' type='text')
 .row
   .col-md-2.col-xs-12.title Опис:
   .col-md-10.col-xs-12
     %div{'ckeditor' => 'options', 'ng-model' => 'newEvent.description'}
 .row
+  %datepicker
+    -#%input(ng-model='date' type='text')
   .col-md-2.col-xs-12.title Дата:
   .col-md-10.col-xs-12
-    .input-group
-      %input.datepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.date'}
-        %span.input-group-addon
-          %i.glyphicon.glyphicon-calendar.blue
+  %input.datepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.date'}
+    %span.input-group-addon
+      %i.glyphicon.glyphicon-calendar.blue
 
 .row
   .col-md-2.col-xs-12.title Час:

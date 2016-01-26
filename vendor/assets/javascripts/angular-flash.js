@@ -1,239 +1,89 @@
-/**!
- * @license angular-flash v0.1.9
- * Copyright (c) 2013 William L. Bunselmeyer. https://github.com/wmluke/angular-flash
- * License: MIT
- */
-/* global angular */
+/*https://github.com/sachinchoolur/angular-flash*/
 
-(function () {
+(function() {
     'use strict';
+    var app = angular.module('flash', []);
 
-    var Flash = function (options) {
-        var _options = angular.extend({
-            id: null,
-            subscribers: [],
-            classnames: {
-                error: [],
-                warn: [],
-                info: [],
-                success: []
+    app.run(['$rootScope', function($rootScope) {
+        // initialize variables
+        $rootScope.flash = {};
+        $rootScope.flash.text = '';
+        $rootScope.flash.type = '';
+        $rootScope.flash.timeout = 5000;
+        $rootScope.hasFlash = false;
+    }]);
+
+    // Directive for compiling dynamic html
+    app.directive('dynamic', ['$compile', function($compile) {
+        return {
+            restrict: 'A',
+            replace: true,
+            link: function(scope, ele, attrs) {
+                scope.$watch(attrs.dynamic, function(html) {
+                    ele.html(html);
+                    $compile(ele.contents())(scope);
+                });
             }
-        }, options);
-
-        var _self = this;
-        var _success;
-        var _info;
-        var _warn;
-        var _error;
-        var _type;
-
-        function _notify(type, message) {
-            angular.forEach(_options.subscribers, function (subscriber) {
-                var matchesType = !subscriber.type || subscriber.type === type;
-                var matchesId = (!_options.id && !subscriber.id) || subscriber.id === _options.id;
-                if (matchesType && matchesId) {
-                    subscriber.cb(message, type);
-                }
-            });
-        }
-
-        this.clean = function () {
-            _options.subscribers = [];
-            _success = null;
-            _info = null;
-            _warn = null;
-            _error = null;
-            _type = null;
         };
+    }]);
 
-        this.subscribe = function (subscriber, type, id) {
-            _options.subscribers.push({
-                cb: subscriber,
-                type: type,
-                id: id
-            });
+    // Directive for closing the flash message
+    app.directive('closeFlash', ['$compile', 'Flash', function($compile, Flash) {
+        return {
+            link: function(scope, ele) {
+                ele.on('click', function() {
+                    Flash.dismiss();
+                });
+            }
         };
+    }]);
 
-        this.to = function (id) {
-            var options = angular.copy(_options);
-            options.id = id;
-            return new Flash(options);
+    // Create flashMessage directive
+    app.directive('flashMessage', ['$compile', '$rootScope', function($compile, $rootScope) {
+        return {
+            restrict: 'A',
+            template: '<div role="alert" ng-show="hasFlash" class="alert {{flash.addClass}} alert-{{flash.type}} alert-dismissible ng-hide alertIn alertOut "> <span dynamic="flash.text"></span> <button type="button" class="close" close-flash><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> </div>',
+            link: function(scope, ele, attrs) {
+                // get timeout value from directive attribute and set to flash timeout
+                $rootScope.flash.timeout = parseInt(attrs.flashMessage, 10);
+            }
         };
+    }]);
 
-        Object.defineProperty(this, 'success', {
-            get: function () {
-                return _success;
-            },
-            set: function (message) {
-                _success = message;
-                _type = 'success';
-                _notify(_type, message);
-            }
-        });
+    app.factory('Flash', ['$rootScope', '$timeout',
+        function($rootScope, $timeout) {
 
-        Object.defineProperty(this, 'info', {
-            get: function () {
-                return _info;
-            },
-            set: function (message) {
-                _info = message;
-                _type = 'info';
-                _notify(_type, message);
-            }
-        });
+            var dataFactory = {},
+                timeOut;
 
-        Object.defineProperty(this, 'warn', {
-            get: function () {
-                return _warn;
-            },
-            set: function (message) {
-                _warn = message;
-                _type = 'warn';
-                _notify(_type, message);
-            }
-        });
+            // Create flash message
+            dataFactory.create = function(type, text, addClass) {
+                var $this = this;
+                $timeout.cancel(timeOut);
+                $rootScope.flash.type = type;
+                $rootScope.flash.text = text;
+                $rootScope.flash.addClass = addClass;
+                $timeout(function() {
+                    $rootScope.hasFlash = true;
+                }, 100);
+                timeOut = $timeout(function() {
+                    $this.dismiss();
+                }, $rootScope.flash.timeout);
+            };
 
-        Object.defineProperty(this, 'error', {
-            get: function () {
-                return _error;
-            },
-            set: function (message) {
-                _error = message;
-                _type = 'error';
-                _notify(_type, message);
-            }
-        });
+            // Cancel flashmessage timeout function
+            dataFactory.pause = function() {
+                $timeout.cancel(timeOut);
+            };
 
-        Object.defineProperty(this, 'type', {
-            get: function () {
-                return _type;
-            }
-        });
-
-        Object.defineProperty(this, 'message', {
-            get: function () {
-                return _type ? _self[_type] : null;
-            }
-        });
-
-        Object.defineProperty(this, 'classnames', {
-            get: function () {
-                return _options.classnames;
-            }
-        });
-
-        Object.defineProperty(this, 'id', {
-            get: function () {
-                return _options.id;
-            }
-        });
-    };
-
-    angular.module('angular-flash.service', [])
-        .provider('flash', function () {
-            var _self = this;
-            this.errorClassnames = ['alert-error'];
-            this.warnClassnames = ['alert-warn'];
-            this.infoClassnames = ['alert-info'];
-            this.successClassnames = ['alert-success'];
-
-            this.$get = function () {
-                return new Flash({
-                    classnames: {
-                        error: _self.errorClassnames,
-                        warn: _self.warnClassnames,
-                        info: _self.infoClassnames,
-                        success: _self.successClassnames
-                    }
+            // Dismiss flash message
+            dataFactory.dismiss = function() {
+                $timeout.cancel(timeOut);
+                $timeout(function() {
+                    $rootScope.hasFlash = false;
                 });
             };
-        });
-
-}());
-
-/* global angular */
-
-(function () {
-    'use strict';
-
-    function isBlank(str) {
-        if (str === null || str === undefined) {
-            str = '';
+            return dataFactory;
         }
-        return (/^\s*$/).test(str);
-    }
-
-    function flashAlertDirective(flash, $timeout) {
-        return {
-            scope: true,
-            link: function ($scope, element, attr) {
-                var handle;
-
-                $scope.flash = {};
-
-                $scope.hide = function () {
-                    $scope.flash = {};
-                    removeAlertClasses();
-                    if (!isBlank(attr.activeClass)) {
-                        element.removeClass(attr.activeClass);
-                    }
-                    $('div[active-class] i').addClass('display-none');
-                };
-
-                $scope.$on('$destroy', function () {
-                    flash.clean();
-                });
-
-                function removeAlertClasses() {
-                    var classnames = [].concat(flash.classnames.error, flash.classnames.warn, flash.classnames.info, flash.classnames.success);
-                    angular.forEach(classnames, function (clazz) {
-                        element.removeClass(clazz);
-                        $('div[active-class] i').removeClass('display-none');
-                        element.removeClass('display-none');
-                    });
-                }
-
-                function show(message, type) {
-                    if (handle) {
-                        $timeout.cancel(handle);
-                    }
-
-                    $scope.flash.type = type;
-                    $scope.flash.message = message;
-                    removeAlertClasses();
-                    angular.forEach(flash.classnames[type], function (clazz) {
-                        element.addClass(clazz);
-                    });
-
-                    if (!isBlank(attr.activeClass)) {
-                        element.addClass(attr.activeClass);
-                    }
-
-                    var delay = Number(attr.duration || 5000);
-                    if (delay > 0) {
-                        handle = $timeout($scope.hide, delay);
-                    }
-                }
-
-                flash.subscribe(show, attr.flashAlert, attr.id);
-
-                /**
-                 * Fixes timing issues: display the last flash message sent before this directive subscribed.
-                 */
-
-                if (attr.flashAlert && flash[attr.flashAlert]) {
-                    show(flash[attr.flashAlert], attr.flashAlert);
-                }
-
-                if (!attr.flashAlert && flash.message) {
-                    show(flash.message, flash.type);
-                }
-
-            }
-        };
-    }
-
-    angular.module('angular-flash.flash-alert-directive', ['angular-flash.service'])
-        .directive('flashAlert', ['flash', '$timeout', flashAlertDirective]);
-
+    ]);
 }());

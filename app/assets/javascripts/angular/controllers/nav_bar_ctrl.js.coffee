@@ -1,7 +1,14 @@
 betterCherkasy.controller 'NavBarCtrl', [
-  '$scope', '$facebook', 'AuthService', 'flash', 'Session', '$cookies', '$cookieStore', '$window'
-  ($scope, $facebook, AuthService, flash, Session, $cookies, $cookieStore, $window) ->
-
+  '$scope'
+  '$facebook'
+  '$cookies'
+  '$cookieStore'
+  '$window'
+  '$modal'
+  'AuthService'
+  'Session'
+  'Flash'
+  ($scope, $facebook, $cookies, $cookieStore, $window, $modal, AuthService, Session, Flash) ->
     $scope.init = ->
       checkCurrentUser().then ->
         $scope.navBar = {}
@@ -43,7 +50,7 @@ betterCherkasy.controller 'NavBarCtrl', [
             userData['avatar_url'] = data['picture']['data']['url']
             $scope.oauthCallback(userData, 'facebook')
           ), error = (msg) ->
-            flash.error = msg
+            Flash.create('danger', msg, 'custom-class')
 
     $scope.loadVkSdk = ->
       $.getScript '//vk.com/js/api/openapi.js', ->
@@ -95,4 +102,16 @@ betterCherkasy.controller 'NavBarCtrl', [
           flash.error = response.message
       ), error = (rs) ->
         flash.error = 'Чомусь не вдалося залогінитись через ' + provider
+
+    $scope.addNewEvent = ->
+      unless userSignedIn()
+        Flash.create('warning', 'Для того щоб щось пропонувати ви маєте залогінитись', 'custom-class')
+        return
+
+      $modal.open
+        templateUrl: '/assets/modals/new_event.html.haml'
+        controller: 'NewEventCtrl'
+        resolve:
+          event: ->
+            {}
 ]

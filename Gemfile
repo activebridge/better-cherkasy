@@ -26,7 +26,6 @@ group :development do
 end
 
 gem 'active_model_serializers'
-gem 'bootstrap-sass'
 gem 'haml'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'ckeditor_rails'
@@ -37,6 +36,7 @@ gem 'geocoder'
 gem 'bootstrap-social-rails'
 gem 'gon'
 gem 'font-awesome-rails'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'pry'
