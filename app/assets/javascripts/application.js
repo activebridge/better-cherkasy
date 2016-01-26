@@ -13,19 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap.min
 //= require angular.min
-//= require angular-file-upload-shim.min
-//= require angular-file-upload.min
-//= require ng-tags-input
-//= require ui-bootstrap-tpls-0.12.0
-//= require angular-resource.min
 //= require angular-route.min
-//= require ngFacebook
-//= require angular-flash
+//= require angular-resource.min
+//= require angular-facebook
+//= require angular-flash.min
 //= require angular-cookies.min
-//= require angular-sanitize.min
-//= require bootstrap-slider
 //
 //= require angular_app
 //= require ckeditor-jquery
@@ -35,11 +28,7 @@
 //= require angular/factories
 //= require global/auth
 //= require global/action_links
-//= require bootstrap-timepicker
-//= require bootstrap-datepicker
 //= require_tree ./angular/decorators
-//= require_tree ./angular/controllers
 //= require_tree ./angular/services
-//= require jquery.magnific-popup.min
 //= require_tree ./angular/directives
-
+//= require_tree ./angular/controllers
