@@ -9,6 +9,7 @@
   'ckeditor'
   'ngSanitize'
   'angularFileUpload'
+  '720kb.datepicker'
 ])
 
 
