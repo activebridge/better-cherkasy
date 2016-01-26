@@ -19,7 +19,8 @@
 //= require angular-facebook
 //= require angular-flash.min
 //= require angular-cookies.min
-//
+//= require angular-datepicker.min
+
 //= require angular_app
 //= require ckeditor-jquery
 //= require angular-ckeditor.min

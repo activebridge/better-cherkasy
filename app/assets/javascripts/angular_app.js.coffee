@@ -4,6 +4,8 @@
   'ngResource'
   'flash'
   'ngCookies'
+  'ckeditor'
+  '720kb.datepicker'
 ])
 
 

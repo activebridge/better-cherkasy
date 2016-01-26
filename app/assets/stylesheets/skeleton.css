@@ -28,6 +28,9 @@
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.center {
+  text-align: center;
+}
 .container {
   position: relative;
   width: 100%;
