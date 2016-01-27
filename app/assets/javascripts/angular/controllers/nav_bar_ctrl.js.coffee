@@ -78,7 +78,7 @@ betterCherkasy.controller 'NavBarCtrl', [
     $scope.setOkToken = (token)->
       $cookieStore.put('auth_token', token)
       checkCurrentUser().then ->
-        flash.success = 'Ви залогінились успішно'
+        Flash.create('success', 'Ви залогінились успішно', 'custom-class')
         showUserInfo()
         $scope.oauthProvider = 'odnoklassniki'
 
@@ -88,11 +88,11 @@ betterCherkasy.controller 'NavBarCtrl', [
         if response.status is 'ok'
           $cookieStore.put('auth_token', response.auth_token)
           checkCurrentUser().then ->
-            flash.success = 'Ви залогінились успішно'
+            Flash.create('success', 'Ви залогінились успішно', 'custom-class')
             showUserInfo()
             $scope.oauthProvider = provider
         else
-          flash.error = response.message
+          Flash.create('danger', response.message, 'custom-class')
       ), error = (rs) ->
-        flash.error = 'Чомусь не вдалося залогінитись через ' + provider
+        Flash.create('danger', 'Чомусь не вдалося залогінитись через ' + provider, 'custom-class')
 ]
