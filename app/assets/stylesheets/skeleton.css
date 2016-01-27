@@ -445,6 +445,8 @@ there.
   .navbar .actions .three.columns {margin-left: 4%; width: 22%; text-align: right;}
   .navbar .actions .four.columns {margin-left: 4%; width: 30.6666666667%; text-align: right;}
   .navbar .actions .five.columns {width: 39.3333333333%; text-align: right;}
+
+  #modal-overlay {width: 50% !important; left: 25%;}
 }
 
 /* Larger than desktop */

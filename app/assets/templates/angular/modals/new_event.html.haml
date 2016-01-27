@@ -1,10 +1,11 @@
-.container
-  .modal-header
-    %button(type='button' class='close' ng-click='close()')×
-    .modal-title.center Нова пропозиція
-  .modal-body
-    %form(id='newEvent' ng-submit='add()')
-      %ng-include(src="'#{asset_path('angular/events/_event_form.html.haml')}'")
-
-  .modal-footer
-    %button(class='button-primary' form='newEvent') Зберегти
+#modal-container
+  #modal-overlay
+    .modal-header
+      %button(type='button' class='close' ng-click='dismissModal()')×
+      .modal-title.center Нова пропозиція
+    .modal-body
+      %form(id='newEvent' ng-submit='add()')
+        %ng-include(src="'#{asset_path('angular/events/_event_form.html.haml')}'")
+    .modal-footer
+      %button(class='button-primary' form='newEvent') Зберегти
+  #modal-fade

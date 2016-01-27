@@ -4,11 +4,11 @@ betterCherkasy.controller 'NavBarCtrl', [
   '$cookies'
   '$cookieStore'
   '$window'
-  '$modal'
   'AuthService'
+  'ModalService'
   'Session'
   'Flash'
-  ($scope, $facebook, $cookies, $cookieStore, $window, $modal, AuthService, Session, Flash) ->
+  ($scope, $facebook, $cookies, $cookieStore, $window, AuthService, ModalService, Session, Flash) ->
     $scope.init = ->
       checkCurrentUser().then ->
         $scope.navBar = {}
@@ -103,15 +103,13 @@ betterCherkasy.controller 'NavBarCtrl', [
       ), error = (rs) ->
         Flash.create('danger', 'Чомусь не вдалося залогінитись через ' + provider, 'custom-class')
 
-    $scope.addNewEvent = ->
+    $scope.onNewEventModal = ->
       unless userSignedIn()
         Flash.create('warning', 'Для того щоб щось пропонувати ви маєте залогінитись', 'custom-class')
         return
 
-      $modal.open
+      ModalService.showModal(
         templateUrl: '/assets/modals/new_event.html.haml'
         controller: 'NewEventCtrl'
-        resolve:
-          event: ->
-            {}
+      )
 ]

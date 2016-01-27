@@ -1,6 +1,6 @@
 betterCherkasy.controller 'NewEventCtrl', [
-  '$scope', '$location', '$modalInstance', 'eventFormDecorator', 'Event'
-  ($scope, $location, $modalInstance, eventFormDecorator, Event) ->
+  '$scope', '$location', 'close', 'eventFormDecorator', 'Event'
+  ($scope, $location, close, eventFormDecorator, Event) ->
     #eventFormDecorator($scope)
 
     $scope.newEvent = {}
@@ -16,6 +16,6 @@ betterCherkasy.controller 'NewEventCtrl', [
     $scope.cancel = ->
       $location.path('/')
 
-    $scope.close = ->
-      $modalInstance.dismiss('cancel')
+    $scope.dismissModal = (result) ->
+      close result, 10
 ]

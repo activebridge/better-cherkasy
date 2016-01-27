@@ -19,6 +19,7 @@
 //= require angular-facebook
 //= require angular-flash.min
 //= require angular-cookies.min
+//= require angular-modal-service.min
 //= require angular-datepicker.min
 
 //= require angular_app
