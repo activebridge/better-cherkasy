@@ -7,6 +7,7 @@
   'ckeditor'
   'angularModalService'
   '720kb.datepicker'
+  'ui.timepicker'
 ])
 
 

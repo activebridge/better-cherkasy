@@ -1,21 +1,12 @@
 .row
   %input(ng-model='newEvent.headline' placeholder='Заголовок' type='text')
 .row
-  .col-md-2.col-xs-12.title Опис:
-  .col-md-10.col-xs-12
-    %div{'ckeditor' => 'options', 'ng-model' => 'newEvent.description'}
+  %div(ckeditor='options' ng-model='newEvent.description')
 .row
   %datepicker(date-format='d-MM-y' button-prev="<i class='fa fa-arrow-circle-left'></i>" button-next="<i class='fa fa-arrow-circle-right'></i>")
     %input(type='text' placeholder='Виберіть дату' ng-model='date')
-
 .row
-  .col-md-2.col-xs-12.title Час:
-  .col-md-10.col-xs-12
-    .input-group.bootstrap-timepicker
-      %input.timepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.time'}
-        %span.input-group-addon
-          .glyphicon.glyphicon-time.blue
-
+  %input(ui-timepicker='timeOptions' ng-model='newEvent.time' type='text' placeholder='Виберіть час')
 .row
   .col-md-2.col-xs-12.title Теги:
   .col-md-10.col-xs-12

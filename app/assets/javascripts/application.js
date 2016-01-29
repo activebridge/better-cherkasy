@@ -21,6 +21,8 @@
 //= require angular-cookies.min
 //= require angular-modal-service.min
 //= require angular-datepicker.min
+//= require jquery-timepicker.min
+//= require angular-timepicker.min
 
 //= require angular_app
 //= require ckeditor-jquery
