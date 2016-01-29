@@ -8,11 +8,8 @@
 .row
   %input(ui-timepicker='timeOptions' ng-model='newEvent.time' type='text' placeholder='Виберіть час')
 .row
-  .col-md-2.col-xs-12.title Теги:
-  .col-md-10.col-xs-12
-    %tags-input{'ng-model' => 'newEvent.tags', 'display-property' => 'name'}
-      %auto-complete{'source' => 'loadTags($query)'}
-
+  %tags-input(ng-model='newEvent.tags')
+    %auto-complete(source='loadTags($query)')
 .row
   .col-md-2.col-xs-12.title Збераємось:
   .col-md-10.col-xs-12

@@ -1,10 +1,11 @@
 betterCherkasy.controller 'NewEventCtrl', [
   '$scope', '$location', 'close', 'eventFormDecorator', 'Event'
   ($scope, $location, close, eventFormDecorator, Event) ->
+    eventFormDecorator($scope)
+
     $scope.timeOptions =
       step: 5
       timeFormat: 'H:i'
-    #eventFormDecorator($scope)
 
     $scope.newEvent = {}
 
