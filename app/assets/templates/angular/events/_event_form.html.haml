@@ -5,13 +5,8 @@
   .col-md-10.col-xs-12
     %div{'ckeditor' => 'options', 'ng-model' => 'newEvent.description'}
 .row
-  %datepicker
-    -#%input(ng-model='date' type='text')
-  .col-md-2.col-xs-12.title Дата:
-  .col-md-10.col-xs-12
-  %input.datepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.date'}
-    %span.input-group-addon
-      %i.glyphicon.glyphicon-calendar.blue
+  %datepicker(date-format='d-MM-y' button-prev="<i class='fa fa-arrow-circle-left'></i>" button-next="<i class='fa fa-arrow-circle-right'></i>")
+    %input(type='text' placeholder='Виберіть дату' ng-model='date')
 
 .row
   .col-md-2.col-xs-12.title Час:
