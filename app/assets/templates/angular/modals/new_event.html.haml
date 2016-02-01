@@ -6,6 +6,6 @@
     .modal-body
       %form(id='newEvent' ng-submit='add()')
         %ng-include(src="'#{asset_path('angular/events/_event_form.html.haml')}'")
-    .modal-footer
+    .modal-footer.u-pull-right
       %button(class='button-primary' form='newEvent') Зберегти
   #modal-fade

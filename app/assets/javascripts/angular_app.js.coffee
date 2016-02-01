@@ -6,7 +6,7 @@
   'flash'
   'ckeditor'
   'angularModalService'
-  '720kb.datepicker'
+  'ngQuickDate'
   'ui.timepicker'
   'ngTagsInput'
 ])

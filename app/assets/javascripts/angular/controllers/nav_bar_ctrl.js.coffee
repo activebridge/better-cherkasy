@@ -1,5 +1,6 @@
 betterCherkasy.controller 'NavBarCtrl', [
   '$scope'
+  '$timeout'
   '$facebook'
   '$cookies'
   '$cookieStore'
@@ -8,7 +9,7 @@ betterCherkasy.controller 'NavBarCtrl', [
   'ModalService'
   'Session'
   'Flash'
-  ($scope, $facebook, $cookies, $cookieStore, $window, AuthService, ModalService, Session, Flash) ->
+  ($scope, $timeout, $facebook, $cookies, $cookieStore, $window, AuthService, ModalService, Session, Flash) ->
     $scope.init = ->
       checkCurrentUser().then ->
         $scope.navBar = {}
@@ -111,5 +112,9 @@ betterCherkasy.controller 'NavBarCtrl', [
       ModalService.showModal(
         templateUrl: '/assets/modals/new_event.html.haml'
         controller: 'NewEventCtrl'
+      ).then((modal) ->
+        $timeout ->
+          modal.element.show()
+        , 500
       )
 ]

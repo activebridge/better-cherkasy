@@ -3,14 +3,7 @@
 .row
   %div(ckeditor='options' ng-model='newEvent.description')
 .row
-  %datepicker(date-format='d-MM-y' button-prev="<i class='fa fa-arrow-circle-left'></i>" button-next="<i class='fa fa-arrow-circle-right'></i>")
-    %input(type='text' placeholder='Виберіть дату' ng-model='date')
-.row
-  %input(ui-timepicker='timeOptions' ng-model='newEvent.time' type='text' placeholder='Виберіть час')
-.row
   %tags-input(ng-model='newEvent.tags')
     %auto-complete(source='loadTags($query)')
 .row
-  .col-md-2.col-xs-12.title Збераємось:
-  .col-md-10.col-xs-12
-    #map-canvas
+  %quick-datepicker(ng-model='newEvent.date' placeholder='Натисніть щоб встановити дату')
