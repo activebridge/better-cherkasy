@@ -10,12 +10,10 @@ betterCherkasy.controller 'NewEventCtrl', [
     $scope.newEvent = {}
 
     $scope.add = ->
-      alert('add new')
-      #$scope.newEvent['auth_token'] = getAuthToken()
-      #Event.save($scope.newEvent,
-      #(response) ->
-      #$location.path('/')
-      #)
+      $scope.newEvent['auth_token'] = getAuthToken()
+      Event.save($scope.newEvent, (response) ->
+        $location.path('/')
+      )
 
     $scope.cancel = ->
       $location.path('/')

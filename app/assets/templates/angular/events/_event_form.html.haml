@@ -1,9 +1,11 @@
 .row
-  %input(ng-model='newEvent.headline' placeholder='Заголовок' type='text')
+  %input(type='text' placeholder='Заголовок' ng-model='newEvent.headline')
 .row
   %div(ckeditor='options' ng-model='newEvent.description')
 .row
-  %tags-input(ng-model='newEvent.tags')
+  %tags-input(type='text' placeholder='Добавить тег' ng-model='newEvent.tags')
     %auto-complete(source='loadTags($query)')
 .row
-  %quick-datepicker(ng-model='newEvent.date' placeholder='Натисніть щоб встановити дату')
+  #new-event-map(style='height: 500px;')
+.row
+  %quick-datepicker(placeholder='Натисніть щоб встановити дату' ng-model='newEvent.date')
