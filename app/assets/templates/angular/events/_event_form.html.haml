@@ -3,7 +3,7 @@
 .row
   %div(ckeditor='options' ng-model='newEvent.description')
 .row
-  %tags-input(type='text' placeholder='Добавить тег' ng-model='newEvent.tags')
+  %tags-input(type='text' placeholder='Добавить тег' display-property='name' ng-model='newEvent.tags')
     %auto-complete(source='loadTags($query)')
 .row
   #new-event-map(style='height: 500px;')
