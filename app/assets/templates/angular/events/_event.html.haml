@@ -1,5 +1,17 @@
 .row
   .description(ng-bind-html='descriptionHtml(event)')
+
+-# For MyEventsCtrl
+.row.right(ng-show='myEvents && isCompletedTab()')
+  .button(ng-file-select='upload($files, event)')
+.row.right(ng-show='myEvents && isInProgressTab()')
+  = link_to 'Завершити подію', 'javascript:void(0)', 'ng-click'=>'completeEvent(event)', class: 'button'
+.row
+  %button(ng-click='delete(event.id, $index)' type='button' ng-show='isMine()')
+.row
+  %button(ng-click='edit(event.id)' type='button' ng-show='isMine()')
+-# ==============
+
 .row(ng-show='event.tags.length')
   Теги:
   %span(ng-repeat='tag in event.tags')
@@ -27,8 +39,14 @@
 .row
   .six.columns
     #show-event-map(style='height: 300px;')
-  .six.columns
-    Фото/Відео
+  .six.columns.popup-gallery
+    %a(ng-repeat='photo in event.photos' href='{{photo.origin}}')
+      <img src='{{photo.thumb}}' />
+.row.subscribers
+  Subscribers
+  %ul
+    %li(ng-repeat='subscription in event.subscriptions')
+      %img(src='{{subscription.user.avatar_url}}' title='{{subscription.user.name}}')
 .row
   %ul.comments
     %li(ng-repeat='comment in event.comments')

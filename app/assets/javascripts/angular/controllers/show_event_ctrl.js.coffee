@@ -1,13 +1,11 @@
 betterCherkasy.controller 'ShowEventCtrl', [
   '$scope'
-  '$routeParams'
-  '$sce'
   'close'
   'event_id'
   'MapService'
   'ModalService'
   'Comment'
-  ($scope, $routeParams, $sce, close, event_id, MapService, ModalService, Comment) ->
+  ($scope, close, event_id, MapService, ModalService, Comment) ->
     $scope.event_id = event_id
     $scope.event = {}
     angular.extend($scope, MapService($scope))
