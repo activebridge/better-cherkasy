@@ -13,11 +13,8 @@ betterCherkasy.controller 'NewEventCtrl', [
       $scope.newEvent['auth_token'] = getAuthToken()
       Event.save($scope.newEvent, (response) ->
         close null, 10
-        $location.path('/')
+        $location.path('/#/')
       )
-
-    $scope.cancel = ->
-      $location.path('/')
 
     $scope.dismissModal = (result) ->
       close result, 10
