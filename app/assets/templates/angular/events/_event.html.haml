@@ -1,5 +1,11 @@
 .row
   .description(ng-bind-html='descriptionHtml(event)')
+.row(ng-show='event.tags.length')
+  Теги:
+  %span(ng-repeat='tag in event.tags')
+    %a(href='/#/events?tag={{tag.name}}')
+      {{tag.name}}
+    &nbsp;
 .row
   Дата: {{event.date}}
 .row
