@@ -9,9 +9,9 @@
 .row
   Дата: {{event.date}}
 .row
+  Час: {{event.time}}
+.row
   .six.columns
-    Час: {{event.time}}
-  .six.columns.right
     = link_to 'javascript:void(0)', 'ng-click' => 'up(event)' do
       = fa_icon 'thumbs-o-up 2x'
       {{event.likes}}
@@ -21,6 +21,9 @@
     = link_to 'javascript:void(0)', 'ng-click' => 'openNewCommentModal()', 'ng-show' => 'userSignedIn()' do
       = fa_icon 'comment 2x'
       {{event.comments.length}}
+  .six.columns.right(ng-show='userSignedIn() && !isCompletedTab()')
+    = link_to 'Розраховуйте і на мене!', 'javascript:void(0)', 'ng-click' => 'subscribe(event)', 'ng-show' => '!subscribed(event)', class: 'button'
+    = link_to 'У мене не виходе :(', 'javascript:void(0)', 'ng-click' => 'unsubscribe(event)', 'ng-show' => 'subscribed(event)', class: 'button'
 .row
   .six.columns
     #show-event-map(style='height: 300px;')
