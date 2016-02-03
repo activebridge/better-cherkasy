@@ -1,14 +1,15 @@
-.row
-  .two.columns.author-avatar
-    %img.comment-avatar(src="{{comment.user.avatar_url}}")
-  .three.columns.author-name
-    {{comment.user.name}}
-  .six.columns.date
-    {{comment.created}}
-  .one.column.action-links(ng-show='userSignedIn()')
-    = link_to '', 'ng-click' => '', title: 'Відповісти' do
-      = fa_icon 'comment'
-    = link_to '', 'ng-click' => 'deleteComment(comment.id, $index)', title: 'Видалити' do
-      = fa_icon 'remove'
-.row.comment-body
-  {{comment.body}}
+.row.comment(style='margin-left: {{comment.ancestors_count * 20}}px')
+  .row.comment-header
+    .author-avatar
+      %img.comment-avatar(src="{{comment.user.avatar_url}}")
+    .author-name
+      {{comment.user.name}}
+    .date
+      {{comment.created}}
+    .action-links(ng-show='userSignedIn()')
+      = link_to 'javascript:void(0)', 'ng-click' => '', title: 'Відповісти' do
+        = fa_icon 'comment'
+      = link_to 'javascript:void(0)', 'ng-click' => 'deleteComment(comment.id, $index)', title: 'Видалити' do
+        = fa_icon 'remove'
+  .row.comment-body
+    {{comment.body}}
