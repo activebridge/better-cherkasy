@@ -1,12 +1,14 @@
 .row
-  .three.columns.author-avatar
+  .two.columns.author-avatar
     %img.comment-avatar(src="{{comment.user.avatar_url}}")
   .three.columns.author-name
     {{comment.user.name}}
-  .three.columns.date
+  .six.columns.date
     {{comment.created}}
-  .three.columns.action-links
-    = link_to 'Відповісти', '#'
-    = link_to 'видалити', '#'
+  .one.column.action-links(ng-show='userSignedIn()')
+    = link_to '', 'ng-click' => '', title: 'Відповісти' do
+      = fa_icon 'comment'
+    = link_to '', 'ng-click' => 'deleteComment(comment.id, $index)', title: 'Видалити' do
+      = fa_icon 'remove'
 .row.comment-body
   {{comment.body}}

@@ -23,4 +23,4 @@
 .row
   %ul.comments
     %li(ng-repeat='comment in event.comments')
-      %ng-include(src="'#{asset_path('angular/comments/_comment.html')}'")
+      %ng-include(src="'#{asset_path('angular/comments/_comment.html.haml')}'")
