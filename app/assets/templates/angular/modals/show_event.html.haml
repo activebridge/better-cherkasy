@@ -1,0 +1,9 @@
+#modal-container
+  #modal-overlay
+    .modal-header
+      %button(type='button' class='close' ng-click='dismissModal()')×
+      .modal-title.center {{event.headline}}
+    .modal-body
+      %ng-include(src="'#{asset_path('angular/events/_event.html.haml')}'")
+    .modal-footer.u-pull-right
+  #modal-fade

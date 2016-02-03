@@ -1,65 +1,22 @@
 .row
-  .col-md-1.creator
-    .row
-      %img{src: "{{event.creator.avatar_url}}"}
-    .row.name
-      {{event.creator.name}}
-    .row.pull-bottom.pull-right{'ng-show' => 'myEvents && isCompletedTab()'}
-      .btn.btn-default.btn-xs{'ng-file-select' => 'upload($files, event)'}
-        %span.glyphicon.glyphicon-paperclip
-    .row.pull-bottom.pull-right{'ng-show' => "myEvents && isInProgressTab()", 'title' => 'Завершити подію'}
-      .btn.btn-default.btn-xs{'ng-click' => 'completeEvent(event)'}
-        %span.glyphicon.glyphicon-ok
-  .col-md-8.event
-    .row.headline
-      %a{href: "#/events/{{event.id}}"}
-        {{event.headline}}
-    .row.description{'ng-bind-html' => 'descriptionHtml(event)' }
-    .row.small.italic
-      Коли: {{event.date}} {{event.time}}
-    .row.small.italic{'ng-show' => 'event.address'}
-      Де:
-      %span.link{'ng-click' => 'showAddressOnMap(event)'}
-        {{event.address}}
-    .row.small.italic{'ng-show' => 'event.tags.length'}
-      Теги:
-      %span{'ng-repeat' => 'tag in event.tags'}
-        %a{'href' => '/#/events?tag={{tag.name}}'}
-          {{tag.name}}
-        &nbsp;
-  .col-md-3
-    .row.btn-group-xs.pull-right-lg
-      %button.btn.btn-default{'ng-click' => 'up(event)', :type => 'button'}
-        %span.glyphicon.glyphicon-thumbs-up
-        .rating.green
-          {{event.likes}}
-      %button.btn.btn-default{'ng-click' => 'down(event)', :type => 'button'}
-        %span.glyphicon.glyphicon-thumbs-down
-        .rating.red
-          {{event.dislikes}}
-      &nbsp;
-      %a.btn.btn-default{'href' => "#/events/{{event.id}}"}
-        %span.glyphicon.glyphicon-comment
-        {{event.comments_count}}
-      %button.btn.btn-default{'ng-click' => 'delete(event.id, $index)', :type => 'button', 'ng-show' => 'isMine()'}
-        %span.glyphicon.glyphicon-trash
-      %button.btn.btn-default{'ng-click' => 'edit(event.id)', :type => 'button', 'ng-show' => 'isMine()'}
-        %span.glyphicon.glyphicon-edit
-    .clear
-    .row.subscribers
-      %ul
-        %li.pull-right-lg.pull-left-sm{'ng-repeat' => 'subscription in event.subscriptions'}
-          %img{src: "{{subscription.user.avatar_url}}", title: '{{subscription.user.name}}'}
-    .row.pull-right-lg{'ng-show' => 'userSignedIn() && !isCompletedTab()'}
-      %button.btn.btn-primary.btn-sm{'ng-click' => 'subscribe(event)', 'ng-show' => '!subscribed(event)'}
-        %span.glyphicon.glyphicon-ok
-        Розраховуйте і на мене!
-      %button.btn.btn-danger.btn-sm{'ng-click' => 'unsubscribe(event)', 'ng-show' => 'subscribed(event)'}
-        %span.glyphicon.glyphicon-remove
-        У мене не виходе :(
+  .description(ng-bind-html='descriptionHtml(event)')
 .row
-  .col-md-1
-  .col-md-8.popup-gallery
-    %a{'ng-repeat' => 'photo in event.photos', 'href' => '{{photo.origin}}'}
-      <img src='{{photo.thumb}}' />
-
+  Дата: {{event.date}}
+.row
+  .six.columns
+    Час: {{event.time}}
+  .six.columns.right
+    = link_to 'javascript:void(0)', 'ng-click' => 'up(event)' do
+      = fa_icon 'thumbs-o-up 2x'
+      {{event.likes}}
+    = link_to 'javascript:void(0)', 'ng-click' => 'down(event)' do
+      = fa_icon 'thumbs-o-down 2x'
+      {{event.dislikes}}
+    = link_to 'javascript:void(0)', 'ng-click' => 'up(event)' do
+      = fa_icon 'comment 2x'
+      {{event.comments_count}}
+.row
+  .six.columns
+    #show-event-map(style='height: 300px;')
+  .six.columns
+    Фото/Відео

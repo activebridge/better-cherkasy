@@ -1,21 +1,16 @@
 betterCherkasy.controller 'ShowEventCtrl', [
-  '$scope', 'Event', '$routeParams', '$sce', 'eventDecorator', '$modal', 'Comment', 'mapDecorator'
-  ($scope, Event, $routeParams, $sce, eventDecorator, $modal, Comment, mapDecorator) ->
-    eventDecorator($scope)
-    mapDecorator($scope)
-
+  '$scope'
+  '$routeParams'
+  '$sce'
+  'close'
+  'event_id'
+  'MapService'
+  'ModalService'
+  'Comment'
+  ($scope, $routeParams, $sce, close, event_id, MapService, ModalService, Comment) ->
+    $scope.event_id = event_id
     $scope.event = {}
-
-    init = ->
-      $scope.initGoogleMap('event-map-canvas')
-      Event.get {
-        id: $routeParams.id
-        auth_token: getAuthToken()
-      }, (data) ->
-        $scope.event = data
-        setTimeout ( ->
-          $scope.initMagnificPopup()
-        ), 300
+    angular.extend($scope, MapService($scope))
 
     $scope.openNewCommentModal = (templateUrl)->
       $modal.open
@@ -45,6 +40,8 @@ betterCherkasy.controller 'ShowEventCtrl', [
           comment: ->
             comment
 
-    init()
+    $scope.dismissModal = (result) ->
+      close result, 10
 
+    $scope.showEventInit()
 ]

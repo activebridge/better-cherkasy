@@ -24,4 +24,17 @@ betterCherkasy.factory 'MapService', [
           for event in response
             if event.address
               $scope.placeMarker event
+
+      $scope.showEventInit = ->
+        Event.get {
+          id: $scope.event_id
+          auth_token: getAuthToken()
+        }, (data) ->
+          $scope.event = data
+          setTimeout ( ->
+            $scope.initGoogleMap('show-event-map')
+            if data.address
+              $scope.placeMarker data
+            $scope.initMagnificPopup()
+          ), 300
 ]

@@ -1,6 +1,7 @@
 betterCherkasy.factory 'mapDecorator', [
   '$location'
-  ($location) ->
+  'ModalService'
+  ($location, ModalService) ->
     ($scope) ->
       $scope.googleMapReady = false
       $scope.markers = []
@@ -31,10 +32,14 @@ betterCherkasy.factory 'mapDecorator', [
         $scope.markers.push marker
         infowindow.open $scope.map, marker
         google.maps.event.addListener marker, 'click', (e) ->
-          $scope.$apply ->
-            $location.path('/events/' + event.id)
-          hidePanel()
-          return
+          ModalService.showModal(
+            templateUrl: '/assets/modals/show_event.html.haml'
+            controller: 'ShowEventCtrl'
+            inputs:
+              event_id: event.id
+          ).then((modal) ->
+            modal.element.show()
+          )
 
       $scope.clearMarkers = ->
         for marker in $scope.markers

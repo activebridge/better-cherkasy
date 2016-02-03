@@ -31,6 +31,10 @@
 .center {
   text-align: center;
 }
+
+.right {
+  text-align: right;
+}
 .container {
   position: relative;
   width: 100%;
