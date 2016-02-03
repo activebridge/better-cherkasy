@@ -2,7 +2,8 @@
   #modal-overlay
     .modal-header
       %button.close(type='button' ng-click='dismissModal()')×
-      .modal-title.center Додати новий комент
+      .modal-title.center(ng-show='!comment') Коментувати
+      .modal-title.center(ng-show='comment') Відповісти
     .modal-body
       %form#newComment(ng-submit='add()')
         %textarea(placeholder='Коментар' ng-model='newComment.body')

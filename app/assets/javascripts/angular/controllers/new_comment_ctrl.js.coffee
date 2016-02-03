@@ -6,6 +6,7 @@ betterCherkasy.controller 'NewCommentCtrl', [
   'Comment'
   ($scope, close, event, comment, Comment) ->
     $scope.newComment = {}
+    $scope.comment = comment
 
     $scope.add = ->
       $scope.newComment['auth_token'] = getAuthToken()

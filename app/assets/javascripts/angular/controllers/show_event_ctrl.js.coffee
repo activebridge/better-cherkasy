@@ -18,7 +18,7 @@ betterCherkasy.controller 'ShowEventCtrl', [
         controller: 'NewCommentCtrl'
         inputs:
           event: $scope.event
-          comment: {}
+          comment: null
       ).then((modal) ->
         modal.element.show()
       )
@@ -32,15 +32,16 @@ betterCherkasy.controller 'ShowEventCtrl', [
         , (success) ->
             $scope.event.comments.splice(index, 1)
 
-    $scope.openReplyModal = (templateUrl, comment, index) ->
-      $modal.open
-        templateUrl: templateUrl
+    $scope.openReplyModal = (comment, index) ->
+      ModalService.showModal(
+        templateUrl: '/assets/modals/new_event_comment.html.haml'
         controller: 'NewCommentCtrl'
-        resolve:
-          event: ->
-            $scope.event
-          comment: ->
-            comment
+        inputs:
+          event: $scope.event
+          comment: comment
+      ).then((modal) ->
+        modal.element.show()
+      )
 
     $scope.dismissModal = (result) ->
       close result, 10

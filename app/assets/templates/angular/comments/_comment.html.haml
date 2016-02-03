@@ -7,7 +7,7 @@
     .date
       {{comment.created}}
     .action-links(ng-show='userSignedIn()')
-      = link_to 'javascript:void(0)', 'ng-click' => '', title: 'Відповісти' do
+      = link_to 'javascript:void(0)', 'ng-click' => 'openReplyModal(comment, $index)', title: 'Відповісти' do
         = fa_icon 'comment'
       = link_to 'javascript:void(0)', 'ng-click' => 'deleteComment(comment.id, $index)', title: 'Видалити' do
         = fa_icon 'remove'
