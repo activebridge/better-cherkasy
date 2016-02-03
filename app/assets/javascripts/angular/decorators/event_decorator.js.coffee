@@ -1,6 +1,6 @@
 betterCherkasy.factory 'eventDecorator', [
-  'EventVote', '$sce', 'Subscription'
-  (EventVote, $sce, Subscription) ->
+  '$sce', 'Flash', 'EventVote', 'Subscription', 'ModalService'
+  ($sce, Flash, EventVote, Subscription, ModalService) ->
 
     ($scope) ->
       $scope.up = (event) ->

@@ -1,0 +1,42 @@
+#modal-container{
+  display: none;
+}
+
+#modal-overlay {
+  background-color: #ffffff;
+  border: 2px solid black;
+  height: 500px;
+  overflow: auto;
+  padding: 25px;
+  position: absolute;
+  top: 70px;
+  z-index: 100;
+}
+
+#modal-fade {
+  background-color: black;
+  height: 100%;
+  left: 0%;
+  -moz-opacity: 0.7;
+  opacity: .70;
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  z-index: 90;
+  filter: alpha(opacity=70);
+}
+
+#modal-container.ng-enter {
+  transition: opacity .5s ease-out;
+  opacity: 0;
+}
+#modal-container.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+#modal-container.ng-leave {
+  transition: opacity .5s ease-out;
+  opacity: 1;
+}
+#modal-container.ng-leave.ng-leave-active {
+  opacity: 0;
+}

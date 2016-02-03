@@ -19,7 +19,12 @@
 //= require angular-facebook
 //= require angular-flash.min
 //= require angular-cookies.min
-//
+//= require angular-modal-service.min
+//= require ng-quick-date.min
+//= require jquery-timepicker.min
+//= require angular-timepicker.min
+//= require angular-tags-input.min
+
 //= require angular_app
 //= require ckeditor-jquery
 //= require angular-ckeditor.min

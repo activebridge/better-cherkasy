@@ -1,6 +1,6 @@
 .row
   .five.columns
-    = link_to 'Нова Пропозиція', '/#/events/new', class: 'button button-primary'
+    = link_to 'Нова Пропозиція', 'javascript:void(0)', 'ng-click' => 'onNewEventModal()', class: 'button button-primary'
   .four.columns
     = link_to 'Активні', '#pending-events-list', showtab: '', 'ng-click' => "show('pending')", class: 'button button-primary'
   .three.columns.socials(ng-show='navBar.showSignInButton')

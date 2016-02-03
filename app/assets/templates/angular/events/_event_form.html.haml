@@ -1,34 +1,11 @@
 .row
-  .col-md-2.col-xs-12.title Заголовок:
-  .col-md-10.col-xs-12
-    %input.form-control{'ng-model' => 'newEvent.headline'}/
+  %input(type='text' placeholder='Заголовок' ng-model='newEvent.headline')
 .row
-  .col-md-2.col-xs-12.title Опис:
-  .col-md-10.col-xs-12
-    %div{'ckeditor' => 'options', 'ng-model' => 'newEvent.description'}
+  %div(ckeditor='options' ng-model='newEvent.description')
 .row
-  .col-md-2.col-xs-12.title Дата:
-  .col-md-10.col-xs-12
-    .input-group
-      %input.datepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.date'}
-        %span.input-group-addon
-          %i.glyphicon.glyphicon-calendar.blue
-
+  %tags-input(type='text' placeholder='Добавить тег' display-property='name' ng-model='newEvent.tags')
+    %auto-complete(source='loadTags($query)')
 .row
-  .col-md-2.col-xs-12.title Час:
-  .col-md-10.col-xs-12
-    .input-group.bootstrap-timepicker
-      %input.timepicker.form-control{:type => 'text', 'ng-model' => 'newEvent.time'}
-        %span.input-group-addon
-          .glyphicon.glyphicon-time.blue
-
+  #new-event-map(style='height: 500px;')
 .row
-  .col-md-2.col-xs-12.title Теги:
-  .col-md-10.col-xs-12
-    %tags-input{'ng-model' => 'newEvent.tags', 'display-property' => 'name'}
-      %auto-complete{'source' => 'loadTags($query)'}
-
-.row
-  .col-md-2.col-xs-12.title Збераємось:
-  .col-md-10.col-xs-12
-    #map-canvas
+  %quick-datepicker(placeholder='Натисніть щоб встановити дату' ng-model='newEvent.date')

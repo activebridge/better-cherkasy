@@ -44,22 +44,14 @@ betterCherkasy.factory 'eventFormDecorator', [
         mapOptions =
           zoom: 13
           center: myLatlng
-        $scope.map = new (google.maps.Map)(document.getElementById('map-canvas'), mapOptions)
+        map = document.getElementById('new-event-map')
+        $scope.map = new (google.maps.Map)(map, mapOptions)
         google.maps.event.addListener $scope.map, 'click', (event) ->
           $scope.placeMarker event.latLng
           return
 
       if userSignedIn()
         setTimeout ( ->
-          $('.timepicker').timepicker
-            minuteStep: 5
-
-          $('.datepicker').datepicker
-            autoclose: true
-            todayHighlight: true
-            startDate: new Date()
-            format: 'dd-mm-yyyy'
-
           initGoogleMap()
-        ), 300
+        ), 1000
 ]

@@ -1,9 +1,14 @@
 @betterCherkasy = angular.module('betterCherkasy', [
-  'ngRoute'
+  'ngCookies'
   'ngFacebook'
   'ngResource'
+  'ngRoute'
   'flash'
-  'ngCookies'
+  'ckeditor'
+  'angularModalService'
+  'ngQuickDate'
+  'ui.timepicker'
+  'ngTagsInput'
 ])
 
 
