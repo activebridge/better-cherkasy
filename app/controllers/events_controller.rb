@@ -77,6 +77,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
+    params[:event].merge!(time: params[:date])
     params.require(:event).permit([:headline, :description,
                                     :date, :time,
                                     :lat, :lng, :address, :completed,
