@@ -1,0 +1,12 @@
+#modal-container
+  #modal-overlay
+    .modal-header
+      %button.close(type='button' ng-click='dismissModal()')×
+      .modal-title.center Додати новий комент
+    .modal-body
+      %form#newComment(ng-submit='add()')
+        %textarea(placeholder='Коментар' ng-model='newComment.body')
+    .modal-footer.u-pull-right
+      %button(form='newComment') Додати
+      = link_to 'Відміна', 'javascript:void(0)', 'ng-click' => 'dismissModal()', class: 'button'
+  #modal-fade

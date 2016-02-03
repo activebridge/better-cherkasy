@@ -12,14 +12,16 @@ betterCherkasy.controller 'ShowEventCtrl', [
     $scope.event = {}
     angular.extend($scope, MapService($scope))
 
-    $scope.openNewCommentModal = (templateUrl)->
-      $modal.open
-        templateUrl: templateUrl
+    $scope.openNewCommentModal = ->
+      ModalService.showModal(
+        templateUrl: '/assets/modals/new_event_comment.html.haml'
         controller: 'NewCommentCtrl'
-        resolve:
-          event: ->
-            $scope.event
-          comment: ->
+        inputs:
+          event: $scope.event
+          comment: {}
+      ).then((modal) ->
+        modal.element.show()
+      )
 
     $scope.deleteComment = (comment_id, index) ->
       if confirm 'Ви впевнені?'

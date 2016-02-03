@@ -12,11 +12,15 @@
     = link_to 'javascript:void(0)', 'ng-click' => 'down(event)' do
       = fa_icon 'thumbs-o-down 2x'
       {{event.dislikes}}
-    = link_to 'javascript:void(0)', 'ng-click' => 'up(event)' do
+    = link_to 'javascript:void(0)', 'ng-click' => 'openNewCommentModal()', 'ng-show' => 'userSignedIn()' do
       = fa_icon 'comment 2x'
-      {{event.comments_count}}
+      {{event.comments.length}}
 .row
   .six.columns
     #show-event-map(style='height: 300px;')
   .six.columns
     Фото/Відео
+.row
+  %ul.comments
+    %li(ng-repeat='comment in event.comments')
+      %ng-include(src="'#{asset_path('angular/comments/_comment.html')}'")
