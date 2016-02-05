@@ -24,6 +24,7 @@
 //= require jquery-timepicker.min
 //= require angular-timepicker.min
 //= require angular-tags-input.min
+//= require nsPopover
 
 //= require angular_app
 //= require ckeditor-jquery

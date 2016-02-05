@@ -9,6 +9,7 @@
   'ngQuickDate'
   'ui.timepicker'
   'ngTagsInput'
+  'nsPopover'
 ])
 
 

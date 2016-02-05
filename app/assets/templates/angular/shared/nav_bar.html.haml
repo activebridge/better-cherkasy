@@ -1,8 +1,13 @@
 .row
-  .five.columns
-    = link_to 'Нова Пропозиція', 'javascript:void(0)', 'ng-click' => 'onNewEventModal()', class: 'button button-primary'
-  .four.columns
-    = link_to 'Активні', '#pending-events-list', showtab: '', 'ng-click' => "show('pending')", class: 'button button-primary'
+  .nine.columns
+    %script(type='text/ng-template' id='popover')
+      %ul
+        %li(ng-repeat='action in actions' ng-click='update()') {{action.name}}
+    %button(ns-popover
+            ns-popover-template='popover'
+            ns-popover-trigger='click'
+            ns-popover-hide-on-inside-click='true'
+            class='button-primary') {{selected_action}}
   .three.columns.socials(ng-show='navBar.showSignInButton')
     = link_to '', 'ng-click' => 'loginWithFacebook()' do
       = fa_icon 'facebook 2x'
