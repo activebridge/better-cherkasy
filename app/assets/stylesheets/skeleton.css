@@ -426,29 +426,24 @@ there.
 }
 
 /* Larger than mobile */
-@media (min-width: 400px) {}
+@media (min-width: 400px) {
+  .navbar .five.columns {text-align: center;}
+  .navbar .brand {width: 260px;}
+}
 
 /* Larger than phablet (also point when grid becomes active) */
 @media (min-width: 550px){
   .navbar .five.columns {text-align: center; width: 100%;}
   .navbar .seven.columns {width: 100%; margin-left: 0;}
 
-  .navbar .brand {width: 260px;}
-  .navbar .actions {text-align: unset;}
-
-  .navbar .actions .five.columns {width: 33.3333333333%; text-align: left;}
-  .navbar .actions .four.columns {width: 33.3333333333%; margin-left: 0; text-align: center;}
-  .navbar .actions .three.columns {width: 33.3333333333%; margin-left: 0; text-align: right;}
+  .navbar .actions .nine.columns {width: 74.0%; text-align: right;}
+  .navbar .actions .three.columns {width: 22%; text-align: right;}
 }
 
 /* Larger than tablet */
 @media (min-width: 750px){
   .navbar .five.columns {width: 39.3333333333%; text-align: unset;}
   .navbar .seven.columns {margin-left: 4%; width: 56.6666666667%;}
-
-  .navbar .actions .three.columns {margin-left: 4%; width: 22%; text-align: right;}
-  .navbar .actions .four.columns {margin-left: 4%; width: 30.6666666667%; text-align: right;}
-  .navbar .actions .five.columns {width: 39.3333333333%; text-align: right;}
 
   #modal-overlay {width: 50% !important; left: 25%;}
 }
